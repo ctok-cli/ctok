@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Dark background circle -->
+  <circle cx="8" cy="8" r="7.5" fill="#0f1117"/>
+  <!-- Yellow lightning bolt -->
+  <path d="M9.5 2L5 9h3.5L6.5 14L12 7H8.5L9.5 2z" fill="#f0c040"/>
+</svg>

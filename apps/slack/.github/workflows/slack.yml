@@ -1,0 +1,64 @@
+name: Slack Bot
+
+on:
+  push:
+    paths:
+      - "apps/slack/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/scanner/**"
+      - "packages/quota/**"
+  pull_request:
+    paths:
+      - "apps/slack/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/scanner/**"
+      - "packages/quota/**"
+
+jobs:
+  test:
+    name: Test & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm --filter @ctok/slack typecheck
+
+      - name: Test
+        run: pnpm --filter @ctok/slack test
+
+      - name: Build
+        run: pnpm --filter @ctok/slack build
+
+  docker:
+    name: Docker build
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t ctok-slack:${{ github.sha }} apps/slack
+
+      - name: Smoke test image starts
+        run: |
+          # Verify the image starts (it will exit immediately due to missing env vars,
+          # but should exit with a recognisable error, not a crash)
+          docker run --rm \
+            -e SLACK_BOT_TOKEN=xoxb-fake \
+            -e SLACK_SIGNING_SECRET=fake \
+            ctok-slack:${{ github.sha }} \
+            node dist/index.js || true

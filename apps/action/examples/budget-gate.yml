@@ -1,0 +1,60 @@
+# Example: block a merge when a generated prompt file exceeds cost/token budgets.
+# This is useful in repos that auto-generate Claude prompts from templates.
+
+name: Prompt budget gate
+
+on:
+  pull_request:
+    paths:
+      - "prompts/**"
+
+jobs:
+  budget-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check token budget
+        id: ctok
+        uses: ctok-cli/ctok@v0.1.0
+        with:
+          file: prompts/main.md
+          plan: pro
+          max-tokens: "40000"    # fail PR if prompt > 40k input tokens
+          max-cost-usd: "0.30"   # fail PR if estimated cost > $0.30
+          refine: "true"
+
+      - name: Post budget report on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tokens = '${{ steps.ctok.outputs.input-tokens }}';
+            const cost   = '${{ steps.ctok.outputs.total-cost-usd }}';
+            const model  = '${{ steps.ctok.outputs.recommended-model }}';
+            const effort = '${{ steps.ctok.outputs.recommended-effort }}';
+            const saved  = parseInt('${{ steps.ctok.outputs.tokens-saved }}') || 0;
+
+            const icon = '${{ job.status }}' === 'success' ? '✅' : '❌';
+
+            const lines = [
+              `## ${icon} ctok — Prompt budget report`,
+              '',
+              '| Metric | Value |',
+              '|--------|-------|',
+              `| Input tokens | ${tokens} |`,
+              `| Estimated cost | $${parseFloat(cost).toFixed(4)} |`,
+              `| Recommended model | ${model} |`,
+              `| Effort | ${effort} |`,
+              saved > 0 ? `| Tokens saved (refiner) | ~${saved} |` : null,
+              '',
+              '_Budget limits: 40,000 tokens · $0.30 USD_',
+              '_Powered by [ctok](https://github.com/ctok-cli/ctok)_',
+            ].filter(Boolean).join('\n');
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: lines,
+            });

@@ -1,0 +1,108 @@
+name: GitHub Action — CI
+
+on:
+  push:
+    paths:
+      - "apps/action/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/quota/**"
+  pull_request:
+    paths:
+      - "apps/action/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/quota/**"
+
+jobs:
+  test:
+    name: Test & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm --filter @ctok/action typecheck
+
+      - name: Test
+        run: pnpm --filter @ctok/action test
+
+      - name: Build
+        run: pnpm --filter @ctok/action build
+
+      - name: Verify dist is up-to-date
+        run: |
+          if ! git diff --quiet apps/action/dist/; then
+            echo "::error::dist/index.js is out of date. Run 'pnpm build' in apps/action and commit the result."
+            git diff --stat apps/action/dist/
+            exit 1
+          fi
+
+  # Self-test: run the action against its own action.yml using a sample prompt
+  self-test:
+    name: Self-test
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run ctok action (inline prompt)
+        id: ctok
+        uses: ./apps/action
+        with:
+          prompt: "Refactor the authentication module to use refresh tokens and add rate limiting"
+          plan: pro
+          task-type: refactor
+
+      - name: Validate outputs
+        run: |
+          echo "Input tokens:      ${{ steps.ctok.outputs.input-tokens }}"
+          echo "Total cost USD:    ${{ steps.ctok.outputs.total-cost-usd }}"
+          echo "Recommended model: ${{ steps.ctok.outputs.recommended-model }}"
+          echo "Recommended effort:${{ steps.ctok.outputs.recommended-effort }}"
+          echo "Confidence:        ${{ steps.ctok.outputs.confidence }}"
+
+          # Sanity: input tokens must be a positive integer
+          tokens="${{ steps.ctok.outputs.input-tokens }}"
+          if ! [[ "$tokens" =~ ^[0-9]+$ ]] || [ "$tokens" -eq 0 ]; then
+            echo "::error::input-tokens output is not a positive integer: '$tokens'"
+            exit 1
+          fi
+
+          # Sanity: recommended-model must be non-empty
+          model="${{ steps.ctok.outputs.recommended-model }}"
+          if [ -z "$model" ]; then
+            echo "::error::recommended-model output is empty"
+            exit 1
+          fi
+
+          echo "✅ All outputs look valid."
+
+      - name: Run ctok action (max-tokens threshold — should pass)
+        uses: ./apps/action
+        with:
+          prompt: "Fix typo"
+          max-tokens: "10000"
+
+      - name: Run ctok action (with refiner)
+        id: ctok-refine
+        uses: ./apps/action
+        with:
+          prompt: "please can you kindly help me to basically fix the auth thing somehow"
+          refine: "true"
+
+      - name: Show refiner output
+        run: |
+          echo "Tokens saved: ${{ steps.ctok-refine.outputs.tokens-saved }}"
+          echo "Refined:      ${{ steps.ctok-refine.outputs.refined-prompt }}"

@@ -1,0 +1,5 @@
+# GitHub Actions require dist/ to be committed.
+# Override the root .gitignore rule that excludes dist/.
+!dist/
+node_modules/
+*.tsbuildinfo

@@ -1,0 +1,49 @@
+name: Zed Extension — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/zed/**"
+  pull_request:
+    paths:
+      - "apps/zed/**"
+
+jobs:
+  build:
+    name: Build & check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-wasip1
+
+      - name: Cache Cargo registry + build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            apps/zed/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('apps/zed/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: cargo check (native — fast type check)
+        run: cargo check --manifest-path apps/zed/Cargo.toml
+
+      - name: cargo build --release (wasm32-wasip1)
+        run: cargo build --release --target wasm32-wasip1 --manifest-path apps/zed/Cargo.toml
+
+      - name: Verify WASM artifact exists
+        run: test -f apps/zed/target/wasm32-wasip1/release/ctok_zed.wasm
+
+      - name: Upload WASM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctok-zed-wasm
+          path: apps/zed/target/wasm32-wasip1/release/ctok_zed.wasm
+          retention-days: 7

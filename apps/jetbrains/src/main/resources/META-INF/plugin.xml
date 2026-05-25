@@ -1,0 +1,85 @@
+<idea-plugin>
+    <id>dev.ctok.jetbrains</id>
+    <name>ctok — Claude Token Estimator</name>
+    <version>0.1.0</version>
+    <vendor url="https://ctok.dev">ctok-cli</vendor>
+
+    <description><![CDATA[
+        Estimate Claude token usage, cost, and quota impact without leaving your IDE.<br/><br/>
+        <b>Features:</b>
+        <ul>
+          <li>Estimate tokens for selected text or the active file</li>
+          <li>See cost breakdown and model recommendation in the tool window</li>
+          <li>Run the 7-pass prompt refiner inline</li>
+          <li>Scan an entire project directory</li>
+        </ul>
+        <br/>
+        Requires <code>ctok</code> CLI on PATH (<code>npm i -g ctok</code>).
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <b>0.1.0</b> — Initial release.
+    ]]></change-notes>
+
+    <idea-version since-build="243"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+            id="ctok"
+            anchor="right"
+            secondary="false"
+            icon="/icons/ctok.svg"
+            factoryClass="dev.ctok.jetbrains.CtokToolWindowFactory"/>
+
+        <applicationService
+            serviceImplementation="dev.ctok.jetbrains.CtokSettings"/>
+
+        <applicationConfigurable
+            parentId="tools"
+            instance="dev.ctok.jetbrains.CtokSettingsConfigurable"
+            id="dev.ctok.jetbrains.CtokSettingsConfigurable"
+            displayName="ctok"/>
+
+        <notificationGroup
+            id="ctok"
+            displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action
+            id="ctok.CheckTokens"
+            class="dev.ctok.jetbrains.action.CheckTokensAction"
+            text="Estimate Tokens"
+            description="Estimate Claude token usage for selected text or active file">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift T"/>
+        </action>
+
+        <action
+            id="ctok.RefinePrompt"
+            class="dev.ctok.jetbrains.action.RefinePromptAction"
+            text="Refine Prompt (ctok)"
+            description="Run the 7-pass ctok refiner on selected text">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift R"/>
+        </action>
+
+        <action
+            id="ctok.ScanProject"
+            class="dev.ctok.jetbrains.action.ScanProjectAction"
+            text="Scan Project Tokens"
+            description="Analyse this project's token footprint with ctok">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+
+        <group id="ctok.Menu" text="ctok" popup="true">
+            <reference ref="ctok.CheckTokens"/>
+            <reference ref="ctok.RefinePrompt"/>
+            <reference ref="ctok.ScanProject"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </group>
+    </actions>
+</idea-plugin>

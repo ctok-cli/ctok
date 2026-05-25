@@ -1,0 +1,32 @@
+{
+  "name": "@ctok/discord",
+  "version": "0.1.0",
+  "description": "ctok Discord bot — estimate Claude token usage from any server",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --no-splitting --outDir dist",
+    "deploy-commands": "ts-node src/deploy-commands.ts",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.0",
+    "@discordjs/rest": "^2.4.0",
+    "discord-api-types": "^0.37.97",
+    "@ctok/core": "workspace:*",
+    "@ctok/quota": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/scanner": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

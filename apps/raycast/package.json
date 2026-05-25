@@ -1,0 +1,117 @@
+{
+  "name": "@ctok/raycast",
+  "title": "ctok — Claude Token Estimator",
+  "description": "Estimate Claude token usage, cost, and quota impact. Refine prompts and scan projects without leaving your keyboard.",
+  "icon": "extension-icon.png",
+  "author": "ctok-cli",
+  "categories": ["Developer Tools", "Productivity"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "commands": [
+    {
+      "name": "check",
+      "title": "Check Token Usage",
+      "description": "Estimate tokens, cost, and get a model recommendation for a Claude prompt.",
+      "mode": "view",
+      "keywords": ["claude", "tokens", "cost", "estimate"]
+    },
+    {
+      "name": "refine",
+      "title": "Refine Prompt",
+      "description": "Run the 7-pass prompt refiner to trim tokens and improve clarity.",
+      "mode": "view",
+      "keywords": ["refine", "prompt", "optimize", "tokens"]
+    },
+    {
+      "name": "clipboard-check",
+      "title": "Check Clipboard as Prompt",
+      "description": "Estimate token usage for the current clipboard contents.",
+      "mode": "no-view",
+      "keywords": ["clipboard", "tokens", "quick"]
+    },
+    {
+      "name": "scan",
+      "title": "Scan Project Directory",
+      "description": "Analyse a project directory and show its token footprint.",
+      "mode": "view",
+      "keywords": ["scan", "project", "directory", "tokens"]
+    },
+    {
+      "name": "history",
+      "title": "Token Check History",
+      "description": "Browse your recent token estimates.",
+      "mode": "view",
+      "keywords": ["history", "recent", "estimates"]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "plan",
+      "title": "Claude Plan",
+      "description": "Your Claude subscription plan, used for quota calculations.",
+      "type": "dropdown",
+      "required": false,
+      "default": "pro",
+      "data": [
+        { "title": "Free", "value": "free" },
+        { "title": "Pro", "value": "pro" },
+        { "title": "Max 5×", "value": "max5x" },
+        { "title": "Max 20×", "value": "max20x" },
+        { "title": "Team", "value": "team" },
+        { "title": "Enterprise", "value": "enterprise" },
+        { "title": "API", "value": "api" }
+      ]
+    },
+    {
+      "name": "model",
+      "title": "Model Override",
+      "description": "Override model for cost estimates (e.g. haiku-4-5). Leave empty to use the recommended model.",
+      "type": "textfield",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "taskType",
+      "title": "Default Task Type",
+      "description": "Default task type hint used when estimating tokens.",
+      "type": "dropdown",
+      "required": false,
+      "default": "general",
+      "data": [
+        { "title": "General", "value": "general" },
+        { "title": "Bug Fix", "value": "bug-fix" },
+        { "title": "Feature", "value": "feature" },
+        { "title": "Refactor", "value": "refactor" },
+        { "title": "Review", "value": "review" },
+        { "title": "Architecture", "value": "architecture" },
+        { "title": "Debugging", "value": "debugging" },
+        { "title": "Documentation", "value": "docs" },
+        { "title": "Tests", "value": "test" }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.87.0",
+    "@raycast/utils": "^1.19.0",
+    "@ctok/core": "workspace:*",
+    "@ctok/quota": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/scanner": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}

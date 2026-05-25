@@ -1,0 +1,94 @@
+name: ctok — Claude Token Estimator
+description: >
+  Estimate Claude token usage, cost, and quota impact for a prompt or file.
+  Optionally fail the workflow when token count or cost exceeds a threshold.
+author: ctok-cli
+
+branding:
+  icon: zap
+  color: purple
+
+inputs:
+  prompt:
+    description: Prompt text to analyse. Use `file` instead for large prompts.
+    required: false
+    default: ""
+
+  file:
+    description: Path to a file whose content is used as the prompt.
+    required: false
+    default: ""
+
+  model:
+    description: >
+      Override model for cost calculation (haiku-4-5, sonnet-4-6, opus-4-7).
+      Leave empty to use the auto-recommended model.
+    required: false
+    default: ""
+
+  plan:
+    description: >
+      Your Claude subscription plan. Used for quota impact calculations.
+      One of: free, pro, max5x, max20x, team, enterprise, api.
+    required: false
+    default: pro
+
+  task-type:
+    description: >
+      Task type hint for the recommender.
+      One of: general, bug-fix, feature, refactor, review, architecture, debugging, docs, test.
+    required: false
+    default: general
+
+  max-tokens:
+    description: >
+      Fail the step if estimated input tokens exceed this value.
+      Leave empty to never fail on token count.
+    required: false
+    default: ""
+
+  max-cost-usd:
+    description: >
+      Fail the step if estimated total cost (USD) exceeds this value.
+      Leave empty to never fail on cost.
+    required: false
+    default: ""
+
+  refine:
+    description: Also run the 7-pass prompt refiner and include results in outputs.
+    required: false
+    default: "false"
+
+outputs:
+  input-tokens:
+    description: Estimated input token count (expected value).
+  output-tokens:
+    description: Estimated output token count (expected value).
+  total-tokens:
+    description: Estimated total token count (input + output expected).
+  input-cost-usd:
+    description: Estimated input cost in USD.
+  output-cost-usd:
+    description: Estimated output cost in USD.
+  total-cost-usd:
+    description: Estimated total cost in USD (expected).
+  model:
+    description: Model used for cost calculation.
+  recommended-model:
+    description: Recommended Claude model for this prompt.
+  recommended-effort:
+    description: Recommended effort level (low, medium, high, xhigh).
+  confidence:
+    description: Token estimate confidence (high, medium, low).
+  quota-pct:
+    description: Estimated % of 5-hour quota window this prompt consumes.
+  suggestions:
+    description: JSON array of reduction suggestions.
+  refined-prompt:
+    description: Refined prompt text (only set when `refine` input is true).
+  tokens-saved:
+    description: Tokens saved by refiner (only set when `refine` input is true).
+
+runs:
+  using: node20
+  main: dist/index.js

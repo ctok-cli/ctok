@@ -1,0 +1,135 @@
+*ctok.txt*  Claude token estimator for Neovim
+
+Author:  ctok contributors
+License: MIT
+
+==============================================================================
+CONTENTS                                                         *ctok-contents*
+
+  1. Introduction .......... |ctok-intro|
+  2. Requirements .......... |ctok-requirements|
+  3. Installation .......... |ctok-installation|
+  4. Setup ................. |ctok-setup|
+  5. Commands .............. |ctok-commands|
+  6. Keymaps ............... |ctok-keymaps|
+  7. Configuration ......... |ctok-configuration|
+
+==============================================================================
+1. INTRODUCTION                                                     *ctok-intro*
+
+ctok.nvim is a Neovim plugin that brings the `ctok` CLI (Claude token
+estimator) directly into your editor. Estimate token counts, analyse costs,
+get model recommendations, and refine prompts without leaving Neovim.
+
+All heavy work is delegated to the `ctok` binary — the plugin is a thin Lua
+wrapper that runs the CLI and presents results in a floating window.
+
+==============================================================================
+2. REQUIREMENTS                                                *ctok-requirements*
+
+  • Neovim 0.10 or later  (uses `vim.system`)
+  • `ctok` CLI installed and on `$PATH`
+    Install: `npm i -g @ctok/cli`
+    Or download a binary from https://github.com/yourusername/ctok/releases
+
+==============================================================================
+3. INSTALLATION                                               *ctok-installation*
+
+Using lazy.nvim: >lua
+  {
+    "yourusername/ctok",
+    dir = "apps/nvim",             -- if using from monorepo
+    -- OR
+    -- "ctok-cli/ctok.nvim",       -- dedicated plugin repo
+    config = function()
+      require("ctok").setup()
+    end,
+  }
+<
+
+Using packer.nvim: >lua
+  use {
+    "ctok-cli/ctok.nvim",
+    config = function()
+      require("ctok").setup()
+    end,
+  }
+<
+
+==============================================================================
+4. SETUP                                                           *ctok-setup*
+
+Call `setup()` once in your config: >lua
+  require("ctok").setup({
+    executable  = "ctok",      -- path to ctok binary
+    win_width   = 0.6,         -- float width  (fraction of editor)
+    win_height  = 0.7,         -- float height (fraction of editor)
+    border      = "rounded",   -- border style: "rounded", "single", "double", …
+    keymaps     = {            -- optional command → normal-mode key
+      CtokCheck  = "<leader>tk",
+      CtokRefine = "<leader>tr",
+      CtokScan   = "<leader>ts",
+    },
+    auto_commands = true,      -- register :Ctok* user commands automatically
+  })
+<
+
+==============================================================================
+5. COMMANDS                                                     *ctok-commands*
+
+                                                                  *:CtokCheck*
+:[range]CtokCheck [--model <model>]
+  Estimate token count for the visual selection, or the full buffer if no
+  selection is active. Optionally pass a model name: >
+    :CtokCheck --model claude-opus-4-7
+<  Results are shown in a floating window. Press `q` or `<Esc>` to close.
+
+                                                                 *:CtokRefine*
+:[range]CtokRefine
+  Run the heuristic refiner on the selection (or buffer). Results are shown
+  in a floating window with the refined text and per-pass token savings.
+
+                                                          *:CtokRefineReplace*
+:{range}CtokRefineReplace
+  Like |:CtokRefine| but replaces the visual selection in-place with the
+  refined text. Requires a visual selection.
+
+                                                                   *:CtokScan*
+:CtokScan [dir]
+  Scan the project at `dir` (defaults to `cwd`). Displays a file-by-extension
+  breakdown, the heaviest files, and a count of auto-excluded paths.
+
+                                                                 *:CtokDoctor*
+:CtokDoctor
+  Verify that the `ctok` binary is installed and show its version.
+
+==============================================================================
+6. KEYMAPS                                                       *ctok-keymaps*
+
+No keymaps are set by default. Configure them in `setup()`: >lua
+  require("ctok").setup({
+    keymaps = {
+      CtokCheck         = "<leader>tk",
+      CtokRefine        = "<leader>tr",
+      CtokRefineReplace = "<leader>tR",
+      CtokScan          = "<leader>ts",
+    },
+  })
+<
+
+All keymaps are registered for both Normal and Visual mode.
+
+==============================================================================
+7. CONFIGURATION                                           *ctok-configuration*
+
+Full list of options and their defaults:
+
+  executable    `string`   "ctok"      Path to the ctok binary.
+  win_width     `number`   0.6         Float window width  (0–1 fraction).
+  win_height    `number`   0.7         Float window height (0–1 fraction).
+  border        `string`   "rounded"   Border style (see |nvim_open_win|).
+  keymaps       `table`    {}          Map of command name → key string.
+  auto_commands `boolean`  true        Register :Ctok* commands on setup.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

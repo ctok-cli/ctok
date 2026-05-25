@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Sandbox is required for Mac App Store distribution. -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <!-- Allow reading user-selected files (project directories). -->
+    <key>com.apple.security.files.user-selected.read-only</key>
+    <true/>
+    <!-- Allow spawning processes (ctok CLI). -->
+    <!-- NOTE: Remove this key if submitting to Mac App Store;
+         use an XPC helper or a non-sandboxed direct distribution instead. -->
+    <key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
+    <array>
+        <string>/opt/homebrew/bin/</string>
+        <string>/usr/local/bin/</string>
+        <string>/usr/bin/</string>
+    </array>
+    <!-- Allow the extension to share UserDefaults with the host app. -->
+    <key>com.apple.security.application-groups</key>
+    <array>
+        <string>dev.ctok.shared</string>
+    </array>
+</dict>
+</plist>

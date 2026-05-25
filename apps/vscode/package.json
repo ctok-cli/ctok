@@ -1,0 +1,157 @@
+{
+  "name": "ctok",
+  "displayName": "ctok — Lighthouse for Claude prompts",
+  "description": "Estimate Claude token usage, cost, and quota impact. Get model recommendations and refine prompts — all without leaving VS Code.",
+  "version": "0.1.0",
+  "publisher": "ctok-cli",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctok-cli/ctok"
+  },
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0f1117",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "claude",
+    "tokens",
+    "anthropic",
+    "ai",
+    "cost",
+    "prompt"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ctok.check",
+        "title": "ctok: Check Token Usage",
+        "category": "ctok"
+      },
+      {
+        "command": "ctok.checkSelection",
+        "title": "ctok: Check Selection",
+        "category": "ctok"
+      },
+      {
+        "command": "ctok.refineSelection",
+        "title": "ctok: Refine Selection",
+        "category": "ctok"
+      },
+      {
+        "command": "ctok.scan",
+        "title": "ctok: Scan Workspace",
+        "category": "ctok"
+      },
+      {
+        "command": "ctok.showPanel",
+        "title": "ctok: Show Analysis Panel",
+        "category": "ctok"
+      }
+    ],
+    "configuration": {
+      "title": "ctok",
+      "properties": {
+        "ctok.plan": {
+          "type": "string",
+          "default": "pro",
+          "enum": ["free", "pro", "max5x", "max20x", "team", "enterprise", "api"],
+          "description": "Your Claude subscription plan (used for quota calculations)."
+        },
+        "ctok.model": {
+          "type": "string",
+          "default": "",
+          "description": "Override model for cost estimates (e.g. haiku-4-5, sonnet-4-6, opus-4-7). Leave empty to use the recommended model."
+        },
+        "ctok.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show token count in the status bar for the active file."
+        },
+        "ctok.autoAnalyze": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically update the status bar token count as you type (debounced 500ms)."
+        },
+        "ctok.taskType": {
+          "type": "string",
+          "default": "general",
+          "enum": ["general", "bug-fix", "feature", "refactor", "review", "architecture", "debugging", "docs", "test"],
+          "description": "Default task type used when estimating tokens."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ctok.checkSelection",
+          "when": "editorHasSelection",
+          "group": "ctok@1"
+        },
+        {
+          "command": "ctok.refineSelection",
+          "when": "editorHasSelection",
+          "group": "ctok@2"
+        },
+        {
+          "command": "ctok.check",
+          "when": "editorIsOpen",
+          "group": "ctok@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "ctok.scan",
+          "group": "ctok@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "ctok.check",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorFocus"
+      },
+      {
+        "command": "ctok.refineSelection",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "dev": "node esbuild.js --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ctok/core": "workspace:*",
+    "@ctok/quota": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/scanner": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

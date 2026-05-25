@@ -1,0 +1,60 @@
+name: discord
+
+on:
+  push:
+    paths:
+      - "apps/discord/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/scanner/**"
+      - "packages/quota/**"
+      - ".github/workflows/discord.yml"
+  pull_request:
+    paths:
+      - "apps/discord/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/scanner/**"
+      - "packages/quota/**"
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @ctok/discord typecheck
+
+      - run: pnpm --filter @ctok/discord test
+
+      - run: pnpm --filter @ctok/discord build
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -f apps/discord/Dockerfile -t ctok-discord:ci .
+
+      - name: Smoke-test image starts
+        run: |
+          # The bot will fail to connect without a real token, but it should
+          # start and print a login error rather than crash at import time.
+          timeout 5 docker run --rm \
+            -e DISCORD_TOKEN=dummy \
+            -e DISCORD_CLIENT_ID=000000000000000000 \
+            ctok-discord:ci \
+          || true

@@ -1,0 +1,21 @@
+id = "ctok"
+name = "ctok"
+description = "Claude token estimator — estimate tokens, costs, and refine prompts directly in the AI assistant panel."
+version = "0.1.0"
+schema_version = 1
+authors = ["ctok contributors"]
+repository = "https://github.com/yourusername/ctok"
+
+[slash_commands]
+
+[slash_commands.ctok-check]
+description = "Estimate token count and cost for the given text (or current file contents)"
+requires_argument = false
+
+[slash_commands.ctok-refine]
+description = "Refine a prompt to reduce tokens while preserving intent"
+requires_argument = false
+
+[slash_commands.ctok-scan]
+description = "Scan the current project directory and report token usage by file"
+requires_argument = false

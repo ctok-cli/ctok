@@ -1,0 +1,56 @@
+name: Neovim Plugin — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/nvim/**"
+  pull_request:
+    paths:
+      - "apps/nvim/**"
+
+jobs:
+  test:
+    name: Lua tests (Neovim ${{ matrix.nvim }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nvim: ["v0.10.0", "stable", "nightly"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim ${{ matrix.nvim }}
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.nvim }}
+
+      - name: Install plenary.nvim
+        run: |
+          mkdir -p ~/.local/share/nvim/lazy
+          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim \
+            ~/.local/share/nvim/lazy/plenary.nvim
+
+      - name: Run Lua tests
+        run: |
+          nvim --headless \
+            --cmd "set rtp+=~/.local/share/nvim/lazy/plenary.nvim" \
+            --cmd "set rtp+=." \
+            -c "lua require('plenary.test_harness').test_directory('tests/', {minimal_init='tests/minimal_init.lua', sequential=true})" \
+            -c "qa!"
+        working-directory: apps/nvim
+
+  lint:
+    name: Lua lint (luacheck)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install luacheck
+        run: sudo apt-get install -y luarocks && sudo luarocks install luacheck
+
+      - name: Run luacheck
+        run: luacheck lua/ --globals vim --no-max-line-length
+        working-directory: apps/nvim

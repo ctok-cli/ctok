@@ -1,0 +1,29 @@
+{
+  "name": "@ctok/slack",
+  "version": "0.1.0",
+  "description": "ctok Slack bot — estimate Claude token usage from any channel",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --no-splitting --outDir dist",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.22.0",
+    "@ctok/core": "workspace:*",
+    "@ctok/quota": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/scanner": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

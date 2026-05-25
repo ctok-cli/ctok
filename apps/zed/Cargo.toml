@@ -1,0 +1,19 @@
+[package]
+name = "ctok-zed"
+version = "0.1.0"
+edition = "2021"
+description = "Zed extension for ctok — Claude token estimator"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", default-features = false, features = ["alloc"] }
+
+[profile.release]
+opt-level = "s"
+strip = true
+codegen-units = 1

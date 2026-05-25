@@ -1,0 +1,76 @@
+# Example: check a prompt file on every PR and post a summary comment.
+# Copy this to .github/workflows/ctok.yml in your repository.
+
+name: ctok — Token check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  token-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Option A: check a static prompt file ───────────────────────────────
+      - name: Estimate tokens for my prompt
+        id: ctok
+        uses: ctok-cli/ctok@v0.1.0
+        with:
+          file: prompts/refactor-auth.md   # path to your prompt file
+          plan: pro                         # your Claude plan
+          task-type: refactor               # hint for model recommendation
+          max-tokens: 50000                 # fail if prompt > 50k input tokens
+          max-cost-usd: "0.50"             # fail if estimated cost > $0.50
+          refine: "true"                    # also run the 7-pass refiner
+
+      # ── Option B: inline prompt string ────────────────────────────────────
+      # - name: Estimate tokens
+      #   id: ctok
+      #   uses: ctok-cli/ctok@v0.1.0
+      #   with:
+      #     prompt: "Refactor the auth module to use JWT with refresh tokens"
+      #     plan: pro
+
+      # ── Print results ──────────────────────────────────────────────────────
+      - name: Show results
+        run: |
+          echo "Input tokens:       ${{ steps.ctok.outputs.input-tokens }}"
+          echo "Estimated cost:     \$${{ steps.ctok.outputs.total-cost-usd }}"
+          echo "Recommended model:  ${{ steps.ctok.outputs.recommended-model }}"
+          echo "Effort level:       ${{ steps.ctok.outputs.recommended-effort }}"
+          echo "Tokens saved:       ${{ steps.ctok.outputs.tokens-saved }}"
+
+      # ── Post a PR comment with the analysis ───────────────────────────────
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const inputTokens = '${{ steps.ctok.outputs.input-tokens }}';
+            const cost = '${{ steps.ctok.outputs.total-cost-usd }}';
+            const model = '${{ steps.ctok.outputs.recommended-model }}';
+            const effort = '${{ steps.ctok.outputs.recommended-effort }}';
+            const saved = '${{ steps.ctok.outputs.tokens-saved }}';
+            const body = [
+              '## ⚡ ctok — Token estimate',
+              '',
+              `| Metric | Value |`,
+              `|--------|-------|`,
+              `| Input tokens | ${inputTokens} |`,
+              `| Estimated cost | $${cost} |`,
+              `| Recommended model | ${model} |`,
+              `| Effort | ${effort} |`,
+              saved > 0 ? `| Tokens saved by refiner | ~${saved} |` : '',
+              '',
+              '_Powered by [ctok](https://ctok.dev)_',
+            ].filter(Boolean).join('\n');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });

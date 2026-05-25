@@ -1,0 +1,53 @@
+name: CtokXcode
+options:
+  bundleIdPrefix: dev.ctok
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+    CODE_SIGN_STYLE: Automatic
+    # Set DEVELOPMENT_TEAM to your Apple Developer Team ID before building:
+    #   xcodegen generate && open CtokXcode.xcodeproj
+    # Or set it in Xcode under Signing & Capabilities.
+
+targets:
+
+  # ── Host application ────────────────────────────────────────────────────────
+  CtokXcodeApp:
+    type: application
+    platform: macOS
+    sources:
+      - path: CtokXcodeApp
+        excludes:
+          - "**/*.entitlements"
+    entitlements:
+      path: CtokXcodeApp/CtokXcodeApp.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.ctok.xcode
+        INFOPLIST_FILE: CtokXcodeApp/Info.plist
+    dependencies:
+      - target: CtokSourceExtension
+        embed: true
+
+  # ── Source editor extension ──────────────────────────────────────────────────
+  CtokSourceExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: CtokSourceExtension
+        excludes:
+          - "**/*.entitlements"
+          - "Info.plist"
+    entitlements:
+      path: CtokSourceExtension/CtokSourceExtension.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.ctok.xcode.extension
+        INFOPLIST_FILE: CtokSourceExtension/Info.plist
