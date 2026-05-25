@@ -1,0 +1,17 @@
+{
+  "name": "@ctok/desktop",
+  "version": "0.1.0",
+  "description": "ctok desktop app — Tauri 2 wrapper for ctok playground",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:debug": "tauri build --debug",
+    "typecheck": "tsc --noEmit",
+    "icons": "tauri icon"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "typescript": "^5.7.0"
+  }
+}

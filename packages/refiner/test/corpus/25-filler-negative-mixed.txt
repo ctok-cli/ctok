@@ -1,0 +1,1 @@
+Please could you kindly refactor my authentication module? I'd really appreciate it if you could make sure to not use any global variables. Could you also avoid using classes and please don't add any new npm packages?

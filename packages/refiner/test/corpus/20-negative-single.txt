@@ -1,0 +1,1 @@
+Rename the variable userList to users in src/components/UserTable.tsx. Don't rename anything else.

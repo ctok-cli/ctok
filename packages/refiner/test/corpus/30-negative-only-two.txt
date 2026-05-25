@@ -1,0 +1,1 @@
+Implement a retry mechanism for the API client. Don't use exponential backoff and don't add external dependencies.

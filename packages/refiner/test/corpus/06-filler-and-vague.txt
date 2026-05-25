@@ -1,0 +1,1 @@
+Please improve my database queries. I need you to basically handle the N+1 problem and make sure to work on the caching layer too. Could you also deal with the connection pooling? It's very important that performance gets better and things are really fast.

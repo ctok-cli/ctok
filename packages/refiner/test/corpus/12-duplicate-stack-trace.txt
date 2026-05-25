@@ -1,0 +1,15 @@
+My app crashes with the following error. Please help me fix it.
+
+Error: Cannot read properties of undefined (reading 'map')
+    at UserList.render (UserList.tsx:42:18)
+    at processChild (react-dom.development.js:3990:14)
+    at resolve (react-dom.development.js:4020:5)
+
+The error I'm seeing is:
+
+Error: Cannot read properties of undefined (reading 'map')
+    at UserList.render (UserList.tsx:42:18)
+    at processChild (react-dom.development.js:3990:14)
+    at resolve (react-dom.development.js:4020:5)
+
+Can you help me understand what's going wrong?

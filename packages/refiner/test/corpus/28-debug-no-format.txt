@@ -1,0 +1,1 @@
+Fix the bug where the shopping cart total is wrong when discount codes are applied. The error happens in the calculateTotal function.

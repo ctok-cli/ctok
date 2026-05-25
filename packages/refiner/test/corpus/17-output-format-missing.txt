@@ -1,0 +1,1 @@
+Write a function that validates an email address. It should check the format, the domain, and that the TLD is valid. Handle edge cases like subdomains and plus addressing.

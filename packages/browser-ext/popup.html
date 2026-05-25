@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ctok</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 280px;
+      background: #0f1117;
+      color: #e6e8ee;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+    }
+    .header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid #2a2d3a;
+    }
+    .logo { font-size: 16px; font-weight: 800; color: #c97a3a; }
+    .tagline { font-size: 11px; color: #777; }
+    .body { padding: 12px 14px; }
+    .section-title {
+      font-size: 10px; font-weight: 600; color: #666;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      margin-bottom: 6px;
+    }
+    .info-row {
+      display: flex; justify-content: space-between;
+      padding: 4px 0; border-bottom: 1px solid #1a1d24;
+      font-size: 12px;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key { color: #888; }
+    .info-val { color: #e6e8ee; font-variant-numeric: tabular-nums; }
+    .info-val.accent { color: #c97a3a; }
+    .footer {
+      padding: 10px 14px;
+      border-top: 1px solid #2a2d3a;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    a { color: #c97a3a; text-decoration: none; font-size: 11px; }
+    a:hover { text-decoration: underline; }
+    .status { font-size: 11px; color: #555; }
+    .status.active { color: #44cc77; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">ctok</span>
+    <span class="tagline">Lighthouse for Claude prompts</span>
+  </div>
+  <div class="body">
+    <div class="section-title">Current page</div>
+    <div id="info-rows">
+      <div class="info-row">
+        <span class="info-key">Status</span>
+        <span class="info-val" id="status-val">Checking…</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="status" id="overlay-status">Overlay off</span>
+    <a href="https://ctok.dev" target="_blank">ctok.dev ↗</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

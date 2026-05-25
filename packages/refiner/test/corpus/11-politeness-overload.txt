@@ -1,0 +1,1 @@
+I would like you to, if you don't mind, please kindly write a function that validates email addresses. Could you make sure to handle edge cases? I'd really appreciate it if you could also add some tests, please.

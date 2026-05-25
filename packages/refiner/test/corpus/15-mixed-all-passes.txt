@@ -1,0 +1,5 @@
+Please could you kindly help me improve my Android app? I need you to basically handle the network layer and make sure to deal with the retry logic. It's very important that you work on the caching too.
+
+I'm building an Android app in Kotlin. The app makes API calls to a REST backend. The network calls fail silently when there is no connection. I need to add offline support with local caching and retry logic when connectivity is restored.
+
+I'm building an Android app in Kotlin that calls a REST backend API. The calls fail silently when offline. I want offline support with local caching and automatic retry when connection is restored.

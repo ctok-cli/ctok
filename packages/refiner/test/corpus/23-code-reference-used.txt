@@ -1,0 +1,1 @@
+Fix the null-pointer bug in `authenticate` — see `src/services/auth.ts:28-35`. The user object can be null when the email doesn't exist. Return only the corrected lines.

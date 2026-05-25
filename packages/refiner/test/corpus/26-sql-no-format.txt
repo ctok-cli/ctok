@@ -1,0 +1,1 @@
+Write a SQL query that finds all users who have made more than 5 purchases in the last 30 days and groups them by their subscription tier.

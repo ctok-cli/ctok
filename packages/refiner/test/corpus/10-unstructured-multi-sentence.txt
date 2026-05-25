@@ -1,0 +1,1 @@
+I'm working on a Flutter app that syncs data with a REST API. The sync fails silently when the user is offline. I want to queue the changes locally and replay them when connectivity is restored. The app already uses Hive for local storage. I'd prefer to avoid adding another dependency if possible.

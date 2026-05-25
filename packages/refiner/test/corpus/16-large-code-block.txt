@@ -1,0 +1,69 @@
+Fix the bug in this function. It throws a TypeError when the user object is null.
+
+```typescript
+import { User, Session, Permissions } from './types';
+import { DatabaseService } from './database';
+import { Logger } from './logger';
+import { EventEmitter } from './events';
+
+export class AuthService {
+  private db: DatabaseService;
+  private logger: Logger;
+  private emitter: EventEmitter;
+
+  constructor(db: DatabaseService, logger: Logger, emitter: EventEmitter) {
+    this.db = db;
+    this.logger = logger;
+    this.emitter = emitter;
+  }
+
+  async authenticate(email: string, password: string): Promise<Session | null> {
+    this.logger.info(`Authentication attempt for ${email}`);
+
+    const user = await this.db.findUserByEmail(email);
+    const hashedPassword = await this.db.getPasswordHash(user.id);
+
+    if (!this.verifyPassword(password, hashedPassword)) {
+      this.logger.warn(`Failed authentication for ${email}`);
+      this.emitter.emit('auth:failed', { email });
+      return null;
+    }
+
+    const session = await this.db.createSession(user.id);
+    const permissions = await this.db.getUserPermissions(user.id);
+
+    this.logger.info(`Successful authentication for ${email}`);
+    this.emitter.emit('auth:success', { userId: user.id });
+
+    return {
+      id: session.id,
+      userId: user.id,
+      email: user.email,
+      permissions,
+      expiresAt: session.expiresAt,
+      createdAt: new Date()
+    };
+  }
+
+  private verifyPassword(input: string, hash: string): boolean {
+    return require('bcrypt').compareSync(input, hash);
+  }
+
+  async logout(sessionId: string): Promise<void> {
+    const session = await this.db.getSession(sessionId);
+    await this.db.deleteSession(sessionId);
+    this.emitter.emit('auth:logout', { sessionId, userId: session.userId });
+    this.logger.info(`Session ${sessionId} terminated`);
+  }
+
+  async refreshSession(sessionId: string): Promise<Session | null> {
+    const session = await this.db.getSession(sessionId);
+    if (!session || session.expiresAt < new Date()) {
+      return null;
+    }
+    const newExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    await this.db.updateSessionExpiry(sessionId, newExpiry);
+    return { ...session, expiresAt: newExpiry };
+  }
+}
+```

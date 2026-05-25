@@ -1,0 +1,1 @@
+Check the user's subscription status and update the UI accordingly. Handle the case where the subscription has expired and improve the error messages.

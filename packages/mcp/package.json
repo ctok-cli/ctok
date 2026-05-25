@@ -1,0 +1,40 @@
+{
+  "name": "@ctok/mcp",
+  "version": "0.1.0",
+  "description": "ctok Model Context Protocol server — lets AI agents call ctok as a tool",
+  "keywords": [
+    "mcp",
+    "claude",
+    "tokens",
+    "ai",
+    "anthropic",
+    "model-context-protocol"
+  ],
+  "license": "MIT",
+  "bin": {
+    "ctok-mcp": "./dist/server.js"
+  },
+  "main": "./dist/server.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ctok/core": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/scanner": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

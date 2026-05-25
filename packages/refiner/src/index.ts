@@ -1,0 +1,11 @@
+export { refine } from "./pipeline";
+export { fillerStrip, applyFillerStrip } from "./passes/fillerStrip";
+export { vagueVerbReplace, applyVagueVerbReplace } from "./passes/vagueVerbReplace";
+export { structureScaffold, applyStructureScaffold } from "./passes/structureScaffold";
+export { dedup, applyDedup } from "./passes/dedup";
+export { fileRefCompression, applyFileRefCompression } from "./passes/fileRefCompression";
+export { outputFormatHint, applyOutputFormatHint } from "./passes/outputFormatHint";
+export { negativeCollapse, applyNegativeCollapse } from "./passes/negativeCollapse";
+export { specificityScore, scoreBreakdown } from "./specificityScore";
+export type { ScoreBreakdown } from "./specificityScore";
+export type { RefineInput, PassResult, PassSuggestion, RefineResult } from "./types";

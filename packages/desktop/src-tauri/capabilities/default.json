@@ -1,0 +1,22 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema/acl/capability.json",
+  "identifier": "default",
+  "description": "Default capability for ctok desktop",
+  "platforms": ["linux", "macOS", "windows"],
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-set-title",
+    "dialog:allow-open",
+    "fs:allow-read-text-file",
+    "fs:allow-read-dir",
+    "fs:allow-exists",
+    "shell:allow-open",
+    "process:allow-exit",
+    "process:allow-restart",
+    "updater:allow-check",
+    "updater:allow-download",
+    "updater:allow-install"
+  ]
+}

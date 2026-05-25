@@ -1,0 +1,11 @@
+GOAL: Implement cursor-based pagination for the `GET /users` endpoint.
+
+CONTEXT: PostgreSQL via `pg-promise`. Current query: `SELECT * FROM users ORDER BY id`. Table has 500k rows. The endpoint is at `src/routes/users.ts:12`.
+
+CONSTRAINTS:
+- Use cursor-based pagination (not offset-based)
+- Return `{ data: User[], nextCursor: string | null }`
+- Must pass all tests in `src/routes/__tests__/users.test.ts`
+- Do not add new npm dependencies
+
+OUTPUT: Return only the modified route handler and any new helper functions.

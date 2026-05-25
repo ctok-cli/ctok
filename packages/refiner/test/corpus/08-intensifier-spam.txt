@@ -1,0 +1,1 @@
+I really need a very clean, quite elegant solution that's basically perfect. It's actually very important that the code is really readable and very maintainable. Just use very simple patterns and make sure to keep it really concise.

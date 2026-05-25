@@ -1,0 +1,12 @@
+I have a bug in my Express.js API. The /users endpoint returns a 500 error when the database connection times out. I need to add retry logic and proper error handling for this case.
+
+Here is the relevant code:
+
+```javascript
+app.get('/users', async (req, res) => {
+  const users = await db.query('SELECT * FROM users');
+  res.json(users);
+});
+```
+
+I have a bug in my Express.js API. The /users endpoint returns a 500 error when the database connection times out. I need to add retry logic and proper error handling for this case.

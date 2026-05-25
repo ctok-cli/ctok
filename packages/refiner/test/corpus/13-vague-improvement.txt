@@ -1,0 +1,1 @@
+Improve my React components. Work on the performance and deal with unnecessary re-renders. Make it better by handling the state updates more efficiently. Change the way I use useEffect and improve how I check things in the components.

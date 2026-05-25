@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`refine — Step 5 snapshots > corpus 19 negativeCollapse suggestion matches snapshot 1`] = `
+"Do NOT:
+- Don't change the public API
+- Don't use any third-party DI frameworks
+- Avoid modifying the existing tests
+- Never use global state
+- Do not add new dependencies to package"
+`;
+
+exports[`refine — Step 5 snapshots > corpus 34 full refine result shape matches snapshot 1`] = `
+[
+  {
+    "applied": false,
+    "pass": "fillerStrip",
+  },
+  {
+    "applied": false,
+    "pass": "vagueVerbReplace",
+  },
+  {
+    "applied": false,
+    "pass": "structureScaffold",
+  },
+  {
+    "applied": false,
+    "pass": "dedup",
+  },
+  {
+    "applied": false,
+    "pass": "fileRefCompression",
+  },
+  {
+    "applied": false,
+    "pass": "outputFormatHint",
+  },
+  {
+    "applied": false,
+    "pass": "negativeCollapse",
+  },
+]
+`;
+
+exports[`refine — Step 5 snapshots > scoreBreakdown for corpus 21 matches snapshot 1`] = `
+{
+  "codeReferences": 15,
+  "concreteEntities": 15,
+  "constraints": 10,
+  "doNotInstructions": 10,
+  "goalVerb": 20,
+  "outputFormat": 15,
+  "successCriterion": 15,
+  "total": 100,
+}
+`;
+
+exports[`refine — snapshots > corpus 01 refined matches snapshot 1`] = `
+"GOAL: help me fix this function?
+CONTEXT: <what the AI needs to know — paste relevant code, error messages, or background here>
+CONSTRAINTS:
+- <language / framework / version>
+- <what NOT to change>
+- <performance / style requirements>
+OUTPUT: <format — e.g. "Return only the changed function", "Respond as JSON: {…}", "Numbered list">"
+`;
+
+exports[`refine — snapshots > corpus 06 (filler + vague) pass names match snapshot 1`] = `
+[
+  "fillerStrip",
+  "vagueVerbReplace",
+  "structureScaffold",
+]
+`;
+
+exports[`refine — snapshots > corpus 08 (intensifier spam) filler suggestions match snapshot 1`] = `
+[
+  "Remove filler: "very"",
+  "Remove filler: "really"",
+  "Remove filler: "quite"",
+  "Remove filler: "basically"",
+  "Remove filler: "actually"",
+  "Remove filler: "Just"",
+  "Remove filler: "make sure to"",
+  "Remove filler: "It's important that"",
+]
+`;

@@ -1,0 +1,1 @@
+Please could you kindly help me improve my slow database queries? I need you to basically handle the N+1 problem and make sure to work on the caching layer. It's very important that performance gets better. Also avoid using raw SQL and don't use ORMs that require schema migrations.

@@ -1,0 +1,10 @@
+GOAL: Add pagination to the /users endpoint in the Express API.
+
+CONTEXT: The API uses PostgreSQL via pg-promise. Current query returns all rows. Table has ~500k rows.
+
+CONSTRAINTS:
+- Use cursor-based pagination (not offset)
+- Return `{ data: User[], nextCursor: string | null }`
+- Keep existing tests passing
+
+OUTPUT: Return only the modified route handler and any new helper functions. No explanations.

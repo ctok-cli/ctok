@@ -1,0 +1,9 @@
+Please could you kindly help me fix this function? I was wondering if you could make sure to check the edge cases and please make it better. It's very important that the code is really clean and basically follows best practices. Just handle the errors properly and ensure that everything works correctly, if possible.
+
+```typescript
+function processUser(user: any) {
+  if (user.age > 18) {
+    return user;
+  }
+}
+```

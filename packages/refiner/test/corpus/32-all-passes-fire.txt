@@ -1,0 +1,7 @@
+Please kindly help me improve the authentication service. I need you to basically handle the token refresh and make sure to deal with the expiry logic. It's very important that you work on this carefully.
+
+I'm building a Node.js API. The JWT access tokens expire after 1 hour. When a token expires the client gets a 401 error. I need to implement automatic token refresh using a refresh token stored in an httpOnly cookie. The current auth middleware is in src/middleware/auth.ts.
+
+I'm building a Node.js API. The JWT access tokens expire after 1 hour. When a token expires the client gets a 401 error. I need to implement automatic token refresh using a refresh token stored in an httpOnly cookie. The current auth middleware is in src/middleware/auth.ts.
+
+Don't store tokens in localStorage. Don't use sessions. Never expose the refresh token to JavaScript.

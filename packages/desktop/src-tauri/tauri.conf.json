@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "ctok",
+  "version": "0.1.0",
+  "identifier": "dev.ctok.desktop",
+  "build": {
+    "frontendDist": "../web/out",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "pnpm --filter @ctok/web dev",
+    "beforeBuildCommand": "pnpm --filter @ctok/web build"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "title": "ctok",
+        "width": 1280,
+        "height": 860,
+        "minWidth": 800,
+        "minHeight": 600,
+        "decorations": true,
+        "transparent": false,
+        "dragDropEnabled": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    },
+    "trayIcon": {
+      "iconPath": "icons/32x32.png",
+      "iconAsTemplate": true
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "publisher": "ctok-cli",
+    "copyright": "MIT",
+    "category": "DeveloperTool",
+    "shortDescription": "Lighthouse for Claude prompts",
+    "longDescription": "Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost.",
+    "windows": {
+      "digestAlgorithm": "sha256",
+      "certificateThumbprint": null,
+      "timestampUrl": ""
+    },
+    "macOS": {
+      "entitlements": null,
+      "exceptionDomain": null,
+      "signingIdentity": null,
+      "providerShortName": null
+    }
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "pubkey": "",
+      "endpoints": [
+        "https://ctok.dev/updates/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

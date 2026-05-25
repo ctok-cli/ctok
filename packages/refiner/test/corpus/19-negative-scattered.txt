@@ -1,0 +1,1 @@
+Refactor the UserService class to use dependency injection. Don't change the public API. Don't use any third-party DI frameworks. Avoid modifying the existing tests. Never use global state. Do not add new dependencies to package.json.

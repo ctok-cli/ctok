@@ -1,0 +1,30 @@
+{
+  "name": "@ctok/cli",
+  "version": "0.1.0",
+  "description": "ctok — global CLI for Claude token estimation",
+  "bin": {
+    "ctok": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ctok/core": "workspace:*",
+    "@ctok/quota": "workspace:*",
+    "@ctok/refiner": "workspace:*",
+    "@ctok/refiner-llm": "workspace:*",
+    "@ctok/scanner": "workspace:*",
+    "ora": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

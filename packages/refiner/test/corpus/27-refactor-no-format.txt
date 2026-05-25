@@ -1,0 +1,1 @@
+Refactor the processPayment function to separate the validation logic from the persistence logic. The function is currently doing too many things at once.

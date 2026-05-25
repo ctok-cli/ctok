@@ -1,0 +1,40 @@
+{
+  "name": "@ctok/refiner-llm",
+  "version": "0.1.0",
+  "description": "LLM-powered prompt refiner for ctok — uses Claude via the Anthropic API",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ai": "^4.3.0",
+    "@ai-sdk/anthropic": "^1.2.0",
+    "@ctok/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@ai-sdk/anthropic": "^1.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@ai-sdk/anthropic": {
+      "optional": true
+    }
+  }
+}
