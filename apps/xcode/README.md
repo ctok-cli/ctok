@@ -48,16 +48,16 @@ In Xcode → **Signing & Capabilities**, select your team for both targets.
 
 Press **⌘R**. The host app launches. Then open any file in Xcode and look for **Editor → ctok**.
 
-> **Tip:** You can keep the host app minimised — the extension stays loaded as long as the app is running.
+> **Tip:** You can keep the host app minimised - the extension stays loaded as long as the app is running.
 
 ## Configure scan directory
 
 The **Scan** command defaults to your home directory. To point it at a project:
 
-**Option A — via the host app UI:**  
+**Option A - via the host app UI:**  
 Launch the ctok app, click **Choose…**, and select your project folder.
 
-**Option B — via terminal:**
+**Option B - via terminal:**
 ```bash
 defaults write dev.ctok.shared scanDirectory /path/to/your/project
 ```

@@ -27,9 +27,9 @@ ctok config set telemetry true
 
 ctok tries to determine your Claude subscription tier to show accurate quota estimates. Detection order:
 
-1. **`CTOK_PLAN` environment variable** — highest priority
-2. **`~/.claude/settings.json`** — Claude Code's own config file
-3. **`~/.ctok/config.json`** — ctok's own config
+1. **`CTOK_PLAN` environment variable** - highest priority
+2. **`~/.claude/settings.json`** - Claude Code's own config file
+3. **`~/.ctok/config.json`** - ctok's own config
 4. **Default: `pro`**
 
 Set your plan manually:
@@ -47,10 +47,10 @@ Valid plans: `free`, `pro`, `max5x`, `max20x`, `team`, `enterprise`, `api`
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `CTOK_HOME` | `~/.ctok` | Override ctok data directory |
-| `CTOK_PLAN` | — | Force plan ID (overrides config detection) |
-| `CTOK_TELEMETRY` | — | `1` to enable telemetry, `0` to disable (overrides config file) |
+| `CTOK_PLAN` | - | Force plan ID (overrides config detection) |
+| `CTOK_TELEMETRY` | - | `1` to enable telemetry, `0` to disable (overrides config file) |
 | `CLAUDE_HOME` | `~/.claude` | Override Claude home directory |
-| `NO_COLOR` | — | Disable colour output |
+| `NO_COLOR` | - | Disable colour output |
 
 ---
 

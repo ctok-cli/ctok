@@ -1,6 +1,6 @@
 ---
 title: JetBrains Plugin
-description: Install the ctok JetBrains plugin — works in IntelliJ IDEA, Android Studio, WebStorm, PyCharm, and all JetBrains IDEs.
+description: Install the ctok JetBrains plugin - works in IntelliJ IDEA, Android Studio, WebStorm, PyCharm, and all JetBrains IDEs.
 ---
 
 The ctok JetBrains plugin adds a **ctok** tool window and two editor actions to any JetBrains IDE: IntelliJ IDEA, Android Studio, WebStorm, PyCharm, GoLand, and Rider.
@@ -36,7 +36,7 @@ The panel shows:
 - Cost at the recommended model
 - Model + effort recommendation
 - Reduction suggestions
-- Prompt area — edit and re-check inline
+- Prompt area - edit and re-check inline
 
 ## Configuration
 

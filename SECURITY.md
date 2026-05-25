@@ -21,11 +21,11 @@ You will receive an acknowledgement within 48 hours. We aim to release a fix wit
 ## Scope
 
 In scope:
-- `@ctok/cli` — command injection, path traversal, credential exposure
-- `@ctok/mcp` — prompt injection via tool arguments
-- `@ctok/web` — XSS, CSP bypass
-- `@ctok/browser-ext` — content script injection, cross-origin data leakage
-- `@ctok/desktop` — Tauri IPC abuse, privilege escalation
+- `@ctok/cli` - command injection, path traversal, credential exposure
+- `@ctok/mcp` - prompt injection via tool arguments
+- `@ctok/web` - XSS, CSP bypass
+- `@ctok/browser-ext` - content script injection, cross-origin data leakage
+- `@ctok/desktop` - Tauri IPC abuse, privilege escalation
 
 Out of scope:
 - Issues in third-party dependencies (report to the upstream project)
@@ -34,4 +34,4 @@ Out of scope:
 
 ## Privacy commitment
 
-ctok collects no telemetry by default. When telemetry is opted in, only anonymous event names, app version, and platform are sent — never prompt content, file names, or any personally identifiable information.
+ctok collects no telemetry by default. When telemetry is opted in, only anonymous event names, app version, and platform are sent - never prompt content, file names, or any personally identifiable information.

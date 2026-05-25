@@ -1,20 +1,32 @@
 {
   "name": "@ctok/mcp",
   "version": "0.1.0",
-  "description": "ctok Model Context Protocol server — lets AI agents call ctok as a tool",
-  "keywords": [
-    "mcp",
-    "claude",
-    "tokens",
-    "ai",
-    "anthropic",
-    "model-context-protocol"
-  ],
+  "description": "ctok Model Context Protocol server - lets AI agents call ctok as a tool",
   "license": "MIT",
+  "author": "ctok contributors",
+  "homepage": "https://github.com/ctok-cli/ctok#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctok-cli/ctok.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/ctok-cli/ctok/issues"
+  },
+  "keywords": [
+    "claude",
+    "mcp",
+    "model-context-protocol",
+    "anthropic",
+    "ctok"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/server.js",
   "bin": {
     "ctok-mcp": "./dist/server.js"
   },
-  "main": "./dist/server.js",
   "files": [
     "dist",
     "README.md"

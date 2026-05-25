@@ -3,13 +3,13 @@ title: Model Recommendations
 description: How ctok picks the right Claude model and effort level.
 ---
 
-## Complexity score (0–100)
+## Complexity score (0-100)
 
 ctok computes a complexity score from the input before picking a model:
 
 | Signal | Max weight |
 |--------|-----------|
-| Task type base (`bug-fix` → `architecture`) | 12–60 |
+| Task type base (`bug-fix` → `architecture`) | 12-60 |
 | Input volume (log-scaled) | 35 |
 | File breadth (number of attached files) | 20 |
 | Content heterogeneity (≥3 kinds) | 6 |
@@ -22,8 +22,8 @@ ctok computes a complexity score from the input before picking a model:
 
 | Band | Recommended model | Why |
 |------|------------------|-----|
-| Simple | `haiku-4-5` | Narrow edits, cosmetic, docs — Haiku is fast and cheap. |
-| Normal | `sonnet-4-6` | The default workhorse — strong reasoning, good price. |
+| Simple | `haiku-4-5` | Narrow edits, cosmetic, docs - Haiku is fast and cheap. |
+| Normal | `sonnet-4-6` | The default workhorse - strong reasoning, good price. |
 | Deep | `opus-4-7` | Architecture, hairy bugs, cross-cutting refactors. Worth the premium. |
 
 When input exceeds 150k tokens, the recommender nudges toward Sonnet or Opus regardless of complexity band (long-context tasks benefit from stronger models).
@@ -53,4 +53,4 @@ Effort starts from the complexity band and is adjusted by task type:
 | `sonnet-4-6` | $3.00/M | $15.00/M |
 | `opus-4-7` | $15.00/M | $75.00/M |
 
-*Anthropic list rates as of May 2026. ctok shows estimates only — verify at [anthropic.com/pricing](https://www.anthropic.com/pricing).*
+*Anthropic list rates as of May 2026. ctok shows estimates only - verify at [anthropic.com/pricing](https://www.anthropic.com/pricing).*

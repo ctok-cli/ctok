@@ -4,7 +4,7 @@
 
 **Tweet 1 (main):**
 
-Launching ctok — a Lighthouse for Claude prompts 🔦
+Launching ctok - a Lighthouse for Claude prompts 🔦
 
 Before you send: estimate tokens, cost, quota impact, and get model recommendations.
 
@@ -34,7 +34,7 @@ The 7-pass prompt refiner is my favourite part.
 
 It strips filler, replaces vague verbs, deduplicates, compresses file references, and adds structure.
 
-Most prompts save 15–30% of tokens.
+Most prompts save 15-30% of tokens.
 
 ---
 
@@ -74,7 +74,7 @@ Try it: ctok.dev
 
 **Standalone tweet (for non-thread days):**
 
-Built ctok — estimate Claude token cost + quota impact before you send.
+Built ctok - estimate Claude token cost + quota impact before you send.
 
 `npm install -g @ctok/cli`
 `ctok check "your prompt"`

@@ -1,6 +1,6 @@
 # @ctok/mcp
 
-MCP server for [ctok](https://ctok.dev) — lets Claude Code and any MCP-compatible AI agent call ctok as a tool.
+MCP server for [ctok](https://ctok.dev) - lets Claude Code and any MCP-compatible AI agent call ctok as a tool.
 
 ## Usage
 
@@ -22,7 +22,7 @@ Restart Claude Code. The following tools become available:
 | Tool | Description |
 |------|-------------|
 | `estimate` | Token count, cost, model recommendation, and reduction suggestions |
-| `refine` | 7-pass prompt refiner — strips filler, improves specificity, saves tokens |
+| `refine` | 7-pass prompt refiner - strips filler, improves specificity, saves tokens |
 | `recommend_model` | Best Claude model + effort level for a given task |
 | `scan_project` | Scan a local directory and estimate its token footprint |
 

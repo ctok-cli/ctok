@@ -1,6 +1,6 @@
 ---
 title: Raycast Extension
-description: Use ctok from Raycast — estimate tokens, refine prompts, and scan projects from anywhere on macOS.
+description: Use ctok from Raycast - estimate tokens, refine prompts, and scan projects from anywhere on macOS.
 ---
 
 The ctok Raycast extension gives you instant access to token estimation and prompt refinement from the Raycast launcher.

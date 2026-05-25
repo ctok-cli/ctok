@@ -1,7 +1,7 @@
 {
   "name": "@ctok/slack",
   "version": "0.1.0",
-  "description": "ctok Slack bot — estimate Claude token usage from any channel",
+  "description": "ctok Slack bot - estimate Claude token usage from any channel",
   "private": true,
   "main": "./dist/index.js",
   "scripts": {

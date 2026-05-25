@@ -2,6 +2,27 @@
   "name": "@ctok/scanner",
   "version": "0.1.0",
   "description": "Filesystem scanner with per-language smart excludes",
+  "license": "MIT",
+  "author": "ctok contributors",
+  "homepage": "https://github.com/ctok-cli/ctok#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctok-cli/ctok.git",
+    "directory": "packages/scanner"
+  },
+  "bugs": {
+    "url": "https://github.com/ctok-cli/ctok/issues"
+  },
+  "keywords": [
+    "claude",
+    "tokens",
+    "scanner",
+    "monorepo",
+    "project-detection"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,6 +33,9 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
@@ -19,19 +43,16 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
+  "dependencies": {
+    "@ctok/core": "workspace:*",
+    "fast-glob": "^3.3.3",
+    "ignore": "^7.0.5"
+  },
   "devDependencies": {
     "@types/node": "^22.19.19",
     "@vitest/coverage-v8": "^2.1.0",
     "tsup": "^8.3.0",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "@ctok/core": "workspace:*",
-    "fast-glob": "^3.3.3",
-    "ignore": "^7.0.5"
   }
 }

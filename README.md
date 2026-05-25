@@ -1,4 +1,4 @@
-# ctok — Lighthouse for Claude prompts
+# ctok - Lighthouse for Claude prompts
 
 **Estimate tokens, cut costs, and pick the right model before you send a single message.**
 
@@ -30,7 +30,7 @@ And replace the placeholder below.
   </a>
 </p>
 
-> 📖 **[Full usage guide → USAGE.md](USAGE.md)** — CLI, MCP, VS Code, JetBrains, Slack, Discord, GitHub Action, Raycast, Tauri desktop, Chrome ext, and more.
+> 📖 **[Full usage guide → USAGE.md](USAGE.md)** - CLI, MCP, VS Code, JetBrains, Slack, Discord, GitHub Action, Raycast, Tauri desktop, Chrome ext, and more.
 
 ---
 
@@ -38,13 +38,13 @@ And replace the placeholder below.
 
 ctok analyses your Claude prompt before you send it:
 
-- **Token estimator** — BPE-aware input/output ranges with confidence levels
-- **Cost estimate** — list-price USD at your chosen model, min/max range included
-- **Model recommender** — Haiku / Sonnet / Opus with a written reason and alternatives
-- **Effort recommender** — low / medium / high / xhigh, task-type-aware
-- **Reduction suggestions** — flags large files, logs, minified blobs, diffs, duplicates, and filler
-- **Prompt refiner** — 7-pass pipeline that trims filler, deduplicates, and adds structure
-- **Quota impact** — tells you what % of your 5-hour window this prompt burns
+- **Token estimator** - BPE-aware input/output ranges with confidence levels
+- **Cost estimate** - list-price USD at your chosen model, min/max range included
+- **Model recommender** - Haiku / Sonnet / Opus with a written reason and alternatives
+- **Effort recommender** - low / medium / high / xhigh, task-type-aware
+- **Reduction suggestions** - flags large files, logs, minified blobs, diffs, duplicates, and filler
+- **Prompt refiner** - 7-pass pipeline that trims filler, deduplicates, and adds structure
+- **Quota impact** - tells you what % of your 5-hour window this prompt burns
 
 ---
 
@@ -125,10 +125,10 @@ Run `ctok <command> --help` for full options. Use `--json` for machine-readable 
 
 | Surface | Install |
 |---------|---------|
-| **Web playground** | [ctok.dev](https://ctok.dev) — shareable `#hash` links |
-| **MCP server** | `npx -y @ctok/mcp` — 4 tools for Claude Code and other MCP clients |
-| **Desktop app** | Download from [Releases](https://github.com/ctok-cli/ctok/releases) — drag-drop folder scan |
-| **Browser extension** | [Chrome Web Store](https://chrome.google.com/webstore) — works on claude.ai, ChatGPT, Cursor, DeepSeek, Gemini |
+| **Web playground** | [ctok.dev](https://ctok.dev) - shareable `#hash` links |
+| **MCP server** | `npx -y @ctok/mcp` - 4 tools for Claude Code and other MCP clients |
+| **Desktop app** | Download from [Releases](https://github.com/ctok-cli/ctok/releases) - drag-drop folder scan |
+| **Browser extension** | [Chrome Web Store](https://chrome.google.com/webstore) - works on claude.ai, ChatGPT, Cursor, DeepSeek, Gemini |
 
 ### MCP quick setup
 
@@ -165,16 +165,16 @@ Config file: `~/.ctok/config.json`. Plan is also auto-detected from `~/.claude/s
 
 ```
 packages/
-  core/          @ctok/core         — estimation engine, recommender, reducer
-  scanner/       @ctok/scanner      — project directory scanner
-  refiner/       @ctok/refiner      — 7-pass prompt refiner
-  quota/         @ctok/quota        — plan limits and quota impact calculator
-  cli/           @ctok/cli          — Commander.js CLI
-  mcp/           @ctok/mcp          — MCP server (JSON-RPC 2.0 over stdio)
-  web/           @ctok/web          — Next.js playground (ctok.dev)
-  desktop/       @ctok/desktop      — Tauri 2 desktop wrapper
-  browser-ext/   @ctok/browser-ext  — Chrome MV3 extension
-docs/                               — Astro Starlight documentation site
+  core/          @ctok/core         - estimation engine, recommender, reducer
+  scanner/       @ctok/scanner      - project directory scanner
+  refiner/       @ctok/refiner      - 7-pass prompt refiner
+  quota/         @ctok/quota        - plan limits and quota impact calculator
+  cli/           @ctok/cli          - Commander.js CLI
+  mcp/           @ctok/mcp          - MCP server (JSON-RPC 2.0 over stdio)
+  web/           @ctok/web          - Next.js playground (ctok.dev)
+  desktop/       @ctok/desktop      - Tauri 2 desktop wrapper
+  browser-ext/   @ctok/browser-ext  - Chrome MV3 extension
+docs/                               - Astro Starlight documentation site
 ```
 
 ---
@@ -195,10 +195,10 @@ pnpm test
 
 ## Privacy
 
-ctok collects no telemetry by default. When opted in (`ctok config set telemetry true`), only anonymous event names, app version, and platform are sent — never prompt text, file names, or any personally identifiable information. See [SECURITY.md](SECURITY.md).
+ctok collects no telemetry by default. When opted in (`ctok config set telemetry true`), only anonymous event names, app version, and platform are sent - never prompt text, file names, or any personally identifiable information. See [SECURITY.md](SECURITY.md).
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

@@ -87,7 +87,7 @@ Either `prompt` or `file` must be provided.
 
 ## Job summary
 
-Every run writes a Markdown table to the GitHub Actions job summary with the full analysis — token ranges, cost breakdown, recommendation, and suggestions.
+Every run writes a Markdown table to the GitHub Actions job summary with the full analysis - token ranges, cost breakdown, recommendation, and suggestions.
 
 ## Privacy
 

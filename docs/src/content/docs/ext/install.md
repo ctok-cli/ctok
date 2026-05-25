@@ -24,14 +24,14 @@ The ctok browser extension injects a floating widget on supported AI chat interf
 
 The overlay appears in the bottom-right corner of the page as soon as you start typing.
 
-**Live stats** — three-column grid shows:
+**Live stats** - three-column grid shows:
 - Input token estimate
 - Estimated output tokens
 - Approximate cost
 
-**Model badge** — recommended model (Haiku / Sonnet / Opus) and effort level.
+**Model badge** - recommended model (Haiku / Sonnet / Opus) and effort level.
 
-**Refine button** — runs the full 7-pass pipeline on your prompt and shows:
+**Refine button** - runs the full 7-pass pipeline on your prompt and shows:
 - Refined prompt text (copy to clipboard in one click)
 - Token savings
 - Specificity score before/after
@@ -39,7 +39,7 @@ The overlay appears in the bottom-right corner of the page as soon as you start 
 
 ## Privacy
 
-The extension runs entirely offline. It uses `@ctok/core` bundled inside the extension — no data is ever sent to ctok servers or any third party.
+The extension runs entirely offline. It uses `@ctok/core` bundled inside the extension - no data is ever sent to ctok servers or any third party.
 
 Required permissions:
 - `host_permissions` for the 5 supported domains (to inject the content script)

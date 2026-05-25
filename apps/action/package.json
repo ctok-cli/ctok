@@ -1,7 +1,7 @@
 {
   "name": "@ctok/action",
   "version": "0.1.0",
-  "description": "GitHub Action — ctok Claude token estimator",
+  "description": "GitHub Action - ctok Claude token estimator",
   "private": true,
   "license": "MIT",
   "scripts": {

@@ -1,6 +1,6 @@
-# ctok — How to use it
+# ctok - How to use it
 
-> **Lighthouse for Claude prompts.** Estimate tokens, recommend models, and refine prompts before you send them — across CLI, web, desktop, browser, IDE, chat, and CI.
+> **Lighthouse for Claude prompts.** Estimate tokens, recommend models, and refine prompts before you send them - across CLI, web, desktop, browser, IDE, chat, and CI.
 
 Every surface uses the same engine (`@ctok/core`, `@ctok/refiner`, `@ctok/scanner`, `@ctok/quota`). What you learn in the CLI transfers to every other shell.
 
@@ -101,7 +101,7 @@ ctok doctor
 
 Every command supports `--json`, `--quiet`, and `--no-color`.
 
-### `ctok` — interactive REPL
+### `ctok` - interactive REPL
 
 ```sh
 ctok
@@ -109,7 +109,7 @@ ctok
 
 Drops you into a REPL. Type a prompt, press Enter, get a full report. Type `:help` for commands, `:scan` to scan the cwd, `:exit` to leave.
 
-### `ctok check` — estimate a prompt
+### `ctok check` - estimate a prompt
 
 ```sh
 # Inline prompt
@@ -130,7 +130,7 @@ ctok check "..." --json | jq .cost.totalUsd
 
 Output includes input/output token ranges with confidence, USD cost range, recommended model + effort, reduction suggestions, and quota impact for your configured plan.
 
-### `ctok refine` — tighten a prompt
+### `ctok refine` - tighten a prompt
 
 ```sh
 ctok refine "please can you kindly help me handle the auth thing somehow"
@@ -165,9 +165,9 @@ ctok refine --llm --llm-model sonnet-4-6 "..."
 ctok refine --llm --api-key sk-ant-... "..."
 ```
 
-Calls Claude through the AI SDK / Vercel AI Gateway for semantic refinement. Use only when heuristics aren't enough — costs real money.
+Calls Claude through the AI SDK / Vercel AI Gateway for semantic refinement. Use only when heuristics aren't enough - costs real money.
 
-### `ctok scan` — see where tokens live in your project
+### `ctok scan` - see where tokens live in your project
 
 ```sh
 ctok scan                # scan cwd
@@ -178,7 +178,7 @@ ctok scan --json         # machine-readable
 
 Auto-detects the project type (Node, Flutter, iOS, Android, Rust, Go, Python, Ruby, PHP, JVM, Swift, .NET, Elixir) and applies sensible excludes. Respects `.gitignore` and `.ctokignore`.
 
-### `ctok model` — pick the right model
+### `ctok model` - pick the right model
 
 ```sh
 ctok model "Add an OAuth2 PKCE flow with refresh tokens"
@@ -186,7 +186,7 @@ ctok model "Add an OAuth2 PKCE flow with refresh tokens"
 
 Prints the recommended model + effort with reasoning, plus alternatives.
 
-### `ctok serve` — local web UI
+### `ctok serve` - local web UI
 
 ```sh
 ctok serve              # http://localhost:31337
@@ -195,7 +195,7 @@ ctok serve --port 8080
 
 Launches the same UI you see at [ctok.dev](https://ctok.dev) bound to localhost.
 
-### `ctok history` — recent estimations
+### `ctok history` - recent estimations
 
 ```sh
 ctok history            # last 20
@@ -204,13 +204,13 @@ ctok history --csv      # export
 ctok history --clear    # wipe local history
 ```
 
-### `ctok diff <id1> <id2>` — compare two estimations
+### `ctok diff <id1> <id2>` - compare two estimations
 
 ```sh
 ctok diff sess_2k3l sess_5x9m
 ```
 
-### `ctok config` — settings
+### `ctok config` - settings
 
 ```sh
 ctok config                       # show all
@@ -222,14 +222,14 @@ ctok config edit                  # open in $EDITOR
 
 Config lives at `~/.ctok/config.json`. Plan auto-detects from `~/.claude/settings.json` if present.
 
-### `ctok init` — scaffold project files
+### `ctok init` - scaffold project files
 
 ```sh
 ctok init             # writes .ctokignore + CLAUDE.md template
 ctok init --force     # overwrite
 ```
 
-### `ctok doctor` — diagnose
+### `ctok doctor` - diagnose
 
 ```sh
 ctok doctor
@@ -275,11 +275,11 @@ Cursor: `~/.cursor/mcp.json`. Zed: `~/.config/zed/settings.json` under `context_
 
 ## Web playground
 
-[**ctok.dev**](https://ctok.dev) — paste a prompt, paste pasted-code blocks, optionally a project-context blob, get the full report.
+[**ctok.dev**](https://ctok.dev) - paste a prompt, paste pasted-code blocks, optionally a project-context blob, get the full report.
 
 - Shareable links: state encodes into the URL hash (`ctok.dev/#<hash>`). Copy the URL to share an analysis.
 - Local-only history (your browser).
-- No upload — text never leaves your tab unless you click *Share*.
+- No upload - text never leaves your tab unless you click *Share*.
 
 Run it locally too with `ctok serve`.
 
@@ -293,7 +293,7 @@ Download the signed installer from [Releases](https://github.com/ctok-cli/ctok/r
 - macOS: `ctok_x.y.z_universal.dmg`
 - Linux: `ctok_x.y.z_amd64.deb` / `.AppImage` / `.rpm`
 
-Drag-drop a project folder onto the window — it scans natively (Rust scanner inside Tauri) and shows token distribution, heavy files, and exclusions.
+Drag-drop a project folder onto the window - it scans natively (Rust scanner inside Tauri) and shows token distribution, heavy files, and exclusions.
 
 Auto-updates via the in-app updater.
 
@@ -311,11 +311,11 @@ Chrome / Edge / Firefox / Brave. Live token overlay on:
 
 Installs:
 
-- [Chrome Web Store](https://chrome.google.com/webstore) — search "ctok"
+- [Chrome Web Store](https://chrome.google.com/webstore) - search "ctok"
 - [Edge Add-ons](https://microsoftedge.microsoft.com/addons)
 - [Firefox AMO](https://addons.mozilla.org)
 
-Click the floating widget for the full refine view. **Zero network calls** — everything happens in your tab.
+Click the floating widget for the full refine view. **Zero network calls** - everything happens in your tab.
 
 ---
 
@@ -329,10 +329,10 @@ code --install-extension ctok-cli.ctok-vscode
 
 Commands (⇧⌘P / Ctrl+Shift+P):
 
-- **ctok: Estimate selection** — highlight a prompt, run.
-- **ctok: Refine selection** — runs the refiner and shows the diff in a side panel.
-- **ctok: Scan workspace** — token map of the current folder.
-- **ctok: Open web playground** — opens ctok.dev with current selection as a hash link.
+- **ctok: Estimate selection** - highlight a prompt, run.
+- **ctok: Refine selection** - runs the refiner and shows the diff in a side panel.
+- **ctok: Scan workspace** - token map of the current folder.
+- **ctok: Open web playground** - opens ctok.dev with current selection as a hash link.
 
 Status-bar pill shows token count of the current file when ctok is active.
 
@@ -522,7 +522,7 @@ test/fixtures/large-corpus/
 ctok is **offline by default**.
 
 - No telemetry unless you opt in with `ctok config set telemetry true`.
-- When opted in: only event names + version + platform — never prompt text, file names, or repo content.
+- When opted in: only event names + version + platform - never prompt text, file names, or repo content.
 - `--llm` mode is the **only** path that sends prompt text off-machine, and only to Anthropic (your API key, your account).
 - Browser extension makes zero remote calls.
 - MCP server is local stdio only.

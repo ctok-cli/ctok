@@ -1,7 +1,7 @@
 {
   "name": "@ctok/discord",
   "version": "0.1.0",
-  "description": "ctok Discord bot — estimate Claude token usage from any server",
+  "description": "ctok Discord bot - estimate Claude token usage from any server",
   "private": true,
   "main": "./dist/index.js",
   "scripts": {

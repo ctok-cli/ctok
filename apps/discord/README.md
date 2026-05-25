@@ -7,7 +7,7 @@ Estimate Claude token usage, cost, and quota impact from any Discord server. Run
 | Command | Description |
 |---------|-------------|
 | `/ctok check <prompt>` | Estimate tokens, cost, and get a model recommendation |
-| `/ctok refine <prompt>` | Run the refiner — strips filler words, collapses vague verbs, shows tokens saved |
+| `/ctok refine <prompt>` | Run the refiner - strips filler words, collapses vague verbs, shows tokens saved |
 | `/ctok scan <directory>` | Scan a server-side directory and report its token footprint |
 | `/ctok help` | Show the help message |
 

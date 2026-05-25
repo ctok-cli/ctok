@@ -1,6 +1,6 @@
 ---
 title: Discord Bot
-description: Add ctok to your Discord server — estimate tokens and refine prompts from any channel.
+description: Add ctok to your Discord server - estimate tokens and refine prompts from any channel.
 ---
 
 The ctok Discord bot exposes token estimation and prompt refinement as slash commands in any server.

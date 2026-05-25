@@ -1,6 +1,6 @@
 # ctok.nvim
 
-Neovim plugin for [ctok](https://github.com/yourusername/ctok) — Claude token estimator.
+Neovim plugin for [ctok](https://github.com/yourusername/ctok) - Claude token estimator.
 
 Estimate token counts, get model recommendations, and refine prompts without leaving Neovim. All work is delegated to the `ctok` CLI; this plugin is a thin Lua wrapper.
 
@@ -34,7 +34,7 @@ use {
 | Command | Description |
 |---|---|
 | `:[range]CtokCheck` | Estimate tokens for selection or full buffer |
-| `:[range]CtokRefine` | Refine prompt — show result in float |
+| `:[range]CtokRefine` | Refine prompt - show result in float |
 | `:[range]CtokRefineReplace` | Refine and replace selection in-place |
 | `:CtokScan [dir]` | Scan project directory |
 | `:CtokDoctor` | Verify installation |

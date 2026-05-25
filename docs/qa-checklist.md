@@ -1,4 +1,4 @@
-# ctok — Manual QA Checklist
+# ctok - Manual QA Checklist
 
 Automated tests cover all TypeScript packages and most shells. This checklist covers the surfaces that can't be fully automated: the desktop app, browser extension, and end-to-end smoke tests across platforms.
 
@@ -20,25 +20,25 @@ Run this checklist before every release (`vX.Y.Z` tag).
 
 Run on all three platforms.
 
-- [ ] `npm i -g @ctok/cli && ctok --version` — prints semver, exits 0
-- [ ] `ctok doctor` — all checks green; no red lines
-- [ ] `ctok check "Refactor auth middleware"` — prints token estimate table with Input / Output / Cost / Model
-- [ ] `ctok check "Refactor auth middleware" --json` — valid JSON with `estimate`, `cost`, `recommendation` keys
-- [ ] `ctok scan .` — lists file count and token map; no crash
-- [ ] `ctok refine "please kindly help me to handle the thing"` — prints refined prompt with savings %
-- [ ] `ctok refine --llm "please fix it" --api-key sk-test` — exits with helpful "API key required" or "model not found" (not a stack trace)
-- [ ] `ctok history` — shows last entry from `check` above
+- [ ] `npm i -g @ctok/cli && ctok --version` - prints semver, exits 0
+- [ ] `ctok doctor` - all checks green; no red lines
+- [ ] `ctok check "Refactor auth middleware"` - prints token estimate table with Input / Output / Cost / Model
+- [ ] `ctok check "Refactor auth middleware" --json` - valid JSON with `estimate`, `cost`, `recommendation` keys
+- [ ] `ctok scan .` - lists file count and token map; no crash
+- [ ] `ctok refine "please kindly help me to handle the thing"` - prints refined prompt with savings %
+- [ ] `ctok refine --llm "please fix it" --api-key sk-test` - exits with helpful "API key required" or "model not found" (not a stack trace)
+- [ ] `ctok history` - shows last entry from `check` above
 - [ ] `ctok config set plan max20x` then `ctok config get plan` → `max20x`
-- [ ] `ctok init` in a temp folder — creates `.ctokignore` and `CLAUDE.md`
-- [ ] `ctok --help` — prints usage without error
+- [ ] `ctok init` in a temp folder - creates `.ctokignore` and `CLAUDE.md`
+- [ ] `ctok --help` - prints usage without error
 
 ---
 
-## 2. CLI — binary distribution
+## 2. CLI - binary distribution
 
 - [ ] Download the correct binary for the current platform from the latest GitHub Release
-- [ ] Run `./ctok --version` — prints correct version, exits 0
-- [ ] Run `./ctok check "hello"` — produces output (no "node not found" or similar)
+- [ ] Run `./ctok --version` - prints correct version, exits 0
+- [ ] Run `./ctok check "hello"` - produces output (no "node not found" or similar)
 - [ ] Windows: SmartScreen warning appears on first run (expected for unsigned binary); user can click "More info → Run anyway"
 - [ ] macOS: Gatekeeper quarantine warning appears; user can right-click → Open to bypass
 
@@ -104,8 +104,8 @@ Run on Windows and macOS.
 - [ ] Extension activates without errors in Output → ctok channel
 
 ### Commands
-- [ ] Open a `.ts` file, run `Ctok: Check Tokens` — inline decoration appears
-- [ ] Run `Ctok: Refine Prompt` on a selected block — suggestion appears in side panel
+- [ ] Open a `.ts` file, run `Ctok: Check Tokens` - inline decoration appears
+- [ ] Run `Ctok: Refine Prompt` on a selected block - suggestion appears in side panel
 - [ ] Status bar shows token count for the active file
 
 ### Regression
@@ -121,7 +121,7 @@ Run on Windows and macOS.
 
 ### Tool window
 - [ ] `View → Tool Windows → ctok` opens the panel
-- [ ] Enter a prompt, click Estimate — result appears with token count and cost
+- [ ] Enter a prompt, click Estimate - result appears with token count and cost
 - [ ] "Refine" button sends prompt and shows refined version
 
 ### Actions

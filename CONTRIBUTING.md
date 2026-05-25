@@ -22,15 +22,15 @@ pnpm test         # runs all test suites
 
 ```
 packages/
-  core/          @ctok/core      — estimation engine, recommender, reducer
-  scanner/       @ctok/scanner   — project directory scanner
-  refiner/       @ctok/refiner   — 7-pass prompt refiner
-  quota/         @ctok/quota     — plan limit tables, quota impact calculator
-  cli/           @ctok/cli       — Commander.js CLI
-  mcp/           @ctok/mcp       — MCP server
-  web/           @ctok/web       — Next.js playground (ctok.dev)
-  desktop/       @ctok/desktop   — Tauri 2 wrapper
-  browser-ext/   @ctok/browser-ext — Chrome MV3 extension
+  core/          @ctok/core      - estimation engine, recommender, reducer
+  scanner/       @ctok/scanner   - project directory scanner
+  refiner/       @ctok/refiner   - 7-pass prompt refiner
+  quota/         @ctok/quota     - plan limit tables, quota impact calculator
+  cli/           @ctok/cli       - Commander.js CLI
+  mcp/           @ctok/mcp       - MCP server
+  web/           @ctok/web       - Next.js playground (ctok.dev)
+  desktop/       @ctok/desktop   - Tauri 2 wrapper
+  browser-ext/   @ctok/browser-ext - Chrome MV3 extension
 docs/            Astro Starlight docs site
 ```
 
@@ -85,9 +85,9 @@ pnpm test
 
 ## Conventions
 
-- **TypeScript strict mode** — no implicit any. `skipLibCheck: true` is fine.
-- **No default exports** in library packages — named exports only.
-- **Pure functions** in `@ctok/core`, `@ctok/refiner`, `@ctok/scanner` — no side effects, no I/O.
+- **TypeScript strict mode** - no implicit any. `skipLibCheck: true` is fine.
+- **No default exports** in library packages - named exports only.
+- **Pure functions** in `@ctok/core`, `@ctok/refiner`, `@ctok/scanner` - no side effects, no I/O.
 - **Vitest** for all unit tests.
 - **tsup** for building: ESM + CJS for libraries, CJS-only for CLI and MCP.
 - Test files in `test/` next to `src/`, named `*.test.ts`.
@@ -97,7 +97,7 @@ pnpm test
 
 1. Fork and create a feature branch (`feat/my-feature` or `fix/issue-123`).
 2. Make your changes with tests.
-3. Run `pnpm test && pnpm typecheck` — must pass.
+3. Run `pnpm test && pnpm typecheck` - must pass.
 4. Open a PR against `main`. Fill in the PR template.
 
 ## Issues

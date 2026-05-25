@@ -1,13 +1,13 @@
 ---
 title: VS Code Extension
-description: Install and use the ctok VS Code extension — token estimates and prompt refinement inside the editor.
+description: Install and use the ctok VS Code extension - token estimates and prompt refinement inside the editor.
 ---
 
 The ctok VS Code extension brings token estimation, model recommendations, and prompt refinement into the editor sidebar, status bar, and command palette.
 
 ## Install
 
-Search **"ctok — Claude Token Estimator"** in the VS Code Marketplace, or:
+Search **"ctok - Claude Token Estimator"** in the VS Code Marketplace, or:
 
 ```sh
 code --install-extension ctok-cli.ctok
@@ -18,7 +18,7 @@ Alternatively, download the `.vsix` from the [GitHub Releases page](https://gith
 ## Requirements
 
 - VS Code 1.85+
-- No external CLI needed — the extension uses `@ctok/core` directly
+- No external CLI needed - the extension uses `@ctok/core` directly
 
 ## Commands
 

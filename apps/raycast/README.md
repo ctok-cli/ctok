@@ -1,6 +1,6 @@
-# ctok — Claude Token Estimator
+# ctok - Claude Token Estimator
 
-Estimate Claude token usage, cost, and quota impact — refine prompts and scan projects without leaving your keyboard.
+Estimate Claude token usage, cost, and quota impact - refine prompts and scan projects without leaving your keyboard.
 
 ## Commands
 
@@ -17,7 +17,7 @@ Reads the current clipboard and shows a one-line HUD: `🟡 2.3k tok · $0.0012 
 Enter a directory path and get the full token footprint: project type, files scanned, tokens by extension, and the heaviest files.
 
 ### Token Check History
-Browse recent estimates from the CLI and other surfaces — all shells write to the same `~/.ctok/history.json`.
+Browse recent estimates from the CLI and other surfaces - all shells write to the same `~/.ctok/history.json`.
 
 ## Preferences
 
@@ -44,4 +44,4 @@ ray develop   # launches in Raycast development mode
 
 ## Privacy
 
-All analysis runs locally. No prompt text is sent to any external service. The extension imports `@ctok/core`, `@ctok/refiner`, and `@ctok/quota` directly — zero network calls.
+All analysis runs locally. No prompt text is sent to any external service. The extension imports `@ctok/core`, `@ctok/refiner`, and `@ctok/quota` directly - zero network calls.

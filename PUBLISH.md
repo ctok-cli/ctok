@@ -1,4 +1,4 @@
-# Publish checklist — ctok v0.1.0
+# Publish checklist - ctok v0.1.0
 
 > Hand-run checklist for shipping the first public release. Most steps need browser auth, so they're not automated.
 > Run them in order. Stop at any failure; don't proceed until it's green.
@@ -44,8 +44,8 @@ If the repo already has history, skip `init` and just commit.
 In browser:
 
 1. Create org `ctok-cli` at https://github.com/organizations/new (Free plan).
-2. Create repo `ctok-cli/ctok` (public, no README/license/gitignore — we already have them).
-3. Add short description: *"Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts."*
+2. Create repo `ctok-cli/ctok` (public, no README/license/gitignore - we already have them).
+3. Add short description: *"Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts."*
 4. Add website: `https://ctok.dev`.
 5. Add topics: `claude`, `claude-ai`, `claude-code`, `claude-tokens`, `tokens`, `prompt-engineering`, `llm`, `anthropic`, `cli`, `mcp`, `vscode-extension`, `jetbrains-plugin`, `tauri`, `chrome-extension`.
 
@@ -73,8 +73,8 @@ Settings → Code security → Dependabot:
 - Enable security updates + version updates.
 
 Settings → Secrets and variables → Actions → New repository secret:
-- `NPM_TOKEN` — npmjs.com → Access Tokens → Granular → publish for `@ctok/*` scope.
-- `VERCEL_TOKEN` — vercel.com → Settings → Tokens.
+- `NPM_TOKEN` - npmjs.com → Access Tokens → Granular → publish for `@ctok/*` scope.
+- `VERCEL_TOKEN` - vercel.com → Settings → Tokens.
 - Optional later: `APPLE_CERTIFICATE`, `APPLE_CERTIFICATE_PASSWORD`, `APPLE_SIGNING_IDENTITY`, `APPLE_ID`, `APPLE_PASSWORD`, `APPLE_TEAM_ID` for macOS notarisation.
 - Optional later: `WINDOWS_CERTIFICATE`, `WINDOWS_CERTIFICATE_PASSWORD` for Windows signing.
 
@@ -176,7 +176,7 @@ PR against `https://github.com/modelcontextprotocol/servers`:
 
 Add to `README.md` under community servers:
 ```md
-- **[ctok](https://github.com/ctok-cli/ctok/tree/main/packages/mcp)** — Estimate Claude token usage, recommend models, refine prompts. Tools: `estimate`, `refine`, `recommend_model`, `scan_project`.
+- **[ctok](https://github.com/ctok-cli/ctok/tree/main/packages/mcp)** - Estimate Claude token usage, recommend models, refine prompts. Tools: `estimate`, `refine`, `recommend_model`, `scan_project`.
 ```
 
 Also submit to Anthropic's MCP directory if/when it's accepting submissions.
@@ -247,8 +247,8 @@ Also redirect `www.ctok.dev` → `ctok.dev`.
 Follow `docs/launch/README.md`. Recommended posting order:
 
 1. GitHub Release notes (link `USAGE.md`)
-2. Product Hunt — schedule for 00:01 PST Tue/Wed
-3. Hacker News — 08–10 PT weekday
+2. Product Hunt - schedule for 00:01 PST Tue/Wed
+3. Hacker News - 08-10 PT weekday
 4. r/ClaudeAI, r/programming
 5. Twitter/X thread
 6. LinkedIn

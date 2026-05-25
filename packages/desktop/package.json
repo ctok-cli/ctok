@@ -1,7 +1,7 @@
 {
   "name": "@ctok/desktop",
   "version": "0.1.0",
-  "description": "ctok desktop app — Tauri 2 wrapper for ctok playground",
+  "description": "ctok desktop app - Tauri 2 wrapper for ctok playground",
   "private": true,
   "scripts": {
     "dev": "tauri dev",

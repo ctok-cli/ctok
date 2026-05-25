@@ -1,6 +1,6 @@
 ---
 title: Slack Bot
-description: Add ctok to your Slack workspace — estimate tokens and refine prompts from any channel.
+description: Add ctok to your Slack workspace - estimate tokens and refine prompts from any channel.
 ---
 
 The ctok Slack bot lets your whole team estimate Claude token usage directly from Slack.
@@ -10,7 +10,7 @@ The ctok Slack bot lets your whole team estimate Claude token usage directly fro
 | Command | Description |
 |---------|-------------|
 | `/ctok check <prompt>` | Estimate tokens, cost, and get a model recommendation |
-| `/ctok refine <prompt>` | Run the refiner — shows tokens saved |
+| `/ctok refine <prompt>` | Run the refiner - shows tokens saved |
 | `/ctok scan <path>` | Scan a server-side directory |
 | `/ctok help` | Show help |
 
@@ -31,9 +31,9 @@ Append to any command:
 ### 1. Create a Slack app
 
 1. Go to [api.slack.com/apps](https://api.slack.com/apps) → **Create New App** → **From scratch**
-2. **OAuth & Permissions** — add scopes: `commands`, `app_mentions:read`, `chat:write`
-3. **Slash Commands** — create `/ctok` pointing at `https://your-host/slack/events`
-4. **Event Subscriptions** — enable and subscribe to `app_mention`
+2. **OAuth & Permissions** - add scopes: `commands`, `app_mentions:read`, `chat:write`
+3. **Slash Commands** - create `/ctok` pointing at `https://your-host/slack/events`
+4. **Event Subscriptions** - enable and subscribe to `app_mention`
 5. Install the app and copy the **Bot User OAuth Token**
 
 ### 2. Configure

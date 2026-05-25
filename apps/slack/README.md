@@ -7,7 +7,7 @@ Estimate Claude token usage, cost, and quota impact from any Slack channel. Run 
 | Command | Description |
 |---------|-------------|
 | `/ctok check <prompt>` | Estimate tokens, cost, and get a model recommendation |
-| `/ctok refine <prompt>` | Run the refiner — strips filler words, collapses vague verbs, shows tokens saved |
+| `/ctok refine <prompt>` | Run the refiner - strips filler words, collapses vague verbs, shows tokens saved |
 | `/ctok scan <path>` | Scan a server-side directory and report its token footprint |
 | `/ctok help` | Show the help message |
 
@@ -27,9 +27,9 @@ You can also `@mention` the bot: `@ctok check <prompt>`.
 
 1. Go to [api.slack.com/apps](https://api.slack.com/apps) → **Create New App** → **From scratch**
 2. Under **OAuth & Permissions**, add these Bot Token Scopes:
-   - `commands` — for `/ctok` slash command
-   - `app_mentions:read` — to respond to @mentions
-   - `chat:write` — to post messages
+   - `commands` - for `/ctok` slash command
+   - `app_mentions:read` - to respond to @mentions
+   - `chat:write` - to post messages
 3. Under **Slash Commands**, create `/ctok` pointing at `https://your-host/slack/events`
 4. Under **Event Subscriptions**, enable and subscribe to `app_mention`
 5. Install the app to your workspace and copy the **Bot User OAuth Token**

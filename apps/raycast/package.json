@@ -1,6 +1,6 @@
 {
   "name": "@ctok/raycast",
-  "title": "ctok — Claude Token Estimator",
+  "title": "ctok - Claude Token Estimator",
   "description": "Estimate Claude token usage, cost, and quota impact. Refine prompts and scan projects without leaving your keyboard.",
   "icon": "extension-icon.png",
   "author": "ctok-cli",

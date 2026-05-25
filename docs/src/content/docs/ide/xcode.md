@@ -1,6 +1,6 @@
 ---
 title: Xcode Extension
-description: Install the ctok Xcode source editor extension — token estimates and prompt refinement in Xcode.
+description: Install the ctok Xcode source editor extension - token estimates and prompt refinement in Xcode.
 ---
 
 The ctok Xcode source editor extension adds three commands to Xcode's **Editor** menu for estimating token usage and refining prompts without leaving the IDE.
@@ -46,9 +46,9 @@ Available under **Editor → ctok** in any open Xcode file:
 
 ## Set scan directory
 
-**Option A — host app UI:** Launch the ctok app and click **Choose…**
+**Option A - host app UI:** Launch the ctok app and click **Choose…**
 
-**Option B — terminal:**
+**Option B - terminal:**
 ```sh
 defaults write dev.ctok.shared scanDirectory /path/to/your/project
 ```

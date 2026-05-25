@@ -42,7 +42,7 @@ Run the 7-pass prompt refiner.
 refine(prompt, context?)
 ```
 
-Returns the refined prompt, token savings, specificity score 0–100, and per-pass details.
+Returns the refined prompt, token savings, specificity score 0-100, and per-pass details.
 
 ### `recommend_model`
 
@@ -72,7 +72,7 @@ User: Before I send this refactor task, estimate the tokens.
 Claude: [calls estimate with the task prompt]
         Input: ~1,240 tokens · Output: ~600 · Cost: $0.054 at Sonnet 4.6
         Recommendation: sonnet-4-6, medium effort
-        No reduction suggestions — context looks lean.
+        No reduction suggestions - context looks lean.
 ```
 
 ## Run the server directly

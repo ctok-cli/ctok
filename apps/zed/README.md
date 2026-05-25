@@ -1,4 +1,4 @@
-# ctok — Zed Extension
+# ctok - Zed Extension
 
 Estimate Claude token counts, analyze costs, and refine prompts directly in [Zed](https://zed.dev)'s AI assistant panel.
 
@@ -32,7 +32,7 @@ Open the AI assistant panel (`Cmd+?`) and type a slash command:
 | Command | Description |
 |---|---|
 | `/ctok-check <text>` | Estimate tokens and cost for the given text |
-| `/ctok-refine <text>` | Refine a prompt — shows the improved version + savings |
+| `/ctok-refine <text>` | Refine a prompt - shows the improved version + savings |
 | `/ctok-scan` | Scan the current project directory |
 
 ### Examples

@@ -1,6 +1,6 @@
 ---
 title: Desktop App
-description: Install the ctok desktop app — a native Tauri wrapper for the ctok playground with drag-drop folder scanning.
+description: Install the ctok desktop app - a native Tauri wrapper for the ctok playground with drag-drop folder scanning.
 ---
 
 The ctok desktop app is a native application built with [Tauri 2](https://tauri.app). It bundles the web playground in a native window and adds local filesystem access for drag-drop project scanning.

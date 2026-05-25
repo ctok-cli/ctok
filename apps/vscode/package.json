@@ -1,7 +1,7 @@
 {
   "name": "ctok",
-  "displayName": "ctok — Lighthouse for Claude prompts",
-  "description": "Estimate Claude token usage, cost, and quota impact. Get model recommendations and refine prompts — all without leaving VS Code.",
+  "displayName": "ctok - Lighthouse for Claude prompts",
+  "description": "Estimate Claude token usage, cost, and quota impact. Get model recommendations and refine prompts - all without leaving VS Code.",
   "version": "0.1.0",
   "publisher": "ctok-cli",
   "license": "MIT",

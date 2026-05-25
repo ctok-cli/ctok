@@ -1,7 +1,7 @@
 {
   "name": "@ctok/browser-ext",
   "version": "0.1.0",
-  "description": "Chrome MV3 browser extension — live token overlay on claude.ai, chatgpt.com, cursor.sh, deepseek, gemini",
+  "description": "Chrome MV3 browser extension - live token overlay on claude.ai, chatgpt.com, cursor.sh, deepseek, gemini",
   "private": true,
   "scripts": {
     "build": "tsup",

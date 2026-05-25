@@ -1,11 +1,33 @@
 {
   "name": "@ctok/cli",
   "version": "0.1.0",
-  "description": "ctok — global CLI for Claude token estimation",
+  "description": "ctok - global CLI for Claude token estimation",
+  "license": "MIT",
+  "author": "ctok contributors",
+  "homepage": "https://github.com/ctok-cli/ctok#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctok-cli/ctok.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/ctok-cli/ctok/issues"
+  },
+  "keywords": [
+    "claude",
+    "tokens",
+    "cli",
+    "anthropic",
+    "ctok",
+    "prompt-engineering"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/cli.js",
   "bin": {
     "ctok": "./dist/cli.js"
   },
-  "main": "./dist/cli.js",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

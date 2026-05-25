@@ -2,6 +2,28 @@
   "name": "@ctok/core",
   "version": "0.1.0",
   "description": "Pure TS engine: token estimator, model recommender, reduction suggester",
+  "license": "MIT",
+  "author": "ctok contributors",
+  "homepage": "https://github.com/ctok-cli/ctok#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctok-cli/ctok.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/ctok-cli/ctok/issues"
+  },
+  "keywords": [
+    "claude",
+    "tokens",
+    "anthropic",
+    "estimator",
+    "llm",
+    "pricing"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,6 +34,9 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
@@ -24,6 +49,5 @@
     "tsup": "^8.3.0",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0"
-  },
-  "files": ["dist"]
+  }
 }

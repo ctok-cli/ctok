@@ -13,7 +13,7 @@
 ## Testing
 
 - [ ] Added / updated unit tests
-- [ ] Ran `pnpm test` locally — all pass
+- [ ] Ran `pnpm test` locally - all pass
 - [ ] Tested on: <!-- Windows / macOS / Linux -->
 
 ## Checklist

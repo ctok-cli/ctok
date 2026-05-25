@@ -38,7 +38,7 @@ echo "my prompt" | ctok check -
 **Example output**
 
 ```
-  Input tokens    ~1,240  (range 1,190–1,295, medium confidence)
+  Input tokens    ~1,240  (range 1,190-1,295, medium confidence)
   Output tokens   ~600
   Estimated cost  $0.054  at Sonnet 4.6
 
@@ -47,7 +47,7 @@ echo "my prompt" | ctok check -
 
   Reduction suggestions
   ⚠  Large file: schema.prisma  (~8,400 tok)
-     Action: trim to the relevant tables only — save ~6,200 tokens
+     Action: trim to the relevant tables only - save ~6,200 tokens
 ```
 
 ---
@@ -84,13 +84,13 @@ ctok refine "my prompt" -q           # print only the refined prompt
 
 **Passes run (in order)**
 
-1. `fillerStrip` — removes please/kindly/make sure/basically/etc.
-2. `vagueVerbReplace` — replaces handle/fix/improve with concrete alternatives
-3. `structureScaffold` — suggests GOAL/CONTEXT/CONSTRAINTS/OUTPUT template
-4. `dedup` — removes near-duplicate paragraph blocks (≥80% Jaccard)
-5. `fileRefCompression` — replaces large inline code blocks with `see path/file.ts:L1-90`
-6. `outputFormatHint` — adds "Return as …" when no format is specified
-7. `negativeCollapse` — condenses scattered "don't do X, avoid Y" into a `Do NOT:` list
+1. `fillerStrip` - removes please/kindly/make sure/basically/etc.
+2. `vagueVerbReplace` - replaces handle/fix/improve with concrete alternatives
+3. `structureScaffold` - suggests GOAL/CONTEXT/CONSTRAINTS/OUTPUT template
+4. `dedup` - removes near-duplicate paragraph blocks (≥80% Jaccard)
+5. `fileRefCompression` - replaces large inline code blocks with `see path/file.ts:L1-90`
+6. `outputFormatHint` - adds "Return as …" when no format is specified
+7. `negativeCollapse` - condenses scattered "don't do X, avoid Y" into a `Do NOT:` list
 
 ---
 

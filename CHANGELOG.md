@@ -9,7 +9,7 @@ Versioning: [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
-## [0.1.0] — 2026-05-25
+## [0.1.0] - 2026-05-25
 
 ### Added
 
@@ -28,13 +28,13 @@ Versioning: [SemVer](https://semver.org/).
 
 **Prompt refiner (`@ctok/refiner`)**
 - 7-pass pipeline: fillerStrip, vagueVerbReplace, structureScaffold, dedup, fileRefCompression, outputFormatHint, negativeCollapse
-- Specificity score 0–100 across 7 dimensions
+- Specificity score 0-100 across 7 dimensions
 - 35-prompt test corpus with snapshot tests
 
 **Quota calculator (`@ctok/quota`)**
 - Plan limits table: Free, Pro, Max5x, Max20x, Team, Enterprise, API
 - Plan auto-detection from `~/.claude/settings.json` → `~/.ctok/config.json` → env var
-- `getQuotaImpact()` — percentage of 5-hour window + remaining messages
+- `getQuotaImpact()` - percentage of 5-hour window + remaining messages
 
 **CLI (`@ctok/cli`)**
 - Commands: `check`, `scan`, `refine`, `model`, `history`, `diff`, `config`, `init`, `doctor`
@@ -46,7 +46,7 @@ Versioning: [SemVer](https://semver.org/).
 
 **MCP server (`@ctok/mcp`)**
 - 4 tools: `estimate`, `refine`, `recommend_model`, `scan_project`
-- JSON-RPC 2.0 over stdio — works with `npx -y @ctok/mcp`
+- JSON-RPC 2.0 over stdio - works with `npx -y @ctok/mcp`
 
 **Web playground (`@ctok/web`)**
 - Next.js 15 app, static export
@@ -64,7 +64,7 @@ Versioning: [SemVer](https://semver.org/).
 - Chrome MV3, works on claude.ai, chatgpt.com, cursor.sh, deepseek.com, gemini.google.com
 - Shadow-DOM isolated floating widget: token count, cost, model badge
 - 7-pass refiner panel with copy-to-clipboard
-- 82 KB self-contained IIFE — no external requests
+- 82 KB self-contained IIFE - no external requests
 
 [Unreleased]: https://github.com/ctok-cli/ctok/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/ctok-cli/ctok/releases/tag/v0.1.0
