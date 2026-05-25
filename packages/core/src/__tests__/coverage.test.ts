@@ -95,11 +95,25 @@ describe("truncate", () => {
 
 // reducer/suggestions.ts
 
-function makeEstimate(chunks: TokenEstimate["chunks"] = []): TokenEstimate {
+type PartialChunk = Pick<TokenEstimate["chunks"][number], "label" | "tokens" | "kind"> &
+  Partial<TokenEstimate["chunks"][number]>;
+
+function makeChunks(partials: PartialChunk[]): TokenEstimate["chunks"] {
+  return partials.map((c) => ({
+    chars: c.chars ?? c.tokens * 4,
+    ratio: c.ratio ?? 4,
+    ...c,
+  }));
+}
+
+function makeEstimate(partials: PartialChunk[] = []): TokenEstimate {
+  const chunks = makeChunks(partials);
   const total = chunks.reduce((s, c) => s + c.tokens, 0) + 10;
   return {
     input: { min: total, expected: total, max: total },
     output: { min: 100, expected: 200, max: 400 },
+    totalExpected: total + 200,
+    confidence: "medium",
     chunks,
   };
 }
@@ -218,6 +232,8 @@ describe("buildSuggestions — approaching context window", () => {
     const estimate: TokenEstimate = {
       input: { min: 180_001, expected: 185_000, max: 190_000 },
       output: { min: 100, expected: 200, max: 400 },
+      totalExpected: 185_200,
+      confidence: "medium",
       chunks: [],
     };
     const sugs = buildSuggestions(makeInput(), estimate);
@@ -228,9 +244,9 @@ describe("buildSuggestions — approaching context window", () => {
 // recommender/model.ts
 
 describe("recommendModel", () => {
-  const simpleComplexity = { band: "simple" as const, score: 10, factors: [] };
-  const normalComplexity = { band: "normal" as const, score: 50, factors: [] };
-  const deepComplexity   = { band: "deep"   as const, score: 90, factors: [] };
+  const simpleComplexity = { band: "simple" as const, score: 10, signals: [] };
+  const normalComplexity = { band: "normal" as const, score: 50, signals: [] };
+  const deepComplexity   = { band: "deep"   as const, score: 90, signals: [] };
 
   it("recommends haiku for simple tasks", () => {
     const r = recommendModel(simpleComplexity, "bug-fix", 100);
