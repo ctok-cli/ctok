@@ -1,0 +1,33 @@
+name: Xcode Extension — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/xcode/**"
+  pull_request:
+    paths:
+      - "apps/xcode/**"
+
+jobs:
+  build-test:
+    name: Build & test (macOS)
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.app/Contents/Developer
+
+      - name: Build
+        run: swift build
+        working-directory: apps/xcode/ctok-xcode
+
+      - name: Test
+        run: swift test
+        working-directory: apps/xcode/ctok-xcode
+
+      - name: Build release archive
+        run: swift build -c release
+        working-directory: apps/xcode/ctok-xcode

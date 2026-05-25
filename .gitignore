@@ -1,0 +1,96 @@
+# ─── Dependencies ──────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+
+# ─── Build outputs ─────────────────────────────────────────────
+dist/
+build/
+out/
+.next/
+.nuxt/
+.astro/
+.turbo/
+.svelte-kit/
+coverage/
+.nyc_output/
+
+# ─── Type / compiler artifacts ─────────────────────────────────
+next-env.d.ts
+*.tsbuildinfo
+*.d.ts.map
+
+# ─── Env & secrets ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+
+# ─── Editor / OS ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vs/
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+*.suo
+*.user
+
+# ─── Logs ──────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ─── Vercel ────────────────────────────────────────────────────
+.vercel/
+
+# ─── Tauri / Rust ──────────────────────────────────────────────
+packages/desktop/src-tauri/target/
+**/target/
+Cargo.lock.bak
+
+# ─── JetBrains plugin (Kotlin + Gradle) ────────────────────────
+apps/jetbrains/.gradle/
+apps/jetbrains/.kotlin/
+apps/jetbrains/.intellijPlatform/
+apps/jetbrains/build/
+apps/jetbrains/bin/
+apps/jetbrains/.idea/
+apps/jetbrains/local.properties
+apps/jetbrains/*.iml
+
+# ─── Xcode ─────────────────────────────────────────────────────
+**/DerivedData/
+**/xcuserdata/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.swiftpm/
+
+# ─── VS Code / extension packaging ─────────────────────────────
+apps/vscode/*.vsix
+apps/vscode/.vscode-test/
+
+# ─── Browser extension packaging ───────────────────────────────
+packages/browser-ext/*.zip
+packages/browser-ext/*.crx
+packages/browser-ext/*.pem
+
+# ─── Claude / ctok local state ─────────────────────────────────
+.ctok/
+
+# ─── Local scratch ─────────────────────────────────────────────
+tmp/
+.tmp/
+scratch/
+*.local

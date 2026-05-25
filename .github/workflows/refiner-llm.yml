@@ -1,0 +1,43 @@
+name: Refiner LLM — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/refiner-llm/**"
+      - "packages/core/**"
+  pull_request:
+    paths:
+      - "packages/refiner-llm/**"
+
+jobs:
+  build-test:
+    name: Typecheck, test & build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build @ctok/core
+        run: pnpm --filter @ctok/core build
+
+      - name: Typecheck
+        run: pnpm --filter @ctok/refiner-llm typecheck
+
+      - name: Test
+        run: pnpm --filter @ctok/refiner-llm test
+
+      - name: Build
+        run: pnpm --filter @ctok/refiner-llm build

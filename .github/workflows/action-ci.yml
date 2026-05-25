@@ -1,0 +1,121 @@
+name: GitHub Action — CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths:
+      - "apps/action/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/quota/**"
+  pull_request:
+    paths:
+      - "apps/action/**"
+
+jobs:
+  build-test:
+    name: Build, typecheck & test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+
+      - name: Typecheck
+        run: pnpm --filter @ctok/action typecheck
+
+      - name: Test
+        run: pnpm --filter @ctok/action test
+
+      - name: Build action bundle
+        run: pnpm --filter @ctok/action build
+
+      - name: Verify bundle exists
+        run: test -f apps/action/dist/index.js
+
+      # Self-test: run the action we just built against a real prompt
+      - name: Self-test action
+        uses: ./apps/action
+        id: ctok
+        with:
+          prompt: "Refactor the auth module to use JWT with refresh token rotation"
+          plan: pro
+          task-type: refactor
+
+      - name: Print action outputs
+        run: |
+          echo "input-tokens:        ${{ steps.ctok.outputs.input-tokens }}"
+          echo "output-tokens:       ${{ steps.ctok.outputs.output-tokens }}"
+          echo "total-cost-usd:      ${{ steps.ctok.outputs.total-cost-usd }}"
+          echo "recommended-model:   ${{ steps.ctok.outputs.recommended-model }}"
+          echo "recommended-effort:  ${{ steps.ctok.outputs.recommended-effort }}"
+          echo "confidence:          ${{ steps.ctok.outputs.confidence }}"
+
+      - name: Assert outputs are non-empty
+        run: |
+          [ -n "${{ steps.ctok.outputs.input-tokens }}" ]   || (echo "input-tokens empty"  && exit 1)
+          [ -n "${{ steps.ctok.outputs.total-cost-usd }}" ] || (echo "total-cost empty"    && exit 1)
+          [ -n "${{ steps.ctok.outputs.recommended-model }}" ] || (echo "model empty"       && exit 1)
+          echo "All outputs present."
+
+  # Commit the built dist/ back to the repo so the action is self-contained.
+  # Only runs on push to main (not PRs) so external users can reference @main or a tag.
+  commit-dist:
+    name: Commit dist/
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all deps + action
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+          pnpm --filter @ctok/action build
+
+      - name: Commit updated dist/
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/action/dist/
+          if git diff --staged --quiet; then
+            echo "dist/ unchanged, nothing to commit."
+          else
+            git commit -m "chore: update action dist/ [skip ci]"
+            git push
+          fi

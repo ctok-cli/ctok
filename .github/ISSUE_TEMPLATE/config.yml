@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Question / Help
+    url: https://github.com/ctok-cli/ctok/discussions/new?category=q-a
+    about: Ask a question or get help — use Discussions, not Issues.
+  - name: Show & Tell
+    url: https://github.com/ctok-cli/ctok/discussions/new?category=show-and-tell
+    about: Share how you are using ctok.

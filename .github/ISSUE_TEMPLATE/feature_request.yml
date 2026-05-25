@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest an idea for ctok
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Is this related to a pain point? What's the current workaround?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe what you'd like to see.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which surface?
+      options:
+        - CLI
+        - Web playground
+        - MCP server
+        - Desktop app
+        - Browser extension
+        - Core engine (@ctok/core)
+        - Refiner (@ctok/refiner)
+        - All surfaces
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

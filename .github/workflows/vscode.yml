@@ -1,0 +1,105 @@
+name: VS Code Extension
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths:
+      - "apps/vscode/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/scanner/**"
+      - "packages/quota/**"
+  pull_request:
+    paths:
+      - "apps/vscode/**"
+
+jobs:
+  build:
+    name: Build & test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+
+      - name: Typecheck
+        run: pnpm --filter ctok typecheck
+
+      - name: Test
+        run: pnpm --filter ctok test
+
+      - name: Build extension
+        run: pnpm --filter ctok build
+
+      - name: Package .vsix
+        run: pnpm --filter ctok package
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctok-vsix
+          path: apps/vscode/*.vsix
+          retention-days: 30
+
+  publish:
+    name: Publish to VS Code Marketplace
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+
+      - name: Build extension
+        run: pnpm --filter ctok build
+
+      - name: Publish to Marketplace
+        run: pnpm --filter ctok publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Publish to Open VSX
+        run: |
+          pnpm dlx ovsx publish apps/vscode/*.vsix -p ${{ secrets.OVSX_TOKEN }}
+        env:
+          OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}

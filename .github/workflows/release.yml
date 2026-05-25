@@ -1,0 +1,191 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write   # needed to create GitHub Release and upload assets
+
+jobs:
+  # ── Build the Node.js bundle once ──────────────────────────────────────────
+  build-bundle:
+    name: Build JS bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm --filter @ctok/core build && pnpm --filter @ctok/scanner build && pnpm --filter @ctok/refiner build && pnpm --filter @ctok/quota build && pnpm --filter @ctok/cli build
+
+      - name: Upload bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-bundle
+          path: packages/cli/dist/cli.js
+          retention-days: 1
+
+  # ── Build self-contained binaries using pkg ────────────────────────────────
+  build-binaries:
+    name: Build binaries (${{ matrix.target }})
+    needs: build-bundle
+    runs-on: ${{ matrix.runs-on }}
+    strategy:
+      matrix:
+        include:
+          - target: win-x64
+            runs-on: windows-latest
+            pkg-target: node20-win-x64
+            output: ctok-win-x64.exe
+
+          - target: macos-arm64
+            runs-on: macos-latest
+            pkg-target: node20-macos-arm64
+            output: ctok-macos-arm64
+
+          - target: macos-x64
+            runs-on: macos-13
+            pkg-target: node20-macos-x64
+            output: ctok-macos-x64
+
+          - target: linux-x64
+            runs-on: ubuntu-latest
+            pkg-target: node20-linux-x64
+            output: ctok-linux-x64
+
+          - target: linux-arm64
+            runs-on: ubuntu-latest
+            pkg-target: node20-linux-arm64
+            output: ctok-linux-arm64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: cli-bundle
+          path: packages/cli/dist
+
+      - name: Install pkg
+        run: npm install -g @yao-pkg/pkg
+
+      - name: Build binary
+        run: |
+          pkg packages/cli/dist/cli.js \
+            --target ${{ matrix.pkg-target }} \
+            --output dist/${{ matrix.output }} \
+            --compress GZip
+
+      - name: Make executable (Unix)
+        if: runner.os != 'Windows'
+        run: chmod +x dist/${{ matrix.output }}
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary-${{ matrix.target }}
+          path: dist/${{ matrix.output }}
+          retention-days: 1
+
+  # ── Create GitHub Release ──────────────────────────────────────────────────
+  release:
+    name: Create GitHub Release
+    needs: build-binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all binary artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: binary-*
+          merge-multiple: true
+          path: dist/
+
+      - name: Generate checksums
+        run: |
+          cd dist
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "ctok v${{ steps.version.outputs.version }}"
+          body: |
+            ## ctok v${{ steps.version.outputs.version }}
+
+            Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts.
+
+            ### Install
+
+            **npm (Node.js required):**
+            ```bash
+            npm install -g @ctok/cli
+            ```
+
+            **One-liner (Linux / macOS):**
+            ```bash
+            curl -fsSL https://ctok.dev/install.sh | sh
+            ```
+
+            **One-liner (Windows PowerShell):**
+            ```powershell
+            iwr https://ctok.dev/install.ps1 | iex
+            ```
+
+            **Homebrew (macOS / Linux):**
+            ```bash
+            brew install ctok-cli/tap/ctok
+            ```
+
+            **Scoop (Windows):**
+            ```powershell
+            scoop bucket add ctok https://github.com/ctok-cli/scoop-ctok
+            scoop install ctok
+            ```
+
+            ### Standalone binaries
+
+            | Platform | File |
+            |---|---|
+            | Windows x64 | `ctok-win-x64.exe` |
+            | macOS arm64 (M1/M2/M3) | `ctok-macos-arm64` |
+            | macOS x64 (Intel) | `ctok-macos-x64` |
+            | Linux x64 | `ctok-linux-x64` |
+            | Linux arm64 | `ctok-linux-arm64` |
+
+            > ⚠️ Windows binary is unsigned for MVP. macOS users may need to run `xattr -c ctok-macos-*` after download.
+
+            See `SHA256SUMS.txt` for integrity verification.
+          files: |
+            dist/ctok-win-x64.exe
+            dist/ctok-macos-arm64
+            dist/ctok-macos-x64
+            dist/ctok-linux-x64
+            dist/ctok-linux-arm64
+            dist/SHA256SUMS.txt
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}

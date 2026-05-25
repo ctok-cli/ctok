@@ -1,0 +1,53 @@
+name: Discord Bot — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/discord/**"
+      - "packages/core/**"
+      - "packages/refiner/**"
+      - "packages/quota/**"
+      - "packages/scanner/**"
+  pull_request:
+    paths:
+      - "apps/discord/**"
+
+jobs:
+  build-test:
+    name: Typecheck & test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build workspace packages
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+          pnpm --filter @ctok/scanner build
+
+      - name: Typecheck
+        run: pnpm --filter @ctok/discord typecheck
+
+      - name: Test
+        run: pnpm --filter @ctok/discord test
+
+      - name: Build
+        run: pnpm --filter @ctok/discord build
+
+      - name: Verify bundle
+        run: test -f apps/discord/dist/index.js

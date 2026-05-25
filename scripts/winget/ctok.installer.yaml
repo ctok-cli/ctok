@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.6.0.schema.json
+PackageIdentifier: CtokCLI.ctok
+PackageVersion: 0.1.0
+Platform:
+  - Windows.Desktop
+InstallModes:
+  - silent
+  - silentWithProgress
+Installers:
+  - Architecture: x64
+    InstallerType: portable
+    InstallerUrl: https://github.com/ctok-cli/ctok/releases/download/v0.1.0/ctok-win-x64.exe
+    InstallerSha256: PLACEHOLDER_WIN_X64_SHA256
+    NestedInstallerType: portable
+    NestedInstallerFiles:
+      - RelativeFilePath: ctok-win-x64.exe
+        PortableCommandAlias: ctok
+ManifestType: installer
+ManifestVersion: 1.6.0

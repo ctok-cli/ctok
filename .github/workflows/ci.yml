@@ -1,0 +1,156 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+
+# Cancel in-progress runs for the same branch/PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── 1. Typecheck — fast single-cell gate ─────────────────────────────────────
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build upstream packages (needed for type resolution)
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+          pnpm --filter @ctok/refiner-llm build
+
+      - name: Typecheck all packages
+        run: |
+          pnpm --filter @ctok/core typecheck
+          pnpm --filter @ctok/scanner typecheck
+          pnpm --filter @ctok/refiner typecheck
+          pnpm --filter @ctok/quota typecheck
+          pnpm --filter @ctok/refiner-llm typecheck
+          pnpm --filter @ctok/cli typecheck
+          pnpm --filter @ctok/mcp typecheck
+
+  # ── 2. Cross-platform build + test matrix ────────────────────────────────────
+  test:
+    name: Test / ${{ matrix.os }} / Node ${{ matrix.node }}
+    needs: typecheck
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-13      # x64 Intel
+          - macos-14      # arm64 M1
+        node: [20, 22, 24]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages (dependency order)
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+          pnpm --filter @ctok/refiner-llm build
+          pnpm --filter @ctok/mcp build
+          pnpm --filter @ctok/cli build
+
+      - name: Test packages
+        run: |
+          pnpm --filter @ctok/core test
+          pnpm --filter @ctok/scanner test
+          pnpm --filter @ctok/refiner test
+          pnpm --filter @ctok/quota test
+          pnpm --filter @ctok/refiner-llm test
+          pnpm --filter @ctok/mcp test
+          pnpm --filter @ctok/cli test
+
+      - name: Smoke-test CLI
+        run: node packages/cli/dist/cli.js --version
+
+      - name: Smoke-test CLI check command (cross-platform)
+        shell: bash
+        run: |
+          node packages/cli/dist/cli.js check "estimate tokens for this prompt" --json \
+            2>/dev/null | grep -q '"estimate"' && echo "check: OK"
+
+  # ── 3. Coverage gate — single cell, enforces ≥85% threshold ─────────────────
+  coverage:
+    name: Coverage (≥85%)
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+
+      - name: Coverage — @ctok/core
+        run: pnpm --filter @ctok/core test:coverage
+
+      - name: Coverage — @ctok/scanner
+        run: pnpm --filter @ctok/scanner test:coverage
+
+      - name: Coverage — @ctok/refiner
+        run: pnpm --filter @ctok/refiner test:coverage
+
+      - name: Coverage — @ctok/quota
+        run: pnpm --filter @ctok/quota test:coverage
+
+      - name: Upload LCOV reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-lcov
+          path: |
+            packages/core/coverage/lcov.info
+            packages/scanner/coverage/lcov.info
+            packages/refiner/coverage/lcov.info
+            packages/quota/coverage/lcov.info
+          if-no-files-found: ignore

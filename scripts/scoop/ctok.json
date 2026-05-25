@@ -1,0 +1,23 @@
+{
+  "version": "0.1.0",
+  "description": "Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts",
+  "homepage": "https://ctok.dev",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ctok-cli/ctok/releases/download/v0.1.0/ctok-win-x64.exe",
+      "hash": "PLACEHOLDER_WIN_X64_SHA256",
+      "bin": [["ctok-win-x64.exe", "ctok"]]
+    }
+  },
+  "checkver": {
+    "github": "https://github.com/ctok-cli/ctok"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ctok-cli/ctok/releases/download/v$version/ctok-win-x64.exe"
+      }
+    }
+  }
+}

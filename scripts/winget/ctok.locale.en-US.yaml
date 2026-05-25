@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+PackageIdentifier: CtokCLI.ctok
+PackageVersion: 0.1.0
+PackageLocale: en-US
+Publisher: ctok-cli
+PublisherUrl: https://ctok.dev
+PackageName: ctok
+PackageUrl: https://ctok.dev
+License: MIT
+LicenseUrl: https://github.com/ctok-cli/ctok/blob/main/LICENSE
+ShortDescription: Lighthouse for Claude prompts
+Description: >-
+  ctok estimates Claude API token usage, recommends the optimal model and
+  effort level, and refines prompts to reduce cost — from the command line,
+  in your IDE, or inside Claude itself via MCP.
+Tags:
+  - ai
+  - claude
+  - tokens
+  - cli
+  - anthropic
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

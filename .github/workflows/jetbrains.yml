@@ -1,0 +1,75 @@
+name: JetBrains Plugin — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/jetbrains/**"
+  pull_request:
+    paths:
+      - "apps/jetbrains/**"
+  release:
+    types: [published]
+
+jobs:
+  build-test:
+    name: Build & test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build plugin
+        run: ./gradlew buildPlugin --no-daemon
+        working-directory: apps/jetbrains
+
+      - name: Run tests
+        run: ./gradlew test --no-daemon
+        env:
+          CI_NO_CTOK: "true"
+        working-directory: apps/jetbrains
+
+      - name: Verify plugin
+        run: ./gradlew verifyPlugin --no-daemon
+        working-directory: apps/jetbrains
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctok-jetbrains-plugin
+          path: apps/jetbrains/build/distributions/*.zip
+          retention-days: 30
+
+  publish:
+    name: Publish to JetBrains Marketplace
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Publish plugin
+        run: ./gradlew publishPlugin --no-daemon
+        working-directory: apps/jetbrains
+        env:
+          PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+          CERTIFICATE_CHAIN: ${{ secrets.JETBRAINS_CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.JETBRAINS_PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.JETBRAINS_PRIVATE_KEY_PASSWORD }}

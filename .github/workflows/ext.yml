@@ -1,0 +1,103 @@
+name: Browser Extension — Build & Package
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build & package extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build @ctok/core
+        run: pnpm --filter @ctok/core build
+
+      - name: Build @ctok/refiner
+        run: pnpm --filter @ctok/refiner build
+
+      - name: Build extension
+        run: pnpm --filter @ctok/browser-ext build
+
+      - name: Package extension zips
+        run: |
+          cd packages/browser-ext
+          node scripts/package.mjs
+
+      - name: Upload Chrome/Edge zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctok-ext-chrome
+          path: packages/browser-ext/ctok-ext-*.zip
+          if-no-files-found: error
+
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            packages/browser-ext/ctok-ext-*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Chrome Web Store publish (runs only on tags, requires CWS API credentials)
+  publish-chrome:
+    name: Publish to Chrome Web Store
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    environment: chrome-webstore
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ctok-ext-chrome
+          path: .
+
+      - name: Upload to Chrome Web Store
+        uses: mnao305/chrome-extension-upload@v5.0.0
+        with:
+          file-path: ctok-ext-${{ github.ref_name }}.zip
+          extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+  # Firefox AMO publish
+  publish-firefox:
+    name: Publish to Firefox AMO
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    environment: firefox-amo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ctok-ext-chrome
+          path: .
+
+      - name: Sign & submit to AMO
+        run: |
+          npx web-ext sign \
+            --source-dir packages/browser-ext/dist \
+            --api-key "${{ secrets.FIREFOX_API_KEY }}" \
+            --api-secret "${{ secrets.FIREFOX_API_SECRET }}" \
+            --channel listed
