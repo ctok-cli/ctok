@@ -13,6 +13,20 @@ export interface HistoryEntry {
 
 const MAX_ENTRIES = 100;
 
+let idCounter = 0;
+let lastIdMs = 0;
+
+function nextId(): string {
+  const now = Date.now();
+  if (now === lastIdMs) {
+    idCounter += 1;
+  } else {
+    lastIdMs = now;
+    idCounter = 0;
+  }
+  return idCounter === 0 ? `h${now}` : `h${now}-${idCounter}`;
+}
+
 function getHistoryPath(): string {
   const home = process.env["CTOK_HOME"] ?? path.join(os.homedir(), ".ctok");
   return path.join(home, "history.json");
@@ -38,7 +52,7 @@ export function appendHistory(entry: Omit<HistoryEntry, "id" | "timestamp">): Hi
   const existing = load();
   const full: HistoryEntry = {
     ...entry,
-    id: `h${Date.now()}`,
+    id: nextId(),
     timestamp: new Date().toISOString(),
   };
   save([...existing, full]);
