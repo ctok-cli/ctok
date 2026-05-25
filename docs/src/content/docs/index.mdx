@@ -1,0 +1,73 @@
+---
+title: ctok — Lighthouse for Claude prompts
+description: Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost.
+template: splash
+hero:
+  tagline: Know your token cost before you send. Pick the right model. Refine prompts in one command.
+  actions:
+    - text: Install CLI
+      link: /docs/installation/
+      icon: right-arrow
+      variant: primary
+    - text: Try the playground
+      link: https://ctok.dev
+      icon: external
+      variant: secondary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## What ctok does
+
+<CardGrid stagger>
+  <Card title="Estimate tokens" icon="magnifier">
+    Heuristic BPE-aware estimation across prompt, code, files, and project context. Shows input/output ranges with confidence level.
+  </Card>
+  <Card title="Recommend model & effort" icon="star">
+    Picks Haiku / Sonnet / Opus based on task complexity. Suggests effort level (low → xhigh) with written reasoning.
+  </Card>
+  <Card title="Refine prompts" icon="pencil">
+    7-pass pipeline strips filler words, replaces vague verbs, deduplicates blocks, and scores specificity 0–100.
+  </Card>
+  <Card title="Works everywhere" icon="laptop">
+    CLI · Web playground · MCP server · Desktop app · Browser extension. Same engine, every surface.
+  </Card>
+</CardGrid>
+
+## Quick install
+
+```sh
+# npm
+npm install -g ctok
+
+# curl (macOS / Linux)
+curl -fsSL https://ctok.dev/install.sh | sh
+
+# PowerShell (Windows)
+irm https://ctok.dev/install.ps1 | iex
+
+# Homebrew
+brew tap ctok-cli/tap && brew install ctok
+
+# Scoop
+scoop bucket add ctok https://github.com/ctok-cli/scoop-ctok && scoop install ctok
+```
+
+## 30-second demo
+
+```sh
+$ ctok check "Refactor the auth middleware to use the new session store"
+
+  Input tokens    ~367  (range 365–369, high confidence)
+  Output tokens   ~400  (range 400–551)
+  Estimated cost  $0.035  at Opus 4.7
+
+  Recommendation  opus-4-7 · high effort
+  Why             Deep / architectural work. Opus 4.7 has the strongest
+                  reasoning and is worth the premium when correctness matters.
+
+$ ctok refine "please can you kindly help me to handle the auth thing somehow"
+
+  Score 12 → 45 (+33)  ·  saved 4 tokens
+  Refined: Handle the auth flow.
+```

@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "astro",
+  "rewrites": [
+    { "source": "/docs/(.*)", "destination": "/docs/$1" }
+  ]
+}
