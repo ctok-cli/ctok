@@ -2,9 +2,15 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
+// Default to GitHub Pages (https://ctok-cli.github.io/ctok). When the docs
+// later move to a Vercel-hosted root or to docs.ctok.dev, override via env:
+//   SITE=https://ctok.dev BASE=/docs pnpm --filter @ctok/docs build
+const site = process.env.SITE ?? "https://ctok-cli.github.io";
+const base = process.env.BASE ?? "/ctok";
+
 export default defineConfig({
-  site: "https://ctok.dev",
-  base: "/docs",
+  site,
+  base,
   integrations: [
     starlight({
       title: "ctok",
