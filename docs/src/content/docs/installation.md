@@ -20,13 +20,13 @@ bun add -g ctok
 Installs a pre-compiled binary into `~/.ctok/bin/` and adds it to `PATH`.
 
 ```sh
-curl -fsSL https://ctok.dev/install.sh | sh
+curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh
 ```
 
 ### PowerShell (Windows)
 
 ```powershell
-irm https://ctok.dev/install.ps1 | iex
+irm https://ctok-cli.github.io/ctok/install.ps1 | iex
 ```
 
 ### Homebrew (macOS / Linux)
@@ -69,7 +69,7 @@ ctok doctor       # checks environment, config, plan detection
 
 ## Web playground
 
-No install needed - open [ctok.dev](https://ctok.dev) in any browser.
+No install needed - open [ctok-cli.github.io/ctok](https://ctok-cli.github.io/ctok) in any browser.
 
 ---
 

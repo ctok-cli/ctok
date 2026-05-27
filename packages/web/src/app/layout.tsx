@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ctok - Lighthouse for Claude prompts",
     description: "Estimate tokens, pick the right model, and refine prompts before you send to Claude.",
-    url: "https://ctok.dev",
+    url: "https://ctok-cli.github.io/ctok",
     siteName: "ctok",
     type: "website",
   },

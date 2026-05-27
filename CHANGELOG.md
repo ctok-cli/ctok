@@ -52,7 +52,7 @@ Versioning: [SemVer](https://semver.org/).
 - Next.js 15 app, static export
 - URL-hash state for shareable links
 - Hero section with 5 example scenarios and CLI install banner
-- `ctok.dev` deployment via Vercel
+- `ctok-cli.github.io/ctok` deployment via Vercel
 
 **Desktop app (`@ctok/desktop`)**
 - Tauri 2 wrapper around the web playground

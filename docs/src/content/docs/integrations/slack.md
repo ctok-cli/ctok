@@ -61,4 +61,4 @@ docker run -p 3000:3000 --env-file .env ctok-slack
 
 ## Privacy
 
-All analysis runs locally on the bot server. No prompt text is sent to ctok.dev or any external service.
+All analysis runs locally on the bot server. No prompt text is sent to ctok-cli.github.io/ctok or any external service.

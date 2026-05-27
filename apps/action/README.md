@@ -91,4 +91,4 @@ Every run writes a Markdown table to the GitHub Actions job summary with the ful
 
 ## Privacy
 
-All analysis runs locally inside the GitHub runner. No prompt text is sent to ctok.dev or any external service. The action bundles `@ctok/core`, `@ctok/refiner`, and `@ctok/quota` directly into `dist/index.js`.
+All analysis runs locally inside the GitHub runner. No prompt text is sent to ctok-cli.github.io/ctok or any external service. The action bundles `@ctok/core`, `@ctok/refiner`, and `@ctok/quota` directly into `dist/index.js`.

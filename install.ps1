@@ -1,8 +1,8 @@
 # install.ps1 - ctok one-liner installer for Windows
 #
 # Usage:
-#   iwr https://ctok.dev/install.ps1 | iex
-#   iwr https://ctok.dev/install.ps1 -OutFile install.ps1; .\install.ps1 -Version 0.2.0
+#   iwr https://ctok-cli.github.io/ctok/install.ps1 | iex
+#   iwr https://ctok-cli.github.io/ctok/install.ps1 -OutFile install.ps1; .\install.ps1 -Version 0.2.0
 #
 # Parameters:
 #   -Version <string>   Install a specific version (default: latest)

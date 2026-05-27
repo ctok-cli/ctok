@@ -1,6 +1,6 @@
-# ctok installer - https://ctok-cli.github.io/ctok/install.ps1
-# Usage: iwr https://ctok-cli.github.io/ctok/install.ps1 | iex
-#        or: iwr https://ctok-cli.github.io/ctok/install.ps1 -UseBasicParsing | Invoke-Expression
+# ctok installer - https://ctok.dev/install.ps1
+# Usage: iwr https://ctok.dev/install.ps1 | iex
+#        or: iwr https://ctok.dev/install.ps1 -UseBasicParsing | Invoke-Expression
 [CmdletBinding()]
 param(
   [string]$Version = $env:CTOK_VERSION,

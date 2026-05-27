@@ -61,10 +61,10 @@ pnpm add -g @ctok/cli
 brew install ctok-cli/tap/ctok
 
 # curl (Linux / macOS)
-curl -fsSL https://ctok.dev/install.sh | sh
+curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh
 
 # PowerShell (Windows)
-irm https://ctok.dev/install.ps1 | iex
+irm https://ctok-cli.github.io/ctok/install.ps1 | iex
 ```
 
 Verify:
@@ -125,7 +125,7 @@ Run `ctok <command> --help` for full options. Use `--json` for machine-readable 
 
 | Surface | Install |
 |---------|---------|
-| **Web playground** | [ctok.dev](https://ctok.dev) - shareable `#hash` links |
+| **Web playground** | [ctok-cli.github.io/ctok/playground](https://ctok-cli.github.io/ctok/playground/) - shareable `#hash` links |
 | **MCP server** | `npx -y @ctok/mcp` - 4 tools for Claude Code and other MCP clients |
 | **Desktop app** | Download from [Releases](https://github.com/ctok-cli/ctok/releases) - drag-drop folder scan |
 | **Browser extension** | [Chrome Web Store](https://chrome.google.com/webstore) - works on claude.ai, ChatGPT, Cursor, DeepSeek, Gemini |
@@ -171,7 +171,7 @@ packages/
   quota/         @ctok/quota        - plan limits and quota impact calculator
   cli/           @ctok/cli          - Commander.js CLI
   mcp/           @ctok/mcp          - MCP server (JSON-RPC 2.0 over stdio)
-  web/           @ctok/web          - Next.js playground (ctok.dev)
+  web/           @ctok/web          - Next.js playground (ctok-cli.github.io/ctok)
   desktop/       @ctok/desktop      - Tauri 2 desktop wrapper
   browser-ext/   @ctok/browser-ext  - Chrome MV3 extension
 docs/                               - Astro Starlight documentation site

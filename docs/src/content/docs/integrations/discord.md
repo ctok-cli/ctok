@@ -56,4 +56,4 @@ docker run --env-file .env ctok-discord
 
 ## Privacy
 
-All analysis runs locally on the bot server. No prompt text is sent to ctok.dev or any external service.
+All analysis runs locally on the bot server. No prompt text is sent to ctok-cli.github.io/ctok or any external service.

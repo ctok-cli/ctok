@@ -64,4 +64,4 @@ docker run --env-file .env ctok-discord
 
 ## Privacy
 
-All analysis (`@ctok/core`, `@ctok/refiner`, `@ctok/quota`) runs locally on the bot server. No prompt text is sent to ctok.dev or any external service. The `scan` command reads the **server's** filesystem, so only deploy where that's intentional.
+All analysis (`@ctok/core`, `@ctok/refiner`, `@ctok/quota`) runs locally on the bot server. No prompt text is sent to ctok-cli.github.io/ctok or any external service. The `scan` command reads the **server's** filesystem, so only deploy where that's intentional.

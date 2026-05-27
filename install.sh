@@ -2,9 +2,9 @@
 # install.sh - ctok one-liner installer for Linux and macOS
 #
 # Usage:
-#   curl -fsSL https://ctok.dev/install.sh | sh
-#   curl -fsSL https://ctok.dev/install.sh | sh -s -- --version 0.2.0
-#   curl -fsSL https://ctok.dev/install.sh | sh -s -- --dir /usr/local/bin
+#   curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh
+#   curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh -s -- --version 0.2.0
+#   curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh -s -- --dir /usr/local/bin
 #
 # Environment overrides:
 #   CTOK_VERSION   - install a specific version instead of latest

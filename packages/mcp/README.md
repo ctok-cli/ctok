@@ -1,6 +1,6 @@
 # @ctok/mcp
 
-MCP server for [ctok](https://ctok.dev) - lets Claude Code and any MCP-compatible AI agent call ctok as a tool.
+MCP server for [ctok](https://ctok-cli.github.io/ctok) - lets Claude Code and any MCP-compatible AI agent call ctok as a tool.
 
 ## Usage
 

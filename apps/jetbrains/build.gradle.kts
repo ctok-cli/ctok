@@ -57,7 +57,7 @@ intellijPlatform {
         }
         vendor {
             name = "ctok-cli"
-            url = "https://ctok.dev"
+            url = "https://ctok-cli.github.io/ctok"
         }
     }
 

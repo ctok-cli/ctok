@@ -67,7 +67,7 @@ export function buildCheckEmbed(r: CheckResult): EmbedBuilder {
         inline: false,
       },
     )
-    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok-cli.github.io/ctok" });
 
   if (suggestions.length > 0) {
     const tips = suggestions
@@ -109,7 +109,7 @@ export function buildRefineEmbed(r: RefineOutput): EmbedBuilder {
         inline: false,
       },
     )
-    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok-cli.github.io/ctok" });
 }
 
 export function buildScanEmbed(r: ScanResult, directory: string): EmbedBuilder {
@@ -128,7 +128,7 @@ export function buildScanEmbed(r: ScanResult, directory: string): EmbedBuilder {
       { name: "Total tokens", value: fmtTokens(r.estimatedTokens), inline: true },
       { name: "Heaviest files", value: topFiles, inline: false },
     )
-    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok-cli.github.io/ctok" });
 }
 
 export function buildErrorEmbed(message: string): EmbedBuilder {
@@ -164,5 +164,5 @@ export function buildHelpEmbed(): EmbedBuilder {
         inline: false,
       },
     )
-    .setFooter({ text: "ctok.dev · github.com/ctok-cli/ctok" });
+    .setFooter({ text: "ctok-cli.github.io/ctok · github.com/ctok-cli/ctok" });
 }

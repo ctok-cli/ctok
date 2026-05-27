@@ -63,7 +63,7 @@
       "active": true,
       "pubkey": "",
       "endpoints": [
-        "https://ctok.dev/updates/{{target}}/{{arch}}/{{current_version}}"
+        "https://ctok-cli.github.io/ctok/updates/{{target}}/{{arch}}/{{current_version}}"
       ],
       "dialog": true,
       "windows": {

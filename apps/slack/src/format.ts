@@ -65,7 +65,7 @@ export function buildCheckBlocks(r: CheckResult): KnownBlock[] {
 
   blocks.push({
     type: "context",
-    elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok.dev|ctok> - all analysis runs locally_" }],
+    elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok-cli.github.io/ctok|ctok> - all analysis runs locally_" }],
   });
 
   return blocks;
@@ -89,7 +89,7 @@ export function buildRefineBlocks(r: RefineOutput, original: string): KnownBlock
     },
     {
       type: "context",
-      elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok.dev|ctok>_" }],
+      elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok-cli.github.io/ctok|ctok>_" }],
     },
   ];
 }
@@ -121,7 +121,7 @@ export function buildScanBlocks(r: ScanResult, directory: string): KnownBlock[] 
     },
     {
       type: "context",
-      elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok.dev|ctok>_" }],
+      elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok-cli.github.io/ctok|ctok>_" }],
     },
   ];
 }
@@ -161,7 +161,7 @@ export function buildHelpBlocks(): KnownBlock[] {
     },
     {
       type: "context",
-      elements: [{ type: "mrkdwn", text: "<https://ctok.dev|ctok.dev> · <https://github.com/ctok-cli/ctok|GitHub>" }],
+      elements: [{ type: "mrkdwn", text: "<https://ctok-cli.github.io/ctok|ctok-cli.github.io/ctok> · <https://github.com/ctok-cli/ctok|GitHub>" }],
     },
   ];
 }

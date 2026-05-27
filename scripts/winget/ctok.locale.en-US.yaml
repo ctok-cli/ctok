@@ -3,9 +3,9 @@ PackageIdentifier: CtokCLI.ctok
 PackageVersion: 0.1.0
 PackageLocale: en-US
 Publisher: ctok-cli
-PublisherUrl: https://ctok.dev
+PublisherUrl: https://ctok-cli.github.io/ctok
 PackageName: ctok
-PackageUrl: https://ctok.dev
+PackageUrl: https://ctok-cli.github.io/ctok
 License: MIT
 LicenseUrl: https://github.com/ctok-cli/ctok/blob/main/LICENSE
 ShortDescription: Lighthouse for Claude prompts

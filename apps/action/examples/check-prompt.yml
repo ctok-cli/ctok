@@ -66,7 +66,7 @@ jobs:
               `| Effort | ${effort} |`,
               saved > 0 ? `| Tokens saved by refiner | ~${saved} |` : '',
               '',
-              '_Powered by [ctok](https://ctok.dev)_',
+              '_Powered by [ctok](https://ctok-cli.github.io/ctok)_',
             ].filter(Boolean).join('\n');
             github.rest.issues.createComment({
               issue_number: context.issue.number,

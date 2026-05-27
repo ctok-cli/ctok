@@ -80,10 +80,10 @@ winget install ctok-cli.ctok
 
 ```sh
 # Linux / macOS
-curl -fsSL https://ctok.dev/install.sh | sh
+curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh
 
 # Windows PowerShell
-irm https://ctok.dev/install.ps1 | iex
+irm https://ctok-cli.github.io/ctok/install.ps1 | iex
 ```
 
 ### Verify
@@ -193,7 +193,7 @@ ctok serve              # http://localhost:31337
 ctok serve --port 8080
 ```
 
-Launches the same UI you see at [ctok.dev](https://ctok.dev) bound to localhost.
+Launches the same UI you see at [ctok-cli.github.io/ctok/playground](https://ctok-cli.github.io/ctok/playground/) bound to localhost.
 
 ### `ctok history` - recent estimations
 
@@ -275,9 +275,9 @@ Cursor: `~/.cursor/mcp.json`. Zed: `~/.config/zed/settings.json` under `context_
 
 ## Web playground
 
-[**ctok.dev**](https://ctok.dev) - paste a prompt, paste pasted-code blocks, optionally a project-context blob, get the full report.
+[**ctok-cli.github.io/ctok/playground**](https://ctok-cli.github.io/ctok/playground/) - paste a prompt, paste pasted-code blocks, optionally a project-context blob, get the full report.
 
-- Shareable links: state encodes into the URL hash (`ctok.dev/#<hash>`). Copy the URL to share an analysis.
+- Shareable links: state encodes into the URL hash (`ctok-cli.github.io/ctok/playground/#<hash>`). Copy the URL to share an analysis.
 - Local-only history (your browser).
 - No upload - text never leaves your tab unless you click *Share*.
 
@@ -332,7 +332,7 @@ Commands (⇧⌘P / Ctrl+Shift+P):
 - **ctok: Estimate selection** - highlight a prompt, run.
 - **ctok: Refine selection** - runs the refiner and shows the diff in a side panel.
 - **ctok: Scan workspace** - token map of the current folder.
-- **ctok: Open web playground** - opens ctok.dev with current selection as a hash link.
+- **ctok: Open web playground** - opens ctok-cli.github.io/ctok/playground with current selection as a hash link.
 
 Status-bar pill shows token count of the current file when ctok is active.
 
@@ -350,7 +350,7 @@ Install from the JetBrains Marketplace ("ctok"). Tool Window → ctok → paste 
 
 ## Slack bot
 
-Add to your workspace: `https://ctok.dev/slack/install`.
+Add to your workspace: `https://ctok-cli.github.io/ctok/slack/install`.
 
 Slash commands:
 
@@ -368,7 +368,7 @@ Self-host: `apps/slack/` has the bot code. `pnpm -F @ctok/slack start` after set
 
 ## Discord bot
 
-Invite link: `https://ctok.dev/discord/invite`.
+Invite link: `https://ctok-cli.github.io/ctok/discord/invite`.
 
 Commands:
 

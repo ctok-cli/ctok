@@ -10,7 +10,7 @@
 
 Please **do not** file a public GitHub issue for security vulnerabilities.
 
-Report vulnerabilities by emailing **security@ctok.dev** with:
+Report vulnerabilities by emailing **security@ctok-cli.github.io/ctok** with:
 - Description of the issue
 - Steps to reproduce
 - Potential impact

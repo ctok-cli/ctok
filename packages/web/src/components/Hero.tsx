@@ -15,12 +15,12 @@ const INSTALL_TABS = [
   {
     id: "curl",
     label: "curl",
-    cmd: 'curl -fsSL https://ctok.dev/install.sh | sh',
+    cmd: 'curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh',
   },
   {
     id: "ps",
     label: "PowerShell",
-    cmd: 'irm https://ctok.dev/install.ps1 | iex',
+    cmd: 'irm https://ctok-cli.github.io/ctok/install.ps1 | iex',
   },
 ] as const;
 

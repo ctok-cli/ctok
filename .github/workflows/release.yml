@@ -146,12 +146,12 @@ jobs:
 
             **One-liner (Linux / macOS):**
             ```bash
-            curl -fsSL https://ctok.dev/install.sh | sh
+            curl -fsSL https://ctok-cli.github.io/ctok/install.sh | sh
             ```
 
             **One-liner (Windows PowerShell):**
             ```powershell
-            iwr https://ctok.dev/install.ps1 | iex
+            iwr https://ctok-cli.github.io/ctok/install.ps1 | iex
             ```
 
             **Homebrew (macOS / Linux):**

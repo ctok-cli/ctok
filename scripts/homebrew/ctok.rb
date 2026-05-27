@@ -10,7 +10,7 @@
 
 class Ctok < Formula
   desc "Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts"
-  homepage "https://ctok.dev"
+  homepage "https://ctok-cli.github.io/ctok"
   version "0.1.0"
   license "MIT"
 

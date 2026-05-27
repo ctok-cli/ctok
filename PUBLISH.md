@@ -46,7 +46,7 @@ In browser:
 1. Create org `ctok-cli` at https://github.com/organizations/new (Free plan).
 2. Create repo `ctok-cli/ctok` (public, no README/license/gitignore - we already have them).
 3. Add short description: *"Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts."*
-4. Add website: `https://ctok.dev`.
+4. Add website: `https://ctok-cli.github.io/ctok`.
 5. Add topics: `claude`, `claude-ai`, `claude-code`, `claude-tokens`, `tokens`, `prompt-engineering`, `llm`, `anthropic`, `cli`, `mcp`, `vscode-extension`, `jetbrains-plugin`, `tauri`, `chrome-extension`.
 
 Then:
@@ -234,11 +234,11 @@ vercel --prod
 ```
 
 Then in Vercel dashboard:
-- Settings → Domains → add `ctok.dev`.
+- Settings → Domains → add `ctok-cli.github.io/ctok`.
 - Configure DNS at registrar: CNAME `cname.vercel-dns.com`.
 - Settings → Environment Variables → leave empty (no server runtime).
 
-Also redirect `www.ctok.dev` → `ctok.dev`.
+Also redirect `www.ctok-cli.github.io/ctok` → `ctok-cli.github.io/ctok`.
 
 ---
 
@@ -266,7 +266,7 @@ Always link to `USAGE.md` for "how to actually use this".
 - Label 5 issues `good first issue`.
 - Pitch newsletters: Latent Space, Ben's Bites, TLDR AI, AI Tidbits, Import AI.
 - T+5: post a "what we learned" retro on LinkedIn.
-- Watch for: npm download stats (use https://npmcharts.com/compare/@ctok/cli), GitHub stars, Vercel analytics on ctok.dev.
+- Watch for: npm download stats (use https://npmcharts.com/compare/@ctok/cli), GitHub stars, Vercel analytics on ctok-cli.github.io/ctok.
 
 ---
 

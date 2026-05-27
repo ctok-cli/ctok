@@ -28,7 +28,7 @@ packages/
   quota/         @ctok/quota     - plan limit tables, quota impact calculator
   cli/           @ctok/cli       - Commander.js CLI
   mcp/           @ctok/mcp       - MCP server
-  web/           @ctok/web       - Next.js playground (ctok.dev)
+  web/           @ctok/web       - Next.js playground (ctok-cli.github.io/ctok)
   desktop/       @ctok/desktop   - Tauri 2 wrapper
   browser-ext/   @ctok/browser-ext - Chrome MV3 extension
 docs/            Astro Starlight docs site

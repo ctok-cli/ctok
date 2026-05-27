@@ -13,7 +13,7 @@ body:
       label: Which surface?
       options:
         - CLI (`ctok` command)
-        - Web playground (ctok.dev)
+        - Web playground (ctok-cli.github.io/ctok)
         - MCP server (@ctok/mcp)
         - Desktop app
         - Browser extension

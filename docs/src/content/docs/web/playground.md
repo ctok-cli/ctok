@@ -1,9 +1,9 @@
 ---
 title: Web Playground
-description: Use the ctok web playground at ctok.dev for instant token estimates in your browser.
+description: Use the ctok web playground at ctok-cli.github.io/ctok for instant token estimates in your browser.
 ---
 
-The [ctok playground](https://ctok.dev) runs the full estimation engine in your browser. Nothing is sent to any server.
+The [ctok playground](https://ctok-cli.github.io/ctok) runs the full estimation engine in your browser. Nothing is sent to any server.
 
 ## Features
 
@@ -20,7 +20,7 @@ The [ctok playground](https://ctok.dev) runs the full estimation engine in your 
 The playground encodes the current prompt and task type in the URL hash. Copy the URL to share an analysis:
 
 ```
-https://ctok.dev/#s=eyJwIjoiUmVmYWN0b3IgdGhlIGF1dGggbWlkZGxld2FyZSIsInQiOiJyZWZhY3RvciJ9
+https://ctok-cli.github.io/ctok/#s=eyJwIjoiUmVmYWN0b3IgdGhlIGF1dGggbWlkZGxld2FyZSIsInQiOiJyZWZhY3RvciJ9
 ```
 
 ## Privacy

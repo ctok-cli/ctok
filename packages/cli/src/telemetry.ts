@@ -10,7 +10,7 @@ import { readCtokConfig } from "@ctok/quota";
 // Never sends prompt text, file names, or any PII.
 
 const ENDPOINT = "https://plausible.io/api/event";
-const DOMAIN = "ctok.dev";
+const DOMAIN = "ctok-cli.github.io/ctok";
 
 function getVersion(): string {
   try {

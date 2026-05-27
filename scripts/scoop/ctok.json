@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
   "description": "Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts",
-  "homepage": "https://ctok.dev",
+  "homepage": "https://ctok-cli.github.io/ctok",
   "license": "MIT",
   "architecture": {
     "64bit": {

@@ -120,7 +120,7 @@ configCmd
 
 program
   .command("serve")
-  .description("Launch the local web UI (ctok.dev playground) on localhost")
+  .description("Launch the local web UI (ctok-cli.github.io/ctok playground) on localhost")
   .option("-p, --port <port>", "Port to listen on", (v) => parseInt(v, 10), 31337)
   .action((opts) => runServe({ port: opts.port }));
 

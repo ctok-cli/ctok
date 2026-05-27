@@ -59,7 +59,7 @@ ctok/  (new repo, or restructured current repo)
 │   ├── refiner/                # @ctok/refiner - heuristic prompt refiner (the killer feature)
 │   ├── quota/                  # @ctok/quota - Claude plan & quota tracker
 │   ├── cli/                    # @ctok/cli - Commander.js CLI + interactive REPL
-│   ├── web/                    # @ctok/web - Next.js web playground (ctok.dev)
+│   ├── web/                    # @ctok/web - Next.js web playground (ctok-cli.github.io/ctok)
 │   ├── desktop/                # @ctok/desktop - Tauri wrapper around web UI
 │   ├── mcp/                    # @ctok/mcp - Model Context Protocol server
 │   └── browser-ext/            # @ctok/browser-ext - Chrome MV3 extension
@@ -321,8 +321,8 @@ ctok --help
 | `brew install ctok` | macOS power users | Homebrew formula in `homebrew-ctok` tap |
 | `scoop install ctok` | Windows power users | Scoop bucket |
 | `winget install ctok` | Windows modern | winget manifest |
-| `curl ctok.dev/install.sh \| sh` | Linux/macOS one-liner | shell installer that detects OS/arch and pulls right binary |
-| `iwr ctok.dev/install.ps1 \| iex` | Windows PowerShell one-liner | PS installer |
+| `curl ctok-cli.github.io/ctok/install.sh \| sh` | Linux/macOS one-liner | shell installer that detects OS/arch and pulls right binary |
+| `iwr ctok-cli.github.io/ctok/install.ps1 \| iex` | Windows PowerShell one-liner | PS installer |
 
 ---
 
@@ -334,7 +334,7 @@ ctok --help
 - Add prompt + optional file-content textarea. Hosted version is for *prompt analysis*, not project analysis.
 - Replace direct calls to `lib/*` with imports from `@ctok/core` and `@ctok/refiner`.
 - Add a public showcase page with examples (the 5 scenarios already in README.md).
-- Deploy to **Vercel** at **ctok.dev** (or whatever domain is available; verify before purchase).
+- Deploy to **Vercel** at **ctok-cli.github.io/ctok** (or whatever domain is available; verify before purchase).
 - Include a `<CLIPrompt>` banner: "For full project analysis install the CLI: `npm i -g @ctok/cli`".
 
 Tech stays: Next.js App Router + Tailwind + the existing components. Drop Zustand + localStorage entirely (replace with React state + URL hash for shareable analyses).
@@ -453,7 +453,7 @@ Each step is small enough to finish in one focused conversation with Sonnet 4.6 
 - Add landing page hero + 5 example scenarios.
 - Add "Install the CLI" banner.
 - Switch state from Zustand+localStorage to React state + URL hash (for shareable links).
-- Deploy to Vercel under `ctok.dev`. Use **AI Gateway** if/when we add LLM refiner in Phase 2 (per session knowledge update; default `"provider/model"` strings).
+- Deploy to Vercel under `ctok-cli.github.io/ctok`. Use **AI Gateway** if/when we add LLM refiner in Phase 2 (per session knowledge update; default `"provider/model"` strings).
 
 **Step 10 - Build `@ctok/mcp`.**
 - Implement MCP server with the 4 tools listed in §11.
@@ -562,7 +562,7 @@ Run on a fresh Windows 11 box, a fresh macOS box, and a fresh Ubuntu box:
 2. **Project scan.** `cd` into a real Flutter project, run `ctok scan`. Confirm `build/`, `.dart_tool/`, `.pub-cache` excluded; lib/ included.
 3. **Prompt estimate.** `ctok check "refactor the auth middleware to use Postgres sessions"` shows tokens, cost, model recommendation, effort recommendation.
 4. **Refine.** `ctok refine "please can you kindly help me to handle the auth thing somehow"` outputs a cleaned-up version + specificity score before/after + token savings.
-5. **Web.** Open `ctok.dev`, paste same prompt, identical recommendation appears.
+5. **Web.** Open `ctok-cli.github.io/ctok`, paste same prompt, identical recommendation appears.
 6. **Desktop.** Install signed installer, drag-drop the Flutter project, confirm identical scan results.
 7. **MCP.** Add to Claude Code config, restart, ask Claude to "estimate tokens for this prompt" - confirms tool is callable.
 8. **Browser ext.** Open `claude.ai`, start typing in the prompt box, confirm overlay shows live token count.

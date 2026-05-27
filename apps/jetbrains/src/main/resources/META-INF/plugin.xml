@@ -2,7 +2,7 @@
     <id>dev.ctok.jetbrains</id>
     <name>ctok - Claude Token Estimator</name>
     <version>0.1.0</version>
-    <vendor url="https://ctok.dev">ctok-cli</vendor>
+    <vendor url="https://ctok-cli.github.io/ctok">ctok-cli</vendor>
 
     <description><![CDATA[
         Estimate Claude token usage, cost, and quota impact without leaving your IDE.<br/><br/>
