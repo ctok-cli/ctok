@@ -1,4 +1,4 @@
-name: Refiner LLM — CI
+name: Refiner LLM - CI
 
 on:
   push:

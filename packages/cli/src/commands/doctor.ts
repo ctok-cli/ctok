@@ -33,7 +33,7 @@ export function runDoctor(): void {
   check(
     `ctok home: ${ctokHome}`,
     ctokHomeExists,
-    ctokHomeExists ? undefined : "Not yet created — will be on first run",
+    ctokHomeExists ? undefined : "Not yet created - will be on first run",
   );
 
   // Config file
@@ -42,7 +42,7 @@ export function runDoctor(): void {
   check(
     `Config: ${configPath}`,
     configExists,
-    configExists ? undefined : "No config yet — run `ctok config set plan <id>`",
+    configExists ? undefined : "No config yet - run `ctok config set plan <id>`",
   );
 
   // Plan detection
@@ -62,7 +62,7 @@ export function runDoctor(): void {
   check(
     `Claude home: ${claudeHome}`,
     claudeHomeExists,
-    claudeHomeExists ? "Found — plan auto-detection may work" : "Not found — install Claude Code for auto-detection",
+    claudeHomeExists ? "Found - plan auto-detection may work" : "Not found - install Claude Code for auto-detection",
   );
 
   // Claude settings.json

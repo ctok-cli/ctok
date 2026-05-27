@@ -1,4 +1,4 @@
---- ctok.nvim — Claude token estimator for Neovim
+--- ctok.nvim - Claude token estimator for Neovim
 --- Entry point: require('ctok').setup(opts)
 local M = {}
 
@@ -31,7 +31,7 @@ local function get_buffer_text()
   return table.concat(lines, "\n")
 end
 
---- Run :CtokCheck — estimate tokens for visual selection or full buffer.
+--- Run :CtokCheck - estimate tokens for visual selection or full buffer.
 ---@param opts { range: integer, args: string }
 function M.check(opts)
   local text
@@ -61,7 +61,7 @@ function M.check(opts)
   end)
 end
 
---- Run :CtokRefine — refine the visual selection.
+--- Run :CtokRefine - refine the visual selection.
 ---@param opts { range: integer }
 function M.refine(opts)
   local text
@@ -88,7 +88,7 @@ function M.refine(opts)
   end)
 end
 
---- Run :CtokScan — scan the project root.
+--- Run :CtokScan - scan the project root.
 ---@param opts { args: string }
 function M.scan(opts)
   local dir = (opts.args and opts.args ~= "") and opts.args
@@ -146,10 +146,10 @@ function M.doctor()
   end
   local r = cli.run({ "--version" })
   local version = r.stdout:match("([%d%.]+)") or "unknown"
-  vim.notify(string.format("[ctok] %s (v%s) — ready", exe, version), vim.log.levels.INFO)
+  vim.notify(string.format("[ctok] %s (v%s) - ready", exe, version), vim.log.levels.INFO)
 end
 
---- Setup function — call once in your Neovim config.
+--- Setup function - call once in your Neovim config.
 ---@param opts CtokConfig|nil
 function M.setup(opts)
   config.setup(opts)
@@ -163,7 +163,7 @@ function M.setup(opts)
 
   vim.api.nvim_create_user_command("CtokRefine", function(o)
     M.refine(o)
-  end, { range = true, desc = "ctok: refine prompt — show results in float" })
+  end, { range = true, desc = "ctok: refine prompt - show results in float" })
 
   vim.api.nvim_create_user_command("CtokRefineReplace", function(o)
     M.refine_replace(o)

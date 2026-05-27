@@ -16,7 +16,7 @@ const program = new Command();
 
 program
   .name("ctok")
-  .description("Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts")
+  .description("Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts")
   .version("0.1.0")
   .option("--no-color", "Disable colour output")
   .option("--debug", "Print internals and full stack traces on error")

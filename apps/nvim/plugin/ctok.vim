@@ -1,4 +1,4 @@
-" ctok.nvim — plugin entry point
+" ctok.nvim - plugin entry point
 " Neovim 0.10+ required (vim.system API)
 
 if exists('g:loaded_ctok') | finish | endif

@@ -26,7 +26,7 @@ export function recommendModel(
   } else if (complexity.band === "normal") {
     primary = "sonnet-4-6";
     reason =
-      "Standard coding task — Sonnet 4.6 is the right balance of quality and cost for typical features and bug fixes.";
+      "Standard coding task - Sonnet 4.6 is the right balance of quality and cost for typical features and bug fixes.";
     alts.push(
       { model: "haiku-4-5", reason: "Drop to Haiku if you only need quick edits or many cheap iterations." },
       { model: "opus-4-7",  reason: "Escalate to Opus if early Sonnet attempts miss requirements or the bug is subtle." },
@@ -44,13 +44,13 @@ export function recommendModel(
   if (taskType === "documentation" && primary !== "haiku-4-5") {
     alts.unshift({
       model: "haiku-4-5",
-      reason: "Documentation rewrites are usually fine on Haiku — significantly cheaper at high output volume.",
+      reason: "Documentation rewrites are usually fine on Haiku - significantly cheaper at high output volume.",
     });
   }
 
   if (inputTokens > 150_000 && primary !== "opus-4-7") {
     reason +=
-      " Note: your input is large (>150k tokens) — consider Opus for better long-context reasoning, or trim context first.";
+      " Note: your input is large (>150k tokens) - consider Opus for better long-context reasoning, or trim context first.";
   }
 
   return {

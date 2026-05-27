@@ -20,11 +20,11 @@ export async function runRepl(): Promise<void> {
     const scanResult = await scan({ root: cwd, topHeavyCount: 5 });
     spinner.stop();
     if (scanResult.totalFiles > 0) {
-      projectInfo = `${scanResult.projectType} project — ${scanResult.totalFiles} files — ${fmtTokens(scanResult.estimatedTokens)} tokens`;
+      projectInfo = `${scanResult.projectType} project - ${scanResult.totalFiles} files - ${fmtTokens(scanResult.estimatedTokens)} tokens`;
       process.stdout.write(`  ${c.dim("Project:")} ${projectInfo}\n\n`);
     }
   } catch {
-    // scan failed (not in a project) — silent
+    // scan failed (not in a project) - silent
   }
 
   while (true) {

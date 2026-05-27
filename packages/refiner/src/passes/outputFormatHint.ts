@@ -10,8 +10,8 @@ const OUTPUT_REQUEST_PATTERNS: Array<{
     pattern: /\b(?:write|implement|add|create|build|generate)\b.*\b(?:function|method|class|component|hook|endpoint|route|handler|middleware|module|service|util)\b/i,
     kind: "code",
     hints: [
-      'Return only the changed function/method — no surrounding code.',
-      'Return only the new file content — no explanation.',
+      'Return only the changed function/method - no surrounding code.',
+      'Return only the new file content - no explanation.',
       'Return only the diff (unified diff format).',
     ],
   },
@@ -19,8 +19,8 @@ const OUTPUT_REQUEST_PATTERNS: Array<{
     pattern: /\b(?:refactor|rename|move|extract|inline|convert)\b/i,
     kind: "diff",
     hints: [
-      'Return only the diff (unified diff format) — no explanation.',
-      'Return only the changed lines — no unchanged context.',
+      'Return only the diff (unified diff format) - no explanation.',
+      'Return only the changed lines - no unchanged context.',
     ],
   },
   {
@@ -35,22 +35,22 @@ const OUTPUT_REQUEST_PATTERNS: Array<{
     pattern: /\b(?:list|enumerate|show|give me|tell me|what are)\b.*\b(?:all|every|the)\b/i,
     kind: "list",
     hints: [
-      'Return a numbered list — no prose.',
-      'Return a bullet list — no introduction or conclusion.',
+      'Return a numbered list - no prose.',
+      'Return a bullet list - no introduction or conclusion.',
     ],
   },
   {
     pattern: /\b(?:return|output|respond|format)\b.*\bjson\b/i,
     kind: "json",
     hints: [
-      'Return only valid JSON — no markdown fences, no explanation.',
+      'Return only valid JSON - no markdown fences, no explanation.',
     ],
   },
   {
     pattern: /\b(?:write|generate|create|produce)\b.*\b(?:sql|query|select|insert|update|delete|migration)\b/i,
     kind: "sql",
     hints: [
-      'Return only the SQL — no explanation.',
+      'Return only the SQL - no explanation.',
       'Return only the migration file content.',
     ],
   },
@@ -58,7 +58,7 @@ const OUTPUT_REQUEST_PATTERNS: Array<{
     pattern: /\b(?:write|create|generate)\b.*\b(?:script|bash|shell|command|dockerfile|makefile|workflow|yaml|ci)\b/i,
     kind: "shell",
     hints: [
-      'Return only the script/file content — no explanation.',
+      'Return only the script/file content - no explanation.',
       'Return only the changed lines.',
     ],
   },
@@ -67,7 +67,7 @@ const OUTPUT_REQUEST_PATTERNS: Array<{
     kind: "explanation",
     hints: [
       'Respond in ≤3 bullet points.',
-      'Respond in one paragraph — no headers.',
+      'Respond in one paragraph - no headers.',
     ],
   },
 ];

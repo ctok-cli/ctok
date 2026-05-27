@@ -1,4 +1,4 @@
-# install.ps1 — ctok one-liner installer for Windows
+# install.ps1 - ctok one-liner installer for Windows
 #
 # Usage:
 #   iwr https://ctok.dev/install.ps1 | iex

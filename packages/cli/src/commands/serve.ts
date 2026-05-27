@@ -34,7 +34,7 @@ export function runServe(opts: ServeOptions): void {
         env: { ...process.env },
       });
     } catch {
-      // serve exits when user ctrl-c's — that's fine
+      // serve exits when user ctrl-c's - that's fine
     }
     return;
   }
@@ -48,7 +48,7 @@ export function runServe(opts: ServeOptions): void {
         env: { ...process.env },
       });
     } catch {
-      // next exits when user ctrl-c's — that's fine
+      // next exits when user ctrl-c's - that's fine
     }
     return;
   }

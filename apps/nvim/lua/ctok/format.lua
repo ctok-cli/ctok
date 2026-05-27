@@ -44,15 +44,15 @@ function M.check_lines(result)
   local est = result.estimate or {}
   local inp = est.input or {}
   local out = est.output or {}
-  push(string.format("  Input:    %s  (range %s – %s)",
+  push(string.format("  Input:    %s  (range %s - %s)",
     fmt_tokens(inp.expected or 0), fmt_tokens(inp.min or 0), fmt_tokens(inp.max or 0)))
-  push(string.format("  Output:   %s  (range %s – %s)",
+  push(string.format("  Output:   %s  (range %s - %s)",
     fmt_tokens(out.expected or 0), fmt_tokens(out.min or 0), fmt_tokens(out.max or 0)))
   push(string.format("  Confidence: %s", est.confidence or "?"))
   push("")
 
   local cost = result.cost or {}
-  push(string.format("  Cost:     %s  (range %s – %s)",
+  push(string.format("  Cost:     %s  (range %s - %s)",
     fmt_usd(cost.totalUsd or 0),
     fmt_usd((cost.totalUsdRange or {}).min or 0),
     fmt_usd((cost.totalUsdRange or {}).max or 0)))

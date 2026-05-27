@@ -14,9 +14,9 @@ const options = {
   sourcemap: false,
   minify: !watch,
   logLevel: "info",
-  // @actions/core uses dynamic require for some optional bits — keep it external
+  // @actions/core uses dynamic require for some optional bits - keep it external
   // to avoid bundling issues, but it IS a runtime dep so it will be in node_modules.
-  // Actually we want to fully bundle for a self-contained action dist — no external.
+  // Actually we want to fully bundle for a self-contained action dist - no external.
 };
 
 if (watch) {

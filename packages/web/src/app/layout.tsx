@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "ctok — Lighthouse for Claude prompts",
+  title: "ctok - Lighthouse for Claude prompts",
   description:
-    "Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost — right in your browser.",
+    "Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost - right in your browser.",
   openGraph: {
-    title: "ctok — Lighthouse for Claude prompts",
+    title: "ctok - Lighthouse for Claude prompts",
     description: "Estimate tokens, pick the right model, and refine prompts before you send to Claude.",
     url: "https://ctok.dev",
     siteName: "ctok",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "ctok — Lighthouse for Claude prompts",
+    title: "ctok - Lighthouse for Claude prompts",
     description: "Estimate tokens, pick the right model, and refine prompts before you send to Claude.",
   },
 };

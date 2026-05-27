@@ -39,7 +39,7 @@ export function isOptedIn(): boolean {
 }
 
 /**
- * Fire-and-forget anonymous event. Swallows all errors — never throws.
+ * Fire-and-forget anonymous event. Swallows all errors - never throws.
  * Safe to call without await.
  */
 export function trackEvent(name: string, props: EventProps = {}): void {

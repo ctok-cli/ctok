@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`refine — Step 5 snapshots > corpus 19 negativeCollapse suggestion matches snapshot 1`] = `
+exports[`refine - Step 5 snapshots > corpus 19 negativeCollapse suggestion matches snapshot 1`] = `
 "Do NOT:
 - Don't change the public API
 - Don't use any third-party DI frameworks
@@ -9,7 +9,7 @@ exports[`refine — Step 5 snapshots > corpus 19 negativeCollapse suggestion mat
 - Do not add new dependencies to package"
 `;
 
-exports[`refine — Step 5 snapshots > corpus 34 full refine result shape matches snapshot 1`] = `
+exports[`refine - Step 5 snapshots > corpus 34 full refine result shape matches snapshot 1`] = `
 [
   {
     "applied": false,
@@ -42,7 +42,7 @@ exports[`refine — Step 5 snapshots > corpus 34 full refine result shape matche
 ]
 `;
 
-exports[`refine — Step 5 snapshots > scoreBreakdown for corpus 21 matches snapshot 1`] = `
+exports[`refine - Step 5 snapshots > scoreBreakdown for corpus 21 matches snapshot 1`] = `
 {
   "codeReferences": 15,
   "concreteEntities": 15,
@@ -55,17 +55,17 @@ exports[`refine — Step 5 snapshots > scoreBreakdown for corpus 21 matches snap
 }
 `;
 
-exports[`refine — snapshots > corpus 01 refined matches snapshot 1`] = `
+exports[`refine - snapshots > corpus 01 refined matches snapshot 1`] = `
 "GOAL: help me fix this function?
-CONTEXT: <what the AI needs to know — paste relevant code, error messages, or background here>
+CONTEXT: <what the AI needs to know - paste relevant code, error messages, or background here>
 CONSTRAINTS:
 - <language / framework / version>
 - <what NOT to change>
 - <performance / style requirements>
-OUTPUT: <format — e.g. "Return only the changed function", "Respond as JSON: {…}", "Numbered list">"
+OUTPUT: <format - e.g. "Return only the changed function", "Respond as JSON: {…}", "Numbered list">"
 `;
 
-exports[`refine — snapshots > corpus 06 (filler + vague) pass names match snapshot 1`] = `
+exports[`refine - snapshots > corpus 06 (filler + vague) pass names match snapshot 1`] = `
 [
   "fillerStrip",
   "vagueVerbReplace",
@@ -73,7 +73,7 @@ exports[`refine — snapshots > corpus 06 (filler + vague) pass names match snap
 ]
 `;
 
-exports[`refine — snapshots > corpus 08 (intensifier spam) filler suggestions match snapshot 1`] = `
+exports[`refine - snapshots > corpus 08 (intensifier spam) filler suggestions match snapshot 1`] = `
 [
   "Remove filler: "very"",
   "Remove filler: "really"",

@@ -1,5 +1,5 @@
 /**
- * Specificity score (0–100) — measures how well-formed a prompt is.
+ * Specificity score (0-100) - measures how well-formed a prompt is.
  *
  * Dimensions (max points in parens):
  *  +20  has explicit goal verb (imperative action word)
@@ -15,11 +15,11 @@
 const GOAL_VERB_RE =
   /\b(?:implement|add|remove|fix|refactor|rename|move|extract|inline|migrate|write|generate|create|build|optimize|debug|resolve|convert|replace|extend|update|delete|expose|wire|integrate|deploy|configure|scaffold)\b/i;
 
-/** +15: names concrete identifiers — file paths, function/class names, field names. */
+/** +15: names concrete identifiers - file paths, function/class names, field names. */
 const CONCRETE_ENTITY_RE =
   /(?:`[^`]+`|src\/[\w/.]+|lib\/[\w/.]+|app\/[\w/.]+|\w+\.(?:ts|tsx|js|jsx|py|dart|kt|java|rs|go|swift|rb|php|cs)\b|\b[A-Z][a-zA-Z]+(?:Service|Controller|Handler|Manager|Repository|Store|Hook|Context|Provider|Component|Model|Schema|Enum|Type|Interface|Dto|Entity|Util|Helper)\b)/;
 
-/** +15: measurable success criterion — "should", "must", "returns X", "passes X test". */
+/** +15: measurable success criterion - "should", "must", "returns X", "passes X test". */
 const SUCCESS_CRITERION_RE =
   /\b(?:should|must|so that|in order to|expect|assert|verify|confirm|guarantee|ensure|passes?\s+(?:all\s+)?tests?|returns?\s+\w+|outputs?\s+\w+|produces?\s+\w+)\b/i;
 

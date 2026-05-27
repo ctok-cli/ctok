@@ -34,7 +34,7 @@ export async function handleCheck(interaction: ChatInputCommandInteraction): Pro
         embed.addFields(buildQuotaField(quota.percentOf5hWindow, plan, quota.summary));
       }
     } catch {
-      // unknown plan — skip quota
+      // unknown plan - skip quota
     }
   }
 

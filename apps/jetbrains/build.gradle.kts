@@ -29,7 +29,7 @@ dependencies {
 
 intellijPlatform {
     pluginConfiguration {
-        name = "ctok — Claude Token Estimator"
+        name = "ctok - Claude Token Estimator"
         version = "0.1.0"
         description = """
             Estimate Claude token usage, cost, and quota impact without leaving your IDE.

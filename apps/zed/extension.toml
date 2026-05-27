@@ -1,6 +1,6 @@
 id = "ctok"
 name = "ctok"
-description = "Claude token estimator — estimate tokens, costs, and refine prompts directly in the AI assistant panel."
+description = "Claude token estimator - estimate tokens, costs, and refine prompts directly in the AI assistant panel."
 version = "0.1.0"
 schema_version = 1
 authors = ["ctok contributors"]

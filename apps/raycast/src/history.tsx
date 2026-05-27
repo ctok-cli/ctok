@@ -40,7 +40,7 @@ function HistoryEntryDetail({ entry }: { entry: HistoryEntry }) {
     ``,
     `## Recommendation`,
     ``,
-    `${effortEmoji(recommendation.effort.effort)} **${recommendation.effort.effort}** — ${recommendation.model.model}`,
+    `${effortEmoji(recommendation.effort.effort)} **${recommendation.effort.effort}** - ${recommendation.model.model}`,
     ``,
     recommendation.model.reason,
     ``,

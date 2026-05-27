@@ -6,10 +6,10 @@
 #   brew install ctok
 #
 # This file is auto-updated by the release workflow.
-# SHA256 values below are placeholders — the release workflow patches them.
+# SHA256 values below are placeholders - the release workflow patches them.
 
 class Ctok < Formula
-  desc "Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts"
+  desc "Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts"
   homepage "https://ctok.dev"
   version "0.1.0"
   license "MIT"

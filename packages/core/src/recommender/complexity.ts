@@ -40,7 +40,7 @@ export function scoreComplexity(
   signals.push({ label: `task type: ${input.taskType}`, weight: base });
 
   const inputTokens = estimate.input.expected;
-  // Exclude fixed system overhead from volume scoring — overhead is constant
+  // Exclude fixed system overhead from volume scoring - overhead is constant
   // and must not artificially inflate tiny prompts into higher complexity bands.
   const SYSTEM_OVERHEAD = 350;
   const contentTokens = Math.max(0, inputTokens - SYSTEM_OVERHEAD);
@@ -80,7 +80,7 @@ export function scoreComplexity(
   }
 
   score = Math.max(0, Math.min(100, score));
-  // Thresholds: simple < 35, normal 35–64, deep ≥ 65
+  // Thresholds: simple < 35, normal 35-64, deep ≥ 65
   const band: ComplexityBreakdown["band"] =
     score < 35 ? "simple" : score < 65 ? "normal" : "deep";
 

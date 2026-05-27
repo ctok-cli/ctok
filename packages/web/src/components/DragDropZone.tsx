@@ -66,7 +66,7 @@ export function DragDropZone() {
         {scanning
           ? "Scanning project…"
           : lastScan
-            ? `${lastScan.root.split("/").pop()} — ${lastScan.total_files} files, ~${(lastScan.estimated_tokens / 1000).toFixed(1)}k tokens`
+            ? `${lastScan.root.split("/").pop()} - ${lastScan.total_files} files, ~${(lastScan.estimated_tokens / 1000).toFixed(1)}k tokens`
             : "Drop a project folder here to scan its token footprint"}
       </span>
     </div>
@@ -94,5 +94,5 @@ ${topExts}
 Heaviest files:
 ${heaviest}
 
-[Add your prompt below — the scan above gives Claude project context]`;
+[Add your prompt below - the scan above gives Claude project context]`;
 }

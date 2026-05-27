@@ -7,7 +7,7 @@ local root = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h:h")
 -- Add the plugin runtime path
 vim.opt.rtp:prepend(root)
 
--- Add plenary — adjust path to where plenary is installed on your system,
+-- Add plenary - adjust path to where plenary is installed on your system,
 -- or use a plugin manager that handles this.
 -- For CI we install it via the workflow.
 local plenary_path = vim.fn.stdpath("data") .. "/lazy/plenary.nvim"

@@ -32,13 +32,13 @@ public struct Formatter {
         let cost = result.cost
 
         var lines: [String] = [
-            "⚡ ctok — Token Estimate",
+            "⚡ ctok - Token Estimate",
             "",
-            "Input:      \(fmtTokens(est.input.min))–\(fmtTokens(est.input.max))  (est. \(fmtTokens(est.input.expected)))",
-            "Output:     \(fmtTokens(est.output.min))–\(fmtTokens(est.output.max))",
+            "Input:      \(fmtTokens(est.input.min))-\(fmtTokens(est.input.max))  (est. \(fmtTokens(est.input.expected)))",
+            "Output:     \(fmtTokens(est.output.min))-\(fmtTokens(est.output.max))",
             "Confidence: \(est.confidence)",
             "",
-            "Cost:       \(fmtUsd(cost.totalUsd))  (\(fmtUsd(cost.totalUsdRange.min))–\(fmtUsd(cost.totalUsdRange.max)))",
+            "Cost:       \(fmtUsd(cost.totalUsd))  (\(fmtUsd(cost.totalUsdRange.min))-\(fmtUsd(cost.totalUsdRange.max)))",
             "",
             "\(effortEmoji(rec.effort.effort)) \(rec.effort.effort) effort → \(rec.model.model)",
             "  \(rec.model.reason)",
@@ -59,7 +59,7 @@ public struct Formatter {
 
     public static func refineSummary(result: RefineResult) -> String {
         [
-            "✂️ ctok — Refined Prompt",
+            "✂️ ctok - Refined Prompt",
             "",
             "Tokens saved: ~\(fmtTokens(result.savedTokens)) (\(Int(result.savedPct))% reduction)",
             "",

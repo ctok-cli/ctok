@@ -1,6 +1,6 @@
 import type { ModelId } from "./types";
 
-// Per-1M-token list prices, USD. Approximate — adjust as Anthropic updates them.
+// Per-1M-token list prices, USD. Approximate - adjust as Anthropic updates them.
 // The tool flags these as estimates. Update in one place when pricing changes.
 export const PRICING: Record<
   ModelId,

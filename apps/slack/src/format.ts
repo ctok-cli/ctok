@@ -30,14 +30,14 @@ export function buildCheckBlocks(r: CheckResult): KnownBlock[] {
   const blocks: KnownBlock[] = [
     {
       type: "header",
-      text: { type: "plain_text", text: "⚡ ctok — Token Estimate", emoji: true },
+      text: { type: "plain_text", text: "⚡ ctok - Token Estimate", emoji: true },
     },
     {
       type: "section",
       fields: [
-        { type: "mrkdwn", text: `*Input tokens*\n${fmtTokens(estimate.input.min)}–${fmtTokens(estimate.input.max)} (est. *${fmtTokens(estimate.input.expected)}*)` },
-        { type: "mrkdwn", text: `*Output tokens*\n${fmtTokens(estimate.output.min)}–${fmtTokens(estimate.output.max)}` },
-        { type: "mrkdwn", text: `*Total cost*\n${fmtUsd(cost.totalUsd)} (${fmtUsd(cost.totalUsdRange.min)}–${fmtUsd(cost.totalUsdRange.max)})` },
+        { type: "mrkdwn", text: `*Input tokens*\n${fmtTokens(estimate.input.min)}-${fmtTokens(estimate.input.max)} (est. *${fmtTokens(estimate.input.expected)}*)` },
+        { type: "mrkdwn", text: `*Output tokens*\n${fmtTokens(estimate.output.min)}-${fmtTokens(estimate.output.max)}` },
+        { type: "mrkdwn", text: `*Total cost*\n${fmtUsd(cost.totalUsd)} (${fmtUsd(cost.totalUsdRange.min)}-${fmtUsd(cost.totalUsdRange.max)})` },
         { type: "mrkdwn", text: `*Confidence*\n${estimate.confidence}` },
       ],
     },
@@ -65,7 +65,7 @@ export function buildCheckBlocks(r: CheckResult): KnownBlock[] {
 
   blocks.push({
     type: "context",
-    elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok.dev|ctok> — all analysis runs locally_" }],
+    elements: [{ type: "mrkdwn", text: "_Powered by <https://ctok.dev|ctok> - all analysis runs locally_" }],
   });
 
   return blocks;
@@ -76,7 +76,7 @@ export function buildRefineBlocks(r: RefineOutput, original: string): KnownBlock
   return [
     {
       type: "header",
-      text: { type: "plain_text", text: "✂️ ctok — Refined Prompt", emoji: true },
+      text: { type: "plain_text", text: "✂️ ctok - Refined Prompt", emoji: true },
     },
     {
       type: "section",
@@ -97,13 +97,13 @@ export function buildRefineBlocks(r: RefineOutput, original: string): KnownBlock
 export function buildScanBlocks(r: ScanResult, directory: string): KnownBlock[] {
   const topFiles = r.topHeavyFiles
     .slice(0, 8)
-    .map((f) => `\`${f.path}\` — ${fmtTokens(f.tokens)} tok`)
+    .map((f) => `\`${f.path}\` - ${fmtTokens(f.tokens)} tok`)
     .join("\n");
 
   return [
     {
       type: "header",
-      text: { type: "plain_text", text: "🔍 ctok — Project Scan", emoji: true },
+      text: { type: "plain_text", text: "🔍 ctok - Project Scan", emoji: true },
     },
     {
       type: "section",
@@ -139,7 +139,7 @@ export function buildHelpBlocks(): KnownBlock[] {
   return [
     {
       type: "header",
-      text: { type: "plain_text", text: "⚡ ctok — Claude Token Estimator", emoji: true },
+      text: { type: "plain_text", text: "⚡ ctok - Claude Token Estimator", emoji: true },
     },
     {
       type: "section",
@@ -147,15 +147,15 @@ export function buildHelpBlocks(): KnownBlock[] {
         type: "mrkdwn",
         text: [
           "*Commands:*",
-          "`/ctok check <prompt>` — Estimate tokens, cost, and get a model recommendation",
-          "`/ctok refine <prompt>` — Run the 7-pass refiner to trim tokens and improve clarity",
-          "`/ctok scan <path>` — Scan a directory and report its token footprint",
-          "`/ctok help` — Show this message",
+          "`/ctok check <prompt>` - Estimate tokens, cost, and get a model recommendation",
+          "`/ctok refine <prompt>` - Run the 7-pass refiner to trim tokens and improve clarity",
+          "`/ctok scan <path>` - Scan a directory and report its token footprint",
+          "`/ctok help` - Show this message",
           "",
           "*Options (append to any command):*",
-          "`--model haiku-4-5|sonnet-4-6|opus-4-7` — Override model for cost calculation",
-          "`--plan free|pro|max5x|max20x` — Override plan for quota estimates",
-          "`--task bug-fix|feature|refactor|review|...` — Hint for model recommendation",
+          "`--model haiku-4-5|sonnet-4-6|opus-4-7` - Override model for cost calculation",
+          "`--plan free|pro|max5x|max20x` - Override plan for quota estimates",
+          "`--task bug-fix|feature|refactor|review|...` - Hint for model recommendation",
         ].join("\n"),
       },
     },

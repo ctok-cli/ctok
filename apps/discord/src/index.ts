@@ -10,14 +10,14 @@ if (!DISCORD_TOKEN) throw new Error("DISCORD_TOKEN is required");
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once(Events.ClientReady, (c) => {
-  console.log(`⚡ ctok Discord bot ready — logged in as ${c.user.tag}`);
+  console.log(`⚡ ctok Discord bot ready - logged in as ${c.user.tag}`);
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
   if (interaction.commandName !== "ctok") return;
 
-  // Defer immediately — analysis may take >3s for scan
+  // Defer immediately - analysis may take >3s for scan
   await interaction.deferReply();
 
   const sub = interaction.options.getSubcommand();

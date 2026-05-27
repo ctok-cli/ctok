@@ -30,10 +30,10 @@ export function CostIndicator() {
 
   const riskLabel =
     risk === "danger"
-      ? "High — review suggestions before sending"
+      ? "High - review suggestions before sending"
       : risk === "warn"
-        ? "Moderate — consider trimming context"
-        : "Low — ship it";
+        ? "Moderate - consider trimming context"
+        : "Low - ship it";
 
   return (
     <Card
@@ -47,7 +47,7 @@ export function CostIndicator() {
         <Stat label="Total (est.)" value={formatUsd(cost.totalUsd)} primary />
       </div>
       <div className="mt-3 font-mono text-[11px] text-text-dim">
-        range {formatUsd(cost.totalUsdRange.min)} – {formatUsd(cost.totalUsdRange.max)} · {p.input.toFixed(2)}/M in · {p.output.toFixed(2)}/M out
+        range {formatUsd(cost.totalUsdRange.min)} - {formatUsd(cost.totalUsdRange.max)} · {p.input.toFixed(2)}/M in · {p.output.toFixed(2)}/M out
       </div>
       <p className="mt-4 text-sm text-text-muted">{riskLabel}.</p>
     </Card>

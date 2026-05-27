@@ -81,19 +81,19 @@ async function run(): Promise<void> {
     : "";
 
   const suggestionLines = suggestions.length > 0
-    ? suggestions.map((s) => `> ⚠️ **${s.title}** — ${s.detail} (save ~${s.estimatedSavingTokens} tokens)`).join("\n")
+    ? suggestions.map((s) => `> ⚠️ **${s.title}** - ${s.detail} (save ~${s.estimatedSavingTokens} tokens)`).join("\n")
     : "> ✅ No reduction suggestions.";
 
   await core.summary
-    .addHeading("⚡ ctok — Token estimate")
+    .addHeading("⚡ ctok - Token estimate")
     .addTable([
       [{ data: "Metric", header: true }, { data: "Value", header: true }],
-      ["Input tokens", `${estimate.input.expected} (range ${estimate.input.min}–${estimate.input.max})`],
-      ["Output tokens", `${estimate.output.expected} (range ${estimate.output.min}–${estimate.output.max})`],
+      ["Input tokens", `${estimate.input.expected} (range ${estimate.input.min}-${estimate.input.max})`],
+      ["Output tokens", `${estimate.output.expected} (range ${estimate.output.min}-${estimate.output.max})`],
       ["Confidence", estimate.confidence],
       ["Context window", `${(estimate.input.expected / 200_000 * 100).toFixed(1)}% of 200k`],
       ["Total cost (expected)", `$${cost.totalUsd.toFixed(4)}`],
-      ["Cost range", `$${cost.totalUsdRange.min.toFixed(4)} – $${cost.totalUsdRange.max.toFixed(4)}`],
+      ["Cost range", `$${cost.totalUsdRange.min.toFixed(4)} - $${cost.totalUsdRange.max.toFixed(4)}`],
       ["Model (used)", cost.model],
       ["Recommended model", recommendation.model.model],
       ["Recommended effort", recommendation.effort.effort],

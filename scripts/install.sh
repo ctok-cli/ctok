@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# ctok installer — https://ctok.dev/install.sh
+# ctok installer - https://ctok.dev/install.sh
 # Usage: curl -fsSL https://ctok.dev/install.sh | sh
 set -e
 

@@ -52,7 +52,7 @@ export function PromptInput() {
           <textarea
             value={projectContext}
             onChange={(e) => setProjectContext(e.target.value)}
-            placeholder="Stable rules / conventions / file map. Counted once per task — consider moving this to CLAUDE.md."
+            placeholder="Stable rules / conventions / file map. Counted once per task - consider moving this to CLAUDE.md."
             rows={3}
             className="w-full resize-y rounded-md border border-border bg-bg-subtle p-3 font-mono text-xs leading-relaxed text-text placeholder:text-text-dim focus:border-accent focus:outline-none"
           />

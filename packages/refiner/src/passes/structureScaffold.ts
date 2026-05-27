@@ -26,12 +26,12 @@ function buildScaffold(prompt: string): string {
 
   return [
     `GOAL: ${goalHint}`,
-    `CONTEXT: <what the AI needs to know — paste relevant code, error messages, or background here>`,
+    `CONTEXT: <what the AI needs to know - paste relevant code, error messages, or background here>`,
     `CONSTRAINTS:`,
     `- <language / framework / version>`,
     `- <what NOT to change>`,
     `- <performance / style requirements>`,
-    `OUTPUT: <format — e.g. "Return only the changed function", "Respond as JSON: {…}", "Numbered list">`,
+    `OUTPUT: <format - e.g. "Return only the changed function", "Respond as JSON: {…}", "Numbered list">`,
   ].join("\n");
 }
 

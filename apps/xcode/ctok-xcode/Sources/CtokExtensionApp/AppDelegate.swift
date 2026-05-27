@@ -12,7 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "ctok — Claude Token Estimator"
+        window.title = "ctok - Claude Token Estimator"
         window.center()
 
         let label = NSTextField(labelWithString: """

@@ -168,9 +168,9 @@ private fun buildCheckHtml(r: CheckResult): String {
         <html><body style='font-family:sans-serif; padding:8px; font-size:12px'>
         <h2 style='margin-top:0'>Token Estimate</h2>
         <table cellpadding='3'>
-          <tr><td><b>Input tokens</b></td><td>${fmtTokens(r.estimate.input.min)}–${fmtTokens(r.estimate.input.max)}
+          <tr><td><b>Input tokens</b></td><td>${fmtTokens(r.estimate.input.min)}-${fmtTokens(r.estimate.input.max)}
               (est. ${fmtTokens(r.estimate.input.expected)})</td></tr>
-          <tr><td><b>Output tokens</b></td><td>${fmtTokens(r.estimate.output.min)}–${fmtTokens(r.estimate.output.max)}</td></tr>
+          <tr><td><b>Output tokens</b></td><td>${fmtTokens(r.estimate.output.min)}-${fmtTokens(r.estimate.output.max)}</td></tr>
           <tr><td><b>Confidence</b></td><td>${r.estimate.confidence}</td></tr>
         </table>
 
@@ -179,11 +179,11 @@ private fun buildCheckHtml(r: CheckResult): String {
           <tr><td><b>Input</b></td><td>${fmtUsd(r.cost.inputUsd)}</td></tr>
           <tr><td><b>Output</b></td><td>${fmtUsd(r.cost.outputUsd)}</td></tr>
           <tr><td><b>Total</b></td><td>${fmtUsd(r.cost.totalUsd)}</td></tr>
-          <tr><td><b>Range</b></td><td>${fmtUsd(r.cost.totalUsdRange.min)}–${fmtUsd(r.cost.totalUsdRange.max)}</td></tr>
+          <tr><td><b>Range</b></td><td>${fmtUsd(r.cost.totalUsdRange.min)}-${fmtUsd(r.cost.totalUsdRange.max)}</td></tr>
         </table>
 
         <h3>Recommendation</h3>
-        <p><span style='color:$color'><b>$effort</b></span> — ${r.recommendation.model.model}</p>
+        <p><span style='color:$color'><b>$effort</b></span> - ${r.recommendation.model.model}</p>
         <p style='color:#586069'>${r.recommendation.model.reason}</p>
 
         $suggestions

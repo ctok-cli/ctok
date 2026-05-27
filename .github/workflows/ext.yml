@@ -1,4 +1,4 @@
-name: Browser Extension — Build & Package
+name: Browser Extension - Build & Package
 
 on:
   push:

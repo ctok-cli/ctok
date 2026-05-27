@@ -23,7 +23,7 @@ export function ReductionSuggestions() {
       title="Reduction suggestions"
       subtitle={
         list.length === 0
-          ? "Nothing obvious to trim — looks lean."
+          ? "Nothing obvious to trim - looks lean."
           : `${list.length} suggestion${list.length === 1 ? "" : "s"} · ~${formatNumber(totalSaving)} tokens potential savings`
       }
     >

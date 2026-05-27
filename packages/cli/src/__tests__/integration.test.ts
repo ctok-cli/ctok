@@ -1,5 +1,5 @@
 /**
- * Integration tests — spawn the built dist/cli.js and assert exit codes + stdout.
+ * Integration tests - spawn the built dist/cli.js and assert exit codes + stdout.
  * beforeAll builds the CLI if dist/cli.js is missing (self-contained for CI).
  */
 import { spawnSync, execSync } from "node:child_process";

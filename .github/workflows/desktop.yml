@@ -1,4 +1,4 @@
-name: Desktop — Build & Release
+name: Desktop - Build & Release
 
 on:
   workflow_run:

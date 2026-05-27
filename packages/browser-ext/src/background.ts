@@ -1,4 +1,4 @@
-// MV3 service worker — minimal; content scripts do all the work.
+// MV3 service worker - minimal; content scripts do all the work.
 // Kept alive by chrome.runtime.onInstalled and onMessage.
 
 chrome.runtime.onInstalled.addListener(() => {

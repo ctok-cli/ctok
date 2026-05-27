@@ -1,4 +1,4 @@
-# ctok installer — https://ctok.dev/install.ps1
+# ctok installer - https://ctok.dev/install.ps1
 # Usage: iwr https://ctok.dev/install.ps1 | iex
 #        or: iwr https://ctok.dev/install.ps1 -UseBasicParsing | Invoke-Expression
 [CmdletBinding()]

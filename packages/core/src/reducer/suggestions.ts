@@ -28,7 +28,7 @@ export function buildSuggestions(
       out.push({
         id: uid("sug"),
         title: `Long file: ${chunk.label}`,
-        detail: `~${chunk.tokens.toLocaleString()} tokens. Consider scoping to the relevant range (e.g. lines 200–400) if the task is local.`,
+        detail: `~${chunk.tokens.toLocaleString()} tokens. Consider scoping to the relevant range (e.g. lines 200-400) if the task is local.`,
         estimatedSavingTokens: Math.floor(chunk.tokens * 0.4),
         severity: "warn",
         action: "Scope to relevant range",
@@ -73,7 +73,7 @@ export function buildSuggestions(
     out.push({
       id: uid("sug"),
       title: `Large diff in ${c.label}`,
-      detail: `Diff is ~${c.tokens.toLocaleString()} tokens. For review, only the changed hunks + 5–10 lines of context are usually needed.`,
+      detail: `Diff is ~${c.tokens.toLocaleString()} tokens. For review, only the changed hunks + 5-10 lines of context are usually needed.`,
       estimatedSavingTokens: Math.floor(c.tokens * 0.5),
       severity: "warn",
       action: "Tighten diff context",
@@ -116,7 +116,7 @@ export function buildSuggestions(
       id: uid("sug"),
       title: `${input.files.length} files attached`,
       detail:
-        "At this breadth, Claude works better from a short index (path + 1-line purpose) plus full content for only the 2–3 files actually being changed.",
+        "At this breadth, Claude works better from a short index (path + 1-line purpose) plus full content for only the 2-3 files actually being changed.",
       estimatedSavingTokens: Math.floor(estimate.input.expected * 0.35),
       severity: "warn",
       action: "Switch to file index + targeted contents",
@@ -142,7 +142,7 @@ export function buildSuggestions(
     out.push({
       id: uid("sug"),
       title: "Approaching context limits",
-      detail: `Input is ${estimate.input.expected.toLocaleString()} tokens — close to the 200k window. You'll lose room for Claude's reasoning. Split the task or move bulk context to retrieval/summary.`,
+      detail: `Input is ${estimate.input.expected.toLocaleString()} tokens - close to the 200k window. You'll lose room for Claude's reasoning. Split the task or move bulk context to retrieval/summary.`,
       estimatedSavingTokens: estimate.input.expected - 80_000,
       severity: "danger",
       action: "Split task or summarize",

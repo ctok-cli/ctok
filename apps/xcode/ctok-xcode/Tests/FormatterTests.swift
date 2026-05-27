@@ -80,7 +80,7 @@ final class FormatterTests: XCTestCase {
     // MARK: - CtokCli.findExecutable (smoke test)
 
     func testFindExecutableReturnsNilOrString() {
-        // Just assert it doesn't crash — ctok may not be on PATH in CI
+        // Just assert it doesn't crash - ctok may not be on PATH in CI
         let result = CtokCli.findExecutable()
         if let path = result {
             XCTAssertFalse(path.isEmpty)

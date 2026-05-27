@@ -6,39 +6,39 @@ import type { PassResult, PassSuggestion } from "../types";
  * Empty replacement = delete the word/phrase.
  */
 const FILLER_RULES: Array<[RegExp, string, string]> = [
-  // Politeness padding — model doesn't need manners
-  [/\bplease\b[,]?\s*/gi, "", "politeness filler — model ignores it"],
+  // Politeness padding - model doesn't need manners
+  [/\bplease\b[,]?\s*/gi, "", "politeness filler - model ignores it"],
   [/\bkindly\b[,]?\s*/gi, "", "politeness filler"],
   [/\bif you don'?t mind\b[,]?\s*/gi, "", "politeness filler"],
-  [/\bif possible\b[,]?\s*/gi, "", "hedge — commit to the requirement instead"],
-  [/\bcould you\b\s*/gi, "", "indirect phrasing — use imperative"],
-  [/\bcan you\b\s*/gi, "", "indirect phrasing — use imperative"],
-  [/\bwould you\b\s*/gi, "", "indirect phrasing — use imperative"],
-  [/\bI was wondering if\b[,]?\s*/gi, "", "indirect phrasing — state the request directly"],
-  [/\bI'd like you to\b\s*/gi, "", "indirect phrasing — use imperative"],
-  [/\bI want you to\b\s*/gi, "", "indirect phrasing — use imperative"],
-  [/\bI need you to\b\s*/gi, "", "indirect phrasing — use imperative"],
+  [/\bif possible\b[,]?\s*/gi, "", "hedge - commit to the requirement instead"],
+  [/\bcould you\b\s*/gi, "", "indirect phrasing - use imperative"],
+  [/\bcan you\b\s*/gi, "", "indirect phrasing - use imperative"],
+  [/\bwould you\b\s*/gi, "", "indirect phrasing - use imperative"],
+  [/\bI was wondering if\b[,]?\s*/gi, "", "indirect phrasing - state the request directly"],
+  [/\bI'd like you to\b\s*/gi, "", "indirect phrasing - use imperative"],
+  [/\bI want you to\b\s*/gi, "", "indirect phrasing - use imperative"],
+  [/\bI need you to\b\s*/gi, "", "indirect phrasing - use imperative"],
 
   // Intensifiers that inflate token count without specificity
-  [/\bvery\s+/gi, "", "filler intensifier — be specific instead"],
+  [/\bvery\s+/gi, "", "filler intensifier - be specific instead"],
   [/\breally\s+/gi, "", "filler intensifier"],
   [/\bquite\s+/gi, "", "filler intensifier"],
-  [/\bbasically\s+/gi, "", "filler — adds no meaning"],
-  [/\bactually\s+/gi, "", "filler — adds no meaning"],
-  [/\bjust\s+/gi, "", "filler — adds no meaning"],
-  [/\bsimply\s+/gi, "", "filler — adds no meaning"],
+  [/\bbasically\s+/gi, "", "filler - adds no meaning"],
+  [/\bactually\s+/gi, "", "filler - adds no meaning"],
+  [/\bjust\s+/gi, "", "filler - adds no meaning"],
+  [/\bsimply\s+/gi, "", "filler - adds no meaning"],
 
   // Redundant certainty/confirmation phrases
   [/\bmake sure\s+(?:to\s+)?/gi, "", "imperative is already a directive"],
   [/\bensure that\s+/gi, "", "redundant with imperative"],
-  [/\bplease note that\s+/gi, "", "filler — state the fact directly"],
-  [/\bit('s| is) important (that|to)\s+/gi, "", "emphasis filler — prioritize with ordering instead"],
-  [/\bit should be noted that\s+/gi, "", "filler — state directly"],
-  [/\bbe aware that\s+/gi, "", "filler — state directly"],
+  [/\bplease note that\s+/gi, "", "filler - state the fact directly"],
+  [/\bit('s| is) important (that|to)\s+/gi, "", "emphasis filler - prioritize with ordering instead"],
+  [/\bit should be noted that\s+/gi, "", "filler - state directly"],
+  [/\bbe aware that\s+/gi, "", "filler - state directly"],
 
   // Hedges that lower specificity
-  [/\bsomething like\s+/gi, "", "vague hedge — give a concrete example"],
-  [/\balong the lines of\s+/gi, "", "vague hedge — be specific"],
+  [/\bsomething like\s+/gi, "", "vague hedge - give a concrete example"],
+  [/\balong the lines of\s+/gi, "", "vague hedge - be specific"],
   [/\band so on\b\.?/gi, "", "complete the list or remove"],
   [/\betc\.?\b/gi, "", "complete the list or remove"],
   [/\band (others|so forth)\b\.?/gi, "", "complete the list or remove"],

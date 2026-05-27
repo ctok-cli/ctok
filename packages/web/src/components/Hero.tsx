@@ -34,14 +34,14 @@ const EXAMPLES: {
     title: "Refactor middleware",
     scenario: "Auth overhaul",
     prompt:
-      "Refactor the auth middleware in src/middleware/auth.ts to use the new SessionStore class introduced in PR #412. Keep the existing public API surface — only swap the internal storage layer. Add a migration shim for existing sessions so live users aren't logged out on deploy.",
+      "Refactor the auth middleware in src/middleware/auth.ts to use the new SessionStore class introduced in PR #412. Keep the existing public API surface - only swap the internal storage layer. Add a migration shim for existing sessions so live users aren't logged out on deploy.",
     taskType: "refactor",
   },
   {
     title: "Debug race condition",
     scenario: "Duplicate charges",
     prompt:
-      "There's a race condition in src/payments/processor.ts:handleCharge — two concurrent requests for the same user sometimes create duplicate charges. The DB is Postgres with read-committed isolation. Diagnose the root cause and propose a fix (advisory lock, idempotency key, or serializable tx). Show the exact code change.",
+      "There's a race condition in src/payments/processor.ts:handleCharge - two concurrent requests for the same user sometimes create duplicate charges. The DB is Postgres with read-committed isolation. Diagnose the root cause and propose a fix (advisory lock, idempotency key, or serializable tx). Show the exact code change.",
     taskType: "debugging",
   },
   {
@@ -105,7 +105,7 @@ export function Hero() {
             </div>
             <p className="mt-2 max-w-xl text-sm text-text-muted">
               Paste a prompt and context files. ctok estimates token usage, recommends a model and effort level,
-              and flags what to trim — before you send anything to Claude.
+              and flags what to trim - before you send anything to Claude.
             </p>
           </div>
 

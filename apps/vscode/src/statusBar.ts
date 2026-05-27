@@ -11,7 +11,7 @@ export function createStatusBar(context: vscode.ExtensionContext): void {
     100,
   );
   statusBarItem.command = "ctok.showPanel";
-  statusBarItem.tooltip = "ctok — Click to open analysis panel";
+  statusBarItem.tooltip = "ctok - Click to open analysis panel";
   context.subscriptions.push(statusBarItem);
 
   const update = debounce(updateStatusBar, 500);

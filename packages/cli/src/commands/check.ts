@@ -85,8 +85,8 @@ export async function runCheck(promptArg: string | undefined, opts: CheckOptions
   process.stdout.write(header("Token estimate") + "\n");
   process.stdout.write(
     kvTable([
-      ["Input tokens", `${fmtTokens(estimate.input.expected)} (range ${fmtTokens(estimate.input.min)}–${fmtTokens(estimate.input.max)})`],
-      ["Output tokens", `${fmtTokens(estimate.output.expected)} (range ${fmtTokens(estimate.output.min)}–${fmtTokens(estimate.output.max)})`],
+      ["Input tokens", `${fmtTokens(estimate.input.expected)} (range ${fmtTokens(estimate.input.min)}-${fmtTokens(estimate.input.max)})`],
+      ["Output tokens", `${fmtTokens(estimate.output.expected)} (range ${fmtTokens(estimate.output.min)}-${fmtTokens(estimate.output.max)})`],
       ["Context window", `${fmtPct(estimate.input.expected / 200_000)} of 200k`],
     ]) + "\n",
   );
@@ -98,7 +98,7 @@ export async function runCheck(promptArg: string | undefined, opts: CheckOptions
       ["Input cost", fmtUsd(cost.inputUsd)],
       ["Output cost", fmtUsd(cost.outputUsd)],
       ["Total (expected)", c.bold(fmtUsd(cost.totalUsd))],
-      ["Total (range)", `${fmtUsd(cost.totalUsdRange.min)} – ${fmtUsd(cost.totalUsdRange.max)}`],
+      ["Total (range)", `${fmtUsd(cost.totalUsdRange.min)} - ${fmtUsd(cost.totalUsdRange.max)}`],
     ]) + "\n",
   );
 
@@ -128,7 +128,7 @@ export async function runCheck(promptArg: string | undefined, opts: CheckOptions
         ["Remaining", `~${quota.remainingMessagesIn5h} similar prompts`],
       ]) + "\n",
     );
-    process.stdout.write(`  ${c.dim("(estimated — exact quota not exposed by Anthropic API)")}\n\n`);
+    process.stdout.write(`  ${c.dim("(estimated - exact quota not exposed by Anthropic API)")}\n\n`);
   }
 
   process.stdout.write(divider() + "\n");

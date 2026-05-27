@@ -1,1 +1,1 @@
-Fix the token expiry bug — see `src/middleware/auth.ts:45-67`. The refresh logic doesn't handle clock skew. Return only the corrected block.
+Fix the token expiry bug - see `src/middleware/auth.ts:45-67`. The refresh logic doesn't handle clock skew. Return only the corrected block.

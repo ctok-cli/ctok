@@ -5,7 +5,7 @@ export const refineTool = {
   description:
     "Run the 7-pass prompt refiner on a prompt. Strips filler words, replaces vague verbs, " +
     "deduplicates repeated blocks, compresses large code references, adds output-format hints, " +
-    "collapses scattered negatives, and scores specificity 0–100. " +
+    "collapses scattered negatives, and scores specificity 0-100. " +
     "Returns the refined prompt, token savings, specificity score before/after, and per-pass details.",
   inputSchema: {
     type: "object" as const,

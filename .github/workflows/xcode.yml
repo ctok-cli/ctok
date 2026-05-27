@@ -1,4 +1,4 @@
-name: Xcode Extension — CI
+name: Xcode Extension - CI
 
 on:
   push:

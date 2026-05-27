@@ -1,4 +1,4 @@
-name: Zed Extension — CI
+name: Zed Extension - CI
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('apps/zed/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
 
-      - name: cargo check (native — fast type check)
+      - name: cargo check (native - fast type check)
         run: cargo check --manifest-path apps/zed/Cargo.toml
 
       - name: cargo build --release (wasm32-wasip1)

@@ -15,11 +15,11 @@ export function recommendEffort(
   if (complexity.band === "simple") {
     effort = "low";
     reason =
-      "Low complexity — low effort keeps responses tight and saves tokens. Bump up only if the result misses the mark.";
+      "Low complexity - low effort keeps responses tight and saves tokens. Bump up only if the result misses the mark.";
   } else if (complexity.band === "normal") {
     effort = "medium";
     reason =
-      "Standard complexity — medium effort gives Claude room to verify its work without over-running on tokens.";
+      "Standard complexity - medium effort gives Claude room to verify its work without over-running on tokens.";
   } else {
     effort = "high";
     reason =
@@ -29,7 +29,7 @@ export function recommendEffort(
   if (taskType === "debugging" && complexity.band !== "simple") {
     effort = "high";
     reason =
-      "Debugging rewards extra reasoning — root causes are often non-obvious. High effort pays for itself by avoiding wrong fixes.";
+      "Debugging rewards extra reasoning - root causes are often non-obvious. High effort pays for itself by avoiding wrong fixes.";
   }
   if (taskType === "documentation" && complexity.band !== "deep") {
     effort = "low";
@@ -39,7 +39,7 @@ export function recommendEffort(
   if (taskType === "review" && complexity.band !== "deep") {
     effort = complexity.band === "simple" ? "low" : "medium";
     reason =
-      "Code review is scoped scanning — start at low/medium effort and only escalate if you want broader, more speculative coverage.";
+      "Code review is scoped scanning - start at low/medium effort and only escalate if you want broader, more speculative coverage.";
   }
   if (taskType === "architecture") {
     effort = "xhigh";

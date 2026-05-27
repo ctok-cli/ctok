@@ -21,7 +21,7 @@ ctok.nvim is a Neovim plugin that brings the `ctok` CLI (Claude token
 estimator) directly into your editor. Estimate token counts, analyse costs,
 get model recommendations, and refine prompts without leaving Neovim.
 
-All heavy work is delegated to the `ctok` binary — the plugin is a thin Lua
+All heavy work is delegated to the `ctok` binary - the plugin is a thin Lua
 wrapper that runs the CLI and presents results in a floating window.
 
 ==============================================================================
@@ -125,8 +125,8 @@ All keymaps are registered for both Normal and Visual mode.
 Full list of options and their defaults:
 
   executable    `string`   "ctok"      Path to the ctok binary.
-  win_width     `number`   0.6         Float window width  (0–1 fraction).
-  win_height    `number`   0.7         Float window height (0–1 fraction).
+  win_width     `number`   0.6         Float window width  (0-1 fraction).
+  win_height    `number`   0.7         Float window height (0-1 fraction).
   border        `string`   "rounded"   Border style (see |nvim_open_win|).
   keymaps       `table`    {}          Map of command name → key string.
   auto_commands `boolean`  true        Register :Ctok* commands on setup.

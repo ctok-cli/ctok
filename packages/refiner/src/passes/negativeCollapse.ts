@@ -82,7 +82,7 @@ export function negativeCollapse(prompt: string): PassResult {
     original: span?.original ?? items.join(", "),
     replacement: collapsed,
     reason:
-      "Bullet-listed negatives are clearer to the model than scattered prose — reduces the risk of the model missing a constraint.",
+      "Bullet-listed negatives are clearer to the model than scattered prose - reduces the risk of the model missing a constraint.",
     tokenDelta: 0, // same token count; benefit is clarity not compression
   };
 

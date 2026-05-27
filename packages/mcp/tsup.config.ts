@@ -6,5 +6,5 @@ export default defineConfig({
   dts: false,
   clean: true,
   target: "node18",
-  // shebang is in source — tsup preserves it; do NOT add banner here
+  // shebang is in source - tsup preserves it; do NOT add banner here
 });

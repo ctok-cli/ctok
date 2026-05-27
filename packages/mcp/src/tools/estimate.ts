@@ -21,7 +21,7 @@ export const estimateTool = {
       taskType: {
         type: "string",
         enum: TASK_TYPES,
-        description: "Type of task — affects output-length estimate and model recommendation. Defaults to 'general'.",
+        description: "Type of task - affects output-length estimate and model recommendation. Defaults to 'general'.",
       },
       pastedCode: {
         type: "string",

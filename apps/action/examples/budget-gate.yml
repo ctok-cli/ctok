@@ -38,7 +38,7 @@ jobs:
             const icon = '${{ job.status }}' === 'success' ? '✅' : '❌';
 
             const lines = [
-              `## ${icon} ctok — Prompt budget report`,
+              `## ${icon} ctok - Prompt budget report`,
               '',
               '| Metric | Value |',
               '|--------|-------|',

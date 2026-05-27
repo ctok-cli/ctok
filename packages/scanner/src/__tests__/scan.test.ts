@@ -38,7 +38,7 @@ describe("detectProjectType", () => {
 
 // Node project scan
 
-describe("scan — node project", () => {
+describe("scan - node project", () => {
   it("excludes node_modules", async () => {
     const result = await scan({ root: fix("node-project") });
     const paths = result.topHeavyFiles.map((f) => f.path);
@@ -92,7 +92,7 @@ describe("scan — node project", () => {
 
 // Flutter project scan
 
-describe("scan — flutter project", () => {
+describe("scan - flutter project", () => {
   it("reports flutter as project type", async () => {
     const result = await scan({ root: fix("flutter-project") });
     expect(result.projectType).toBe("flutter");
@@ -112,7 +112,7 @@ describe("scan — flutter project", () => {
 
 // Rust project scan
 
-describe("scan — rust project", () => {
+describe("scan - rust project", () => {
   it("reports rust as project type", async () => {
     const result = await scan({ root: fix("rust-project") });
     expect(result.projectType).toBe("rust");
@@ -134,7 +134,7 @@ describe("scan — rust project", () => {
 
 // Android project scan
 
-describe("scan — android project", () => {
+describe("scan - android project", () => {
   it("reports android as project type", async () => {
     const result = await scan({ root: fix("android-project") });
     expect(result.projectType).toBe("android");
@@ -162,7 +162,7 @@ describe("scan — android project", () => {
 
 // Python project scan
 
-describe("scan — python project", () => {
+describe("scan - python project", () => {
   it("reports python as project type", async () => {
     const result = await scan({ root: fix("python-project") });
     expect(result.projectType).toBe("python");
@@ -190,7 +190,7 @@ describe("scan — python project", () => {
 
 // ScanOptions
 
-describe("scan — options", () => {
+describe("scan - options", () => {
   it("respects custom exclude patterns", async () => {
     const result = await scan({
       root: fix("node-project"),
@@ -224,7 +224,7 @@ describe("scan — options", () => {
 
 // Edge cases: binary content and no-extension files
 
-describe("scan — binary content filtering", () => {
+describe("scan - binary content filtering", () => {
   let tmpDir: string;
 
   afterEach(() => {
@@ -235,7 +235,7 @@ describe("scan — binary content filtering", () => {
 
   it("excludes files containing null bytes (binary content)", async () => {
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "ctok-scan-"));
-    // Write a .ts file with a null byte — looks like text extension but is binary
+    // Write a .ts file with a null byte - looks like text extension but is binary
     const binaryFile = path.join(tmpDir, "fake.ts");
     const buf = Buffer.alloc(20, 65); // all 'A'
     buf[10] = 0; // embed null byte

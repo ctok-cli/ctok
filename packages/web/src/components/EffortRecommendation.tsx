@@ -11,7 +11,7 @@ const EFFORT_ORDER: { id: EffortLevel; label: string; desc: string }[] = [
   { id: "low", label: "Low", desc: "Tight, fast, cheap." },
   { id: "medium", label: "Medium", desc: "Reasoned but bounded." },
   { id: "high", label: "High", desc: "Extra thinking for tricky work." },
-  { id: "xhigh", label: "Extra-high", desc: "Maximum — irreversible decisions." },
+  { id: "xhigh", label: "Extra-high", desc: "Maximum - irreversible decisions." },
 ];
 
 export function EffortRecommendation() {

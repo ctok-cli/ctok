@@ -1,4 +1,4 @@
-name: Neovim Plugin — CI
+name: Neovim Plugin - CI
 
 on:
   push:

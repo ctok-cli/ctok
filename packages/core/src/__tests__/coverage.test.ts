@@ -11,9 +11,9 @@ import type { EstimatorInput, TokenEstimate } from "../types";
 // utils.ts
 
 describe("formatNumber", () => {
-  it("returns — for non-finite values", () => {
-    expect(formatNumber(Infinity)).toBe("—");
-    expect(formatNumber(NaN)).toBe("—");
+  it("returns - for non-finite values", () => {
+    expect(formatNumber(Infinity)).toBe("-");
+    expect(formatNumber(NaN)).toBe("-");
   });
   it("formats millions", () => {
     expect(formatNumber(1_500_000)).toBe("1.50M");
@@ -35,9 +35,9 @@ describe("formatNumber", () => {
 });
 
 describe("formatUsd", () => {
-  it("returns — for non-finite values", () => {
-    expect(formatUsd(Infinity)).toBe("—");
-    expect(formatUsd(NaN)).toBe("—");
+  it("returns - for non-finite values", () => {
+    expect(formatUsd(Infinity)).toBe("-");
+    expect(formatUsd(NaN)).toBe("-");
   });
   it("returns <$0.01 for tiny amounts", () => {
     expect(formatUsd(0.001)).toBe("<$0.01");
@@ -122,7 +122,7 @@ function makeInput(overrides: Partial<EstimatorInput> = {}): EstimatorInput {
   return { prompt: "Fix the bug", files: [], taskType: "general", ...overrides };
 }
 
-describe("buildSuggestions — huge file", () => {
+describe("buildSuggestions - huge file", () => {
   it("flags a file with ≥20k tokens as danger", () => {
     const chunks = [{ label: "bigfile.ts", tokens: 25_000, kind: "code" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -132,7 +132,7 @@ describe("buildSuggestions — huge file", () => {
   });
 });
 
-describe("buildSuggestions — long file", () => {
+describe("buildSuggestions - long file", () => {
   it("flags a file with ≥6k tokens as warn", () => {
     const chunks = [{ label: "service.ts", tokens: 8_000, kind: "code" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -147,7 +147,7 @@ describe("buildSuggestions — long file", () => {
   });
 });
 
-describe("buildSuggestions — log files", () => {
+describe("buildSuggestions - log files", () => {
   it("flags log chunks", () => {
     const chunks = [{ label: "app.log", tokens: 5_000, kind: "log" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -155,7 +155,7 @@ describe("buildSuggestions — log files", () => {
   });
 });
 
-describe("buildSuggestions — minified content", () => {
+describe("buildSuggestions - minified content", () => {
   it("flags minified chunks as danger", () => {
     const chunks = [{ label: "bundle.min.js", tokens: 3_000, kind: "minified" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -165,7 +165,7 @@ describe("buildSuggestions — minified content", () => {
   });
 });
 
-describe("buildSuggestions — large diff", () => {
+describe("buildSuggestions - large diff", () => {
   it("flags diff chunks >3k tokens", () => {
     const chunks = [{ label: "pr.diff", tokens: 4_000, kind: "diff" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -178,7 +178,7 @@ describe("buildSuggestions — large diff", () => {
   });
 });
 
-describe("buildSuggestions — duplicate content", () => {
+describe("buildSuggestions - duplicate content", () => {
   it("flags near-identical files", () => {
     const content = "x".repeat(300);
     const input = makeInput({
@@ -192,7 +192,7 @@ describe("buildSuggestions — duplicate content", () => {
   });
 });
 
-describe("buildSuggestions — filler-heavy prompt", () => {
+describe("buildSuggestions - filler-heavy prompt", () => {
   it("flags long prompts with many filler phrases", () => {
     const filler = "Please make sure to very really remember that please be sure to ".repeat(80);
     const input = makeInput({ prompt: filler });
@@ -206,7 +206,7 @@ describe("buildSuggestions — filler-heavy prompt", () => {
   });
 });
 
-describe("buildSuggestions — many files", () => {
+describe("buildSuggestions - many files", () => {
   it("flags ≥8 attached files", () => {
     const files = Array.from({ length: 8 }, (_, i) => ({
       id: `f${i}`,
@@ -219,7 +219,7 @@ describe("buildSuggestions — many files", () => {
   });
 });
 
-describe("buildSuggestions — heavy project context", () => {
+describe("buildSuggestions - heavy project context", () => {
   it("flags project context chunk >8k tokens", () => {
     const chunks = [{ label: "project context", tokens: 9_000, kind: "code" as const }];
     const sugs = buildSuggestions(makeInput(), makeEstimate(chunks));
@@ -227,7 +227,7 @@ describe("buildSuggestions — heavy project context", () => {
   });
 });
 
-describe("buildSuggestions — approaching context window", () => {
+describe("buildSuggestions - approaching context window", () => {
   it("flags input >180k tokens", () => {
     const estimate: TokenEstimate = {
       input: { min: 180_001, expected: 185_000, max: 190_000 },

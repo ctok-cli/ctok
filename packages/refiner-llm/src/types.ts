@@ -23,7 +23,7 @@ export interface LlmRefineResult {
   refinedTokens: number;
   /** Token savings (may be 0 if LLM didn't trim). */
   savedTokens: number;
-  /** Percentage reduction (0–100). */
+  /** Percentage reduction (0-100). */
   savedPct: number;
   /** Model used. */
   model: LlmModel;

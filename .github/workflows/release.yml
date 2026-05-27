@@ -135,7 +135,7 @@ jobs:
           body: |
             ## ctok v${{ steps.version.outputs.version }}
 
-            Lighthouse for Claude prompts — estimate tokens, recommend models, refine prompts.
+            Lighthouse for Claude prompts - estimate tokens, recommend models, refine prompts.
 
             ### Install
 

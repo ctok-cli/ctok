@@ -26,11 +26,11 @@ export function refine(input: RefineInput): RefineResult {
       savedTokens: 0,
       savedPct: 0,
       specificityScore: 0,
-      warnings: ["Empty prompt — nothing to refine."],
+      warnings: ["Empty prompt - nothing to refine."],
     };
   }
 
-  // analysis passes — run against original
+  // analysis passes - run against original
   const passResults: PassResult[] = [
     fillerStrip(prompt),
     vagueVerbReplace(prompt),
@@ -58,7 +58,7 @@ export function refine(input: RefineInput): RefineResult {
   const savedPct = originalTokens > 0 ? Math.round((savedTokens / originalTokens) * 100) : 0;
 
   if (originalTokens < 20) {
-    warnings.push("Prompt is very short — refinement suggestions may not apply.");
+    warnings.push("Prompt is very short - refinement suggestions may not apply.");
   }
 
   return {

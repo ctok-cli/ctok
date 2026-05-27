@@ -43,7 +43,7 @@ export async function handleCheck(args: ParsedArgs, respond: RespondFn): Promise
         });
       }
     } catch {
-      // unknown plan — skip quota section
+      // unknown plan - skip quota section
     }
   }
 

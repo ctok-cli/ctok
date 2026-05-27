@@ -7,7 +7,7 @@ import * as path from "node:path";
 
 import { fmtTokens, fmtUsd, fmtPct, scoreBar } from "../output/format";
 
-describe("format — fmtTokens", () => {
+describe("format - fmtTokens", () => {
   it("formats small numbers as-is", () => {
     expect(fmtTokens(500)).toBe("500");
   });
@@ -20,7 +20,7 @@ describe("format — fmtTokens", () => {
   });
 });
 
-describe("format — fmtUsd", () => {
+describe("format - fmtUsd", () => {
   it("formats tiny costs with < prefix", () => {
     expect(fmtUsd(0.0001)).toBe("< $0.001");
   });
@@ -32,13 +32,13 @@ describe("format — fmtUsd", () => {
   });
 });
 
-describe("format — fmtPct", () => {
+describe("format - fmtPct", () => {
   it("formats to 1 decimal", () => {
     expect(fmtPct(12.567)).toBe("12.6%");
   });
 });
 
-describe("format — scoreBar", () => {
+describe("format - scoreBar", () => {
   it("returns a string containing the score", () => {
     const bar = scoreBar(75);
     expect(bar).toContain("75");
@@ -140,7 +140,7 @@ describe("history store", () => {
 
 // command logic (pure function layer)
 
-describe("check — output contract", () => {
+describe("check - output contract", () => {
   it("analyze result has the expected shape", () => {
     const result = analyze({ prompt: "Refactor the auth module", files: [], taskType: "general" });
     expect(typeof result.estimate.input.expected).toBe("number");
@@ -149,7 +149,7 @@ describe("check — output contract", () => {
   });
 });
 
-describe("init — template content", () => {
+describe("init - template content", () => {
   let tmpDir: string;
   let origCwd: string;
 

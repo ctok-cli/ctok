@@ -3,7 +3,7 @@ name: Docs
 # Build runs on every push / PR that touches docs.
 # Deploy is gated by `vars.PAGES_ENABLED` (set this repo variable to "true"
 # in Settings -> Secrets and variables -> Actions -> Variables once Pages is
-# enabled — Pages on private repos requires GitHub Pro/Team).
+# enabled - Pages on private repos requires GitHub Pro/Team).
 on:
   push:
     branches: ["main"]

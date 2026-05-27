@@ -23,7 +23,7 @@ let package = Package(
         .target(
             name: "CtokExtension",
             path: "Sources/CtokExtension",
-            exclude: ["SourceEditorCommand.swift"]   // XcodeKit — Xcode project only
+            exclude: ["SourceEditorCommand.swift"]   // XcodeKit - Xcode project only
         ),
         .testTarget(
             name: "CtokExtensionTests",

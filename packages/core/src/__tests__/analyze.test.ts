@@ -17,7 +17,7 @@ function makeInput(overrides: Partial<EstimatorInput> = {}): EstimatorInput {
 const TINY_FILE_CONTENT = `export function getUser(id: string) { return db.find(id); }
 export function listUsers() { return db.findAll(); }`;
 
-describe("Scenario 1 — tiny rename, one file", () => {
+describe("Scenario 1 - tiny rename, one file", () => {
   const result = analyze(
     makeInput({
       prompt: "Rename getUser to fetchUser everywhere in this file.",
@@ -78,7 +78,7 @@ export class OrdersService {
   async findById(id: string) { return db.orders.findUnique({ where: { id } }); }
 }`;
 
-describe("Scenario 2 — standard feature", () => {
+describe("Scenario 2 - standard feature", () => {
   const result = analyze(
     makeInput({
       prompt:
@@ -106,7 +106,7 @@ describe("Scenario 2 — standard feature", () => {
 
 // Scenario 3: Architecture decision
 
-describe("Scenario 3 — architecture decision", () => {
+describe("Scenario 3 - architecture decision", () => {
   const result = analyze(
     makeInput({
       prompt:
@@ -130,7 +130,7 @@ describe("Scenario 3 — architecture decision", () => {
 
 // Scenario 4: Debugging with a huge log file
 
-describe("Scenario 4 — debugging with huge log", () => {
+describe("Scenario 4 - debugging with huge log", () => {
   // Build a realistic-looking log: timestamps + ERROR/INFO lines
   const logLine = "2024-01-15T08:32:11 ERROR Worker crashed at startup at run(worker.js:42:10)\n";
   const hugeLog = logLine.repeat(400); // ~400 lines ≈ 30k+ tokens
@@ -163,7 +163,7 @@ describe("Scenario 4 — debugging with huge log", () => {
 
 // Scenario 5: Reviewing a massive PR diff
 
-describe("Scenario 5 — massive PR diff review", () => {
+describe("Scenario 5 - massive PR diff review", () => {
   // Build a realistic diff: headers + lines
   const diffHeader = "--- a/api.ts\n+++ b/api.ts\n@@ -1,10 +1,10 @@\n";
   const diffBody = "+export function newThing() { return 42; }\n-export function oldThing() { return 1; }\n".repeat(300);

@@ -3,8 +3,8 @@ GOAL: Fix the null-pointer crash in `AuthService.authenticate` at `src/services/
 CONTEXT: `db.findUserByEmail` returns `null` when the email doesn't exist. The current code calls `user.id` without a null check (line 28), causing a TypeError.
 
 CONSTRAINTS:
-- TypeScript strict mode — no `!` non-null assertions
+- TypeScript strict mode - no `!` non-null assertions
 - Must not change the function signature
 - Must not break `src/services/__tests__/auth.test.ts`
 
-OUTPUT: Return only the corrected `authenticate` method body — no class wrapper, no imports.
+OUTPUT: Return only the corrected `authenticate` method body - no class wrapper, no imports.

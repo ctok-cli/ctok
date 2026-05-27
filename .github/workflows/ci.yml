@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ── 1. Typecheck — fast single-cell gate ─────────────────────────────────────
+  # ── 1. Typecheck - fast single-cell gate ─────────────────────────────────────
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest
@@ -102,7 +102,7 @@ jobs:
           node packages/cli/dist/cli.js check "estimate tokens for this prompt" --json \
             2>/dev/null | grep -q '"estimate"' && echo "check: OK"
 
-  # ── 3. Coverage gate — single cell, enforces ≥85% threshold ─────────────────
+  # ── 3. Coverage gate - single cell, enforces ≥85% threshold ─────────────────
   coverage:
     name: Coverage (≥85%)
     needs: test
@@ -126,16 +126,16 @@ jobs:
           pnpm --filter @ctok/refiner build
           pnpm --filter @ctok/quota build
 
-      - name: Coverage — @ctok/core
+      - name: Coverage - @ctok/core
         run: pnpm --filter @ctok/core test:coverage
 
-      - name: Coverage — @ctok/scanner
+      - name: Coverage - @ctok/scanner
         run: pnpm --filter @ctok/scanner test:coverage
 
-      - name: Coverage — @ctok/refiner
+      - name: Coverage - @ctok/refiner
         run: pnpm --filter @ctok/refiner test:coverage
 
-      - name: Coverage — @ctok/quota
+      - name: Coverage - @ctok/quota
         run: pnpm --filter @ctok/quota test:coverage
 
       - name: Upload LCOV reports

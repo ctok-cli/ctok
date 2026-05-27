@@ -16,7 +16,7 @@ const corpus = (name: string) => fs.readFileSync(path.join(CORPUS, `${name}.txt`
 
 // Output shape contract
 
-describe("refine — output shape", () => {
+describe("refine - output shape", () => {
   it("returns the required fields", () => {
     const result = refine({ prompt: "Write a function that validates emails." });
     expect(typeof result.original).toBe("string");
@@ -47,7 +47,7 @@ describe("refine — output shape", () => {
     expect(ids).toContain("negativeCollapse");
   });
 
-  it("specificityScore is a number 0–100", () => {
+  it("specificityScore is a number 0-100", () => {
     const result = refine({ prompt: "Fix the login function so it handles expired tokens." });
     expect(result.specificityScore).toBeGreaterThanOrEqual(0);
     expect(result.specificityScore).toBeLessThanOrEqual(100);
@@ -204,29 +204,29 @@ describe("dedup", () => {
 
 // Full pipeline
 
-describe("refine — full pipeline", () => {
-  it("corpus 01 (filler heavy) — savedPct > 0", () => {
+describe("refine - full pipeline", () => {
+  it("corpus 01 (filler heavy) - savedPct > 0", () => {
     const result = refine({ prompt: corpus("01-filler-heavy") });
     expect(result.savedPct).toBeGreaterThan(0);
   });
 
-  it("corpus 04 (duplicate blocks) — savedTokens > 0", () => {
+  it("corpus 04 (duplicate blocks) - savedTokens > 0", () => {
     const result = refine({ prompt: corpus("04-duplicate-blocks") });
     expect(result.savedTokens).toBeGreaterThan(0);
   });
 
-  it("corpus 05 (already structured) — no structureScaffold suggestion", () => {
+  it("corpus 05 (already structured) - no structureScaffold suggestion", () => {
     const result = refine({ prompt: corpus("05-already-structured") });
     const scaffoldPass = result.passes.find((p) => p.pass === "structureScaffold");
     expect(scaffoldPass?.applied).toBe(false);
   });
 
-  it("corpus 07 (short clean) — minimal changes, no warnings about empty", () => {
+  it("corpus 07 (short clean) - minimal changes, no warnings about empty", () => {
     const result = refine({ prompt: corpus("07-short-clean") });
     expect(result.warnings.every((w) => !w.includes("Empty"))).toBe(true);
   });
 
-  it("corpus 12 (duplicate stack trace) — dedup fires", () => {
+  it("corpus 12 (duplicate stack trace) - dedup fires", () => {
     const result = refine({ prompt: corpus("12-duplicate-stack-trace") });
     const dedupPass = result.passes.find((p) => p.pass === "dedup");
     expect(dedupPass?.applied).toBe(true);
@@ -257,7 +257,7 @@ describe("refine — full pipeline", () => {
 
 // Snapshot tests
 
-describe("refine — snapshots", () => {
+describe("refine - snapshots", () => {
   it("corpus 01 refined matches snapshot", () => {
     const result = refine({ prompt: corpus("01-filler-heavy") });
     expect(result.refined).toMatchSnapshot();
@@ -292,7 +292,7 @@ describe("fileRefCompression", () => {
   });
 
   it("does NOT flag short code blocks", () => {
-    const prompt = 'Fix `const x = null;` — change null to undefined.\n```ts\nconst x = null;\n```';
+    const prompt = 'Fix `const x = null;` - change null to undefined.\n```ts\nconst x = null;\n```';
     const result = fileRefCompression(prompt);
     expect(result.applied).toBe(false);
   });
@@ -392,7 +392,7 @@ describe("specificityScore", () => {
     expect(specificityScore(corpus("34-score-high-structured"))).toBeGreaterThanOrEqual(70);
   });
 
-  it("score is always 0–100", () => {
+  it("score is always 0-100", () => {
     const prompts = [
       corpus("01-filler-heavy"), corpus("05-already-structured"),
       corpus("07-short-clean"), corpus("21-high-specificity"),
@@ -427,10 +427,10 @@ describe("specificityScore", () => {
   });
 });
 
-// Full pipeline — new corpora
+// Full pipeline - new corpora
 
-describe("refine — full pipeline (Step 5 corpus)", () => {
-  it("corpus 32 (all passes) — fillerStrip, vagueVerbReplace, dedup all fire", () => {
+describe("refine - full pipeline (Step 5 corpus)", () => {
+  it("corpus 32 (all passes) - fillerStrip, vagueVerbReplace, dedup all fire", () => {
     const result = refine({ prompt: corpus("32-all-passes-fire") });
     const applied = result.passes.filter((p) => p.applied).map((p) => p.pass);
     expect(applied).toContain("fillerStrip");
@@ -439,19 +439,19 @@ describe("refine — full pipeline (Step 5 corpus)", () => {
     expect(applied).toContain("negativeCollapse");
   });
 
-  it("corpus 33 (file ref present) — fileRefCompression does NOT fire", () => {
+  it("corpus 33 (file ref present) - fileRefCompression does NOT fire", () => {
     const result = refine({ prompt: corpus("33-file-ref-present") });
     const pass = result.passes.find((p) => p.pass === "fileRefCompression");
     expect(pass?.applied).toBe(false);
   });
 
-  it("corpus 16 (large code block) — fileRefCompression fires", () => {
+  it("corpus 16 (large code block) - fileRefCompression fires", () => {
     const result = refine({ prompt: corpus("16-large-code-block") });
     const pass = result.passes.find((p) => p.pass === "fileRefCompression");
     expect(pass?.applied).toBe(true);
   });
 
-  it("all 35 corpus prompts — refined is a string and savedTokens >= 0", () => {
+  it("all 35 corpus prompts - refined is a string and savedTokens >= 0", () => {
     const files = fs.readdirSync(CORPUS).filter((f) => f.endsWith(".txt"));
     for (const file of files) {
       const prompt = fs.readFileSync(path.join(CORPUS, file), "utf8").trim();
@@ -461,7 +461,7 @@ describe("refine — full pipeline (Step 5 corpus)", () => {
     }
   });
 
-  it("corpus 34 (perfectly structured) — specificityScore >= 70", () => {
+  it("corpus 34 (perfectly structured) - specificityScore >= 70", () => {
     const result = refine({ prompt: corpus("34-score-high-structured") });
     expect(result.specificityScore).toBeGreaterThanOrEqual(70);
   });
@@ -469,7 +469,7 @@ describe("refine — full pipeline (Step 5 corpus)", () => {
 
 // Additional snapshots
 
-describe("refine — Step 5 snapshots", () => {
+describe("refine - Step 5 snapshots", () => {
   it("corpus 19 negativeCollapse suggestion matches snapshot", () => {
     const result = negativeCollapse(corpus("19-negative-scattered"));
     expect(result.suggestions[0].replacement).toMatchSnapshot();
@@ -482,7 +482,7 @@ describe("refine — Step 5 snapshots", () => {
 
   it("corpus 34 full refine result shape matches snapshot", () => {
     const result = refine({ prompt: corpus("34-score-high-structured") });
-    // Snapshot the pass-level applied flags — stable across minor text changes
+    // Snapshot the pass-level applied flags - stable across minor text changes
     const passSummary = result.passes.map((p) => ({ pass: p.pass, applied: p.applied }));
     expect(passSummary).toMatchSnapshot();
   });

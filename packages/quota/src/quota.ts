@@ -29,7 +29,7 @@ export interface QuotaImpact {
   unlimited: boolean;
   /** Human-readable one-line summary */
   summary: string;
-  /** Always true — callers must display this to the user */
+  /** Always true - callers must display this to the user */
   isEstimated: true;
 }
 
@@ -54,7 +54,7 @@ export function getQuotaImpact(options: QuotaImpactOptions): QuotaImpact {
   );
 
   if (windowLimit === null) {
-    // Enterprise / API — no message cap
+    // Enterprise / API - no message cap
     return {
       plan: planId,
       modelTier,

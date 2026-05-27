@@ -1,1 +1,1 @@
-Write a function that validates an email address. Return only the function — no explanation, no surrounding code, no imports.
+Write a function that validates an email address. Return only the function - no explanation, no surrounding code, no imports.

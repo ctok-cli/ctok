@@ -9,7 +9,7 @@ export interface PassSuggestion {
   label: string;
   /** Original text span being replaced */
   original: string;
-  /** Suggested replacement — may be empty string (delete) */
+  /** Suggested replacement - may be empty string (delete) */
   replacement: string;
   /** Why this replacement saves tokens or improves clarity */
   reason: string;
@@ -33,11 +33,11 @@ export interface RefineResult {
   /** Prompt with all suggestions auto-applied */
   refined: string;
   passes: PassResult[];
-  /** Total tokens saved (original - refined) — approximate */
+  /** Total tokens saved (original - refined) - approximate */
   savedTokens: number;
   /** Percentage reduction */
   savedPct: number;
-  /** 0-100 specificity score (pass 8, Step 5 — placeholder 0 in Step 4) */
+  /** 0-100 specificity score (pass 8, Step 5 - placeholder 0 in Step 4) */
   specificityScore: number;
   warnings: string[];
 }

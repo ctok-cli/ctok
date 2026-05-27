@@ -18,7 +18,7 @@ const PLANS = ["free", "pro", "max5x", "max20x", "team", "enterprise", "api"];
 
 const command = new SlashCommandBuilder()
   .setName("ctok")
-  .setDescription("Claude token estimator — estimate cost, quota, and more")
+  .setDescription("Claude token estimator - estimate cost, quota, and more")
 
   .addSubcommand(
     new SlashCommandSubcommandBuilder()

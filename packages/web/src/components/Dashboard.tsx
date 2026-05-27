@@ -21,7 +21,7 @@ export function Dashboard() {
       <Hero />
       <main className="mx-auto max-w-7xl px-6 py-6">
         <div className="grid gap-6 lg:grid-cols-5">
-          {/* Left column — inputs */}
+          {/* Left column - inputs */}
           <div className="space-y-6 lg:col-span-3">
             <DragDropZone />
             <div id="prompt-input">
@@ -31,7 +31,7 @@ export function Dashboard() {
             <SessionHistory />
           </div>
 
-          {/* Right column — outputs */}
+          {/* Right column - outputs */}
           <div className="space-y-6 lg:col-span-2">
             <TokenMeter />
             <CostIndicator />
@@ -44,7 +44,7 @@ export function Dashboard() {
         <footer className="mt-10 border-t border-border-subtle pt-6 text-xs text-text-dim">
           <p>
             Token counts are heuristic estimates calibrated against Claude&apos;s
-            BPE behavior — treat them as ranges. Local-only: nothing leaves
+            BPE behavior - treat them as ranges. Local-only: nothing leaves
             your browser. Pricing reflects Anthropic list rates and may drift.
           </p>
         </footer>

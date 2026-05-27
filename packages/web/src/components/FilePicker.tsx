@@ -96,7 +96,7 @@ export function FilePicker() {
 
       {files.length === 0 ? (
         <p className="text-sm text-text-dim">
-          No files attached. Drop in the files you'd realistically include — usually 1–4 is enough.
+          No files attached. Drop in the files you'd realistically include - usually 1-4 is enough.
         </p>
       ) : (
         <ul className="divide-y divide-border-subtle">

@@ -8,8 +8,8 @@ import type { PlanId } from "./plans";
  *
  * Detection strategy (tried in order):
  *  1. CTOK_PLAN env var (user-set override)
- *  2. ~/.claude/settings.json   — Claude Code config
- *  3. ~/.ctok/config.json       — ctok's own config (written by `ctok config set plan`)
+ *  2. ~/.claude/settings.json   - Claude Code config
+ *  3. ~/.ctok/config.json       - ctok's own config (written by `ctok config set plan`)
  *  4. Fall back to "pro" (most common paid plan) with a warning
  *
  * Returns both the detected plan and the confidence level so callers can
@@ -102,7 +102,7 @@ export function detectPlan(): DetectionResult {
     planId: "pro",
     confidence: "default",
     source:
-      "No plan configured — defaulting to Pro. " +
+      "No plan configured - defaulting to Pro. " +
       "Run `ctok config set plan <id>` to set your actual plan.",
   };
 }

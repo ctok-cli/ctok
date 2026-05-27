@@ -1,4 +1,4 @@
-name: ctok — Claude Token Estimator
+name: ctok - Claude Token Estimator
 description: >
   Estimate Claude token usage, cost, and quota impact for a prompt or file.
   Optionally fail the workflow when token count or cost exceeds a threshold.

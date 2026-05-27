@@ -26,7 +26,7 @@ export function TokenMeter() {
   return (
     <Card
       title="Token estimate"
-      subtitle="Heuristic — not byte-exact. Use ranges, not the middle number."
+      subtitle="Heuristic - not byte-exact. Use ranges, not the middle number."
       action={<Badge tone={confTone}>{estimate.confidence} confidence</Badge>}
     >
       <div className="grid grid-cols-3 gap-4">
@@ -114,7 +114,7 @@ function Stat({
       <div className="text-[11px] uppercase tracking-wide text-text-muted">{label}</div>
       <div className="mt-1 font-mono text-2xl font-medium text-text">{formatNumber(expected)}</div>
       <div className="mt-0.5 font-mono text-[11px] text-text-dim">
-        range {formatNumber(min)}–{formatNumber(max)}
+        range {formatNumber(min)}-{formatNumber(max)}
       </div>
     </div>
   );

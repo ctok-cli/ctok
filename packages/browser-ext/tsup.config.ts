@@ -1,6 +1,6 @@
 import { defineConfig } from "tsup";
 
-// tsup IIFE format defaults to *.global.js — outExtension overrides to plain *.js
+// tsup IIFE format defaults to *.global.js - outExtension overrides to plain *.js
 // so manifest.json references (content.js, background.js, popup.js) match.
 
 const iife = {
@@ -10,7 +10,7 @@ const iife = {
 };
 
 export default defineConfig([
-  // content script — bundles @ctok/core, @ctok/refiner, preact + widget
+  // content script - bundles @ctok/core, @ctok/refiner, preact + widget
   {
     ...iife,
     entry: { content: "src/content.ts" },

@@ -199,13 +199,13 @@ fn format_check(result: &CheckResult) -> String {
     let mut s = String::new();
     s.push_str("## Token Estimate\n\n");
     s.push_str(&format!(
-        "**Input:** {} tokens  (range {} – {})\n",
+        "**Input:** {} tokens  (range {} - {})\n",
         fmt_tokens(inp.expected),
         fmt_tokens(inp.min),
         fmt_tokens(inp.max)
     ));
     s.push_str(&format!(
-        "**Output:** {} tokens  (range {} – {})\n",
+        "**Output:** {} tokens  (range {} - {})\n",
         fmt_tokens(out.expected),
         fmt_tokens(out.min),
         fmt_tokens(out.max)
@@ -216,7 +216,7 @@ fn format_check(result: &CheckResult) -> String {
     s.push('\n');
 
     s.push_str(&format!(
-        "**Cost:** {}  (range {} – {})\n",
+        "**Cost:** {}  (range {} - {})\n",
         fmt_usd(cost.total_usd),
         fmt_usd(cost.total_usd_range.min),
         fmt_usd(cost.total_usd_range.max)
@@ -332,7 +332,7 @@ fn format_scan(result: &ScanResult) -> String {
         if !heavy.is_empty() {
             s.push_str("### Heaviest Files\n\n");
             for f in heavy.iter().take(8) {
-                s.push_str(&format!("- `{}` — {}\n", f.path, fmt_tokens(f.tokens)));
+                s.push_str(&format!("- `{}` - {}\n", f.path, fmt_tokens(f.tokens)));
             }
             s.push('\n');
         }

@@ -1,4 +1,4 @@
-name: GitHub Action — CI
+name: GitHub Action - CI
 
 on:
   push:
@@ -89,7 +89,7 @@ jobs:
 
           echo "✅ All outputs look valid."
 
-      - name: Run ctok action (max-tokens threshold — should pass)
+      - name: Run ctok action (max-tokens threshold - should pass)
         uses: ./apps/action
         with:
           prompt: "Fix typo"

@@ -15,7 +15,7 @@
     <key>CFBundleName</key>
     <string>ctok</string>
     <key>CFBundleDisplayName</key>
-    <string>ctok — Claude Token Estimator</string>
+    <string>ctok - Claude Token Estimator</string>
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>

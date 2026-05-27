@@ -33,7 +33,7 @@ function buildHtml(analysis: CtokAnalysis, title: string): string {
     pairs.map(([k, v]) => `<tr><td class="key">${esc(k)}</td><td>${esc(v)}</td></tr>`).join("\n");
 
   const suggestionRows = suggestions.length === 0
-    ? `<p class="none">No suggestions — prompt looks good.</p>`
+    ? `<p class="none">No suggestions - prompt looks good.</p>`
     : suggestions.map((s) => `
         <div class="suggestion ${s.severity}">
           <strong>${esc(s.title)}</strong>
@@ -59,10 +59,10 @@ function buildHtml(analysis: CtokAnalysis, title: string): string {
     <table>
       ${rows([
         ["5h window used", fmtPct(quotaPct)],
-        ["Remaining messages", remainingMessages != null ? `~${remainingMessages}` : "—"],
+        ["Remaining messages", remainingMessages != null ? `~${remainingMessages}` : "-"],
       ])}
     </table>
-    <p class="note">Estimated — exact quota not exposed by Anthropic API.</p>
+    <p class="note">Estimated - exact quota not exposed by Anthropic API.</p>
   ` : "";
 
   const scanSection = scanResult ? (() => {
@@ -142,8 +142,8 @@ function buildHtml(analysis: CtokAnalysis, title: string): string {
   <h2>Token estimate</h2>
   <table>
     ${rows([
-      ["Input tokens", `${fmtTokens(estimate.input.expected)} (range ${fmtTokens(estimate.input.min)}–${fmtTokens(estimate.input.max)})`],
-      ["Output tokens", `${fmtTokens(estimate.output.expected)} (range ${fmtTokens(estimate.output.min)}–${fmtTokens(estimate.output.max)})`],
+      ["Input tokens", `${fmtTokens(estimate.input.expected)} (range ${fmtTokens(estimate.input.min)}-${fmtTokens(estimate.input.max)})`],
+      ["Output tokens", `${fmtTokens(estimate.output.expected)} (range ${fmtTokens(estimate.output.min)}-${fmtTokens(estimate.output.max)})`],
       ["Context window", `${fmtPct(estimate.input.expected / 200_000)} of 200k`],
       ["Confidence", estimate.confidence],
     ])}
@@ -156,7 +156,7 @@ function buildHtml(analysis: CtokAnalysis, title: string): string {
       ["Input cost", fmtUsd(cost.inputUsd)],
       ["Output cost", fmtUsd(cost.outputUsd)],
       ["Total (expected)", fmtUsd(cost.totalUsd)],
-      ["Total (range)", `${fmtUsd(cost.totalUsdRange.min)} – ${fmtUsd(cost.totalUsdRange.max)}`],
+      ["Total (range)", `${fmtUsd(cost.totalUsdRange.min)} - ${fmtUsd(cost.totalUsdRange.max)}`],
     ])}
   </table>
 

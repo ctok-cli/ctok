@@ -88,7 +88,7 @@ export async function scan(options: ScanOptions = {}): Promise<ProjectScan> {
     try {
       content = fs.readFileSync(abs, "utf8");
     } catch {
-      // Binary file snuck through extension check (e.g. no extension) — skip
+      // Binary file snuck through extension check (e.g. no extension) - skip
       bump(excluded.reasons, "read error / binary");
       excluded.files++;
       continue;

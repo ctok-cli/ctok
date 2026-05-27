@@ -1,5 +1,5 @@
 ---
-title: ctok — Lighthouse for Claude prompts
+title: ctok - Lighthouse for Claude prompts
 description: Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost.
 template: splash
 hero:
@@ -27,7 +27,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     Picks Haiku / Sonnet / Opus based on task complexity. Suggests effort level (low → xhigh) with written reasoning.
   </Card>
   <Card title="Refine prompts" icon="pencil">
-    7-pass pipeline strips filler words, replaces vague verbs, deduplicates blocks, and scores specificity 0–100.
+    7-pass pipeline strips filler words, replaces vague verbs, deduplicates blocks, and scores specificity 0-100.
   </Card>
   <Card title="Works everywhere" icon="laptop">
     CLI · Web playground · MCP server · Desktop app · Browser extension. Same engine, every surface.
@@ -58,8 +58,8 @@ scoop bucket add ctok https://github.com/ctok-cli/scoop-ctok && scoop install ct
 ```sh
 $ ctok check "Refactor the auth middleware to use the new session store"
 
-  Input tokens    ~367  (range 365–369, high confidence)
-  Output tokens   ~400  (range 400–551)
+  Input tokens    ~367  (range 365-369, high confidence)
+  Output tokens   ~400  (range 400-551)
   Estimated cost  $0.035  at Opus 4.7
 
   Recommendation  opus-4-7 · high effort

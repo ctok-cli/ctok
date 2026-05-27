@@ -78,7 +78,7 @@ export function fileRefCompression(prompt: string): PassResult {
       reason:
         `This code block is ~${tokenCount} tokens. ` +
         (filePath
-          ? `Claude Code can read \`${filePath}\` directly — replace the paste with a reference to save these tokens.`
+          ? `Claude Code can read \`${filePath}\` directly - replace the paste with a reference to save these tokens.`
           : `If you're using Claude Code (or any tool with file access), replace the pasted code with a file path + line range.`),
       tokenDelta,
     });

@@ -1,7 +1,7 @@
 # Example: check a prompt file on every PR and post a summary comment.
 # Copy this to .github/workflows/ctok.yml in your repository.
 
-name: ctok — Token check
+name: ctok - Token check
 
 on:
   pull_request:
@@ -56,7 +56,7 @@ jobs:
             const effort = '${{ steps.ctok.outputs.recommended-effort }}';
             const saved = '${{ steps.ctok.outputs.tokens-saved }}';
             const body = [
-              '## ⚡ ctok — Token estimate',
+              '## ⚡ ctok - Token estimate',
               '',
               `| Metric | Value |`,
               `|--------|-------|`,

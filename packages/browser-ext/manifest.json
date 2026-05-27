@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "ctok — Token counter for Claude & AI",
+  "name": "ctok - Token counter for Claude & AI",
   "short_name": "ctok",
   "version": "0.1.0",
-  "description": "Live token count, cost estimate, and prompt refiner overlay for Claude, ChatGPT, Cursor, DeepSeek, and Gemini. 100% offline — nothing leaves your browser.",
+  "description": "Live token count, cost estimate, and prompt refiner overlay for Claude, ChatGPT, Cursor, DeepSeek, and Gemini. 100% offline - nothing leaves your browser.",
   "permissions": [],
   "host_permissions": [
     "https://claude.ai/*",

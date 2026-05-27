@@ -34,7 +34,7 @@ function ScanResultDetail({ result, directory }: { result: ProjectScan; director
     .join("\n");
 
   const markdown = [
-    `# Project Scan — \`${directory}\``,
+    `# Project Scan - \`${directory}\``,
     ``,
     `| Metric | Value |`,
     `|--------|-------|`,

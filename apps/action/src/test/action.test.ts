@@ -31,7 +31,7 @@ function runActionLogic(
   return { estimate, cost, recommendation, suggestions, quota };
 }
 
-describe("action analysis — output shape", () => {
+describe("action analysis - output shape", () => {
   it("produces positive input and output tokens", () => {
     const { estimate } = runActionLogic("Refactor the auth module to use JWT");
     expect(estimate.input.expected).toBeGreaterThan(0);
@@ -142,7 +142,7 @@ describe("refiner (withRefine: true)", () => {
     expect(result.savedTokens).toBeGreaterThanOrEqual(0);
   });
 
-  it("specificityScore is 0–100", () => {
+  it("specificityScore is 0-100", () => {
     const result = refine({ prompt: "implement oauth" });
     expect(result.specificityScore).toBeGreaterThanOrEqual(0);
     expect(result.specificityScore).toBeLessThanOrEqual(100);

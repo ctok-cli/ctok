@@ -101,7 +101,7 @@ export function renderSideBySide(a: string, b: string, width = 38): string {
 }
 
 export function renderScoreDelta(before: number, after: number, savedTokens: number, savedPct: number): string {
-  const arrow = after > before ? c.ok("▲") : after < before ? c.danger("▼") : c.dim("—");
+  const arrow = after > before ? c.ok("▲") : after < before ? c.danger("▼") : c.dim("-");
   const delta = after - before;
   const deltaStr = delta === 0 ? "" : ` ${arrow} ${delta > 0 ? "+" : ""}${delta}`;
   const saved = savedTokens > 0

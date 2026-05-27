@@ -121,7 +121,7 @@ export interface SessionEntry {
   actual?: ActualUsage;
 }
 
-/** Returned by the top-level `analyze()` function — everything in one object. */
+/** Returned by the top-level `analyze()` function - everything in one object. */
 export interface AnalysisResult {
   estimate: TokenEstimate;
   recommendation: RecommendationResult;

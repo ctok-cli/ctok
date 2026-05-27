@@ -85,7 +85,7 @@ export const UNIVERSAL_EXCLUDES: string[] = [
   "**/*.eot",
 ];
 
-/** Extensions considered text files — anything else is treated as binary and skipped. */
+/** Extensions considered text files - anything else is treated as binary and skipped. */
 export const TEXT_EXTENSIONS = new Set([
   // Web / TypeScript
   "ts", "tsx", "js", "jsx", "mjs", "cjs",

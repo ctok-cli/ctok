@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# install.sh — ctok one-liner installer for Linux and macOS
+# install.sh - ctok one-liner installer for Linux and macOS
 #
 # Usage:
 #   curl -fsSL https://ctok.dev/install.sh | sh
@@ -7,9 +7,9 @@
 #   curl -fsSL https://ctok.dev/install.sh | sh -s -- --dir /usr/local/bin
 #
 # Environment overrides:
-#   CTOK_VERSION   — install a specific version instead of latest
-#   CTOK_DIR       — install directory (default: ~/.ctok/bin)
-#   CTOK_NO_PATH   — set to "1" to skip shell profile PATH update
+#   CTOK_VERSION   - install a specific version instead of latest
+#   CTOK_DIR       - install directory (default: ~/.ctok/bin)
+#   CTOK_NO_PATH   - set to "1" to skip shell profile PATH update
 
 set -eu
 

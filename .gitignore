@@ -94,3 +94,4 @@ tmp/
 .tmp/
 scratch/
 *.local
+.npmrc

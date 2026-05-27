@@ -2,7 +2,7 @@
  * Assembles the distributable extension zip from dist/ + manifest.json + popup.html + icons/.
  * Run: node scripts/package.mjs
  * Output: ctok-ext-<version>.zip  (Chrome/Edge)
- *         ctok-ext-<version>-firefox.zip  (Firefox AMO — identical for MV3)
+ *         ctok-ext-<version>-firefox.zip  (Firefox AMO - identical for MV3)
  */
 import { createWriteStream, readFileSync, readdirSync, statSync, cpSync, mkdirSync, rmSync } from "fs";
 import { resolve, join, relative } from "path";

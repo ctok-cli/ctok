@@ -15,7 +15,7 @@ class CtokCliTest {
     fun `findExecutable returns null or a non-blank string`() {
         val result = CtokCli.findExecutable()
         if (result != null) assertTrue(result.isNotBlank())
-        // null is valid — ctok may not be installed in this environment
+        // null is valid - ctok may not be installed in this environment
     }
 
     @Test

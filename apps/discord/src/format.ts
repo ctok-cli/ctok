@@ -38,22 +38,22 @@ export function buildCheckEmbed(r: CheckResult): EmbedBuilder {
   const model = recommendation.model.model;
 
   const embed = new EmbedBuilder()
-    .setTitle("⚡ ctok — Token Estimate")
+    .setTitle("⚡ ctok - Token Estimate")
     .setColor(effortColor(effort))
     .addFields(
       {
         name: "Input tokens",
-        value: `${fmtTokens(estimate.input.min)}–${fmtTokens(estimate.input.max)}\nest. **${fmtTokens(estimate.input.expected)}**`,
+        value: `${fmtTokens(estimate.input.min)}-${fmtTokens(estimate.input.max)}\nest. **${fmtTokens(estimate.input.expected)}**`,
         inline: true,
       },
       {
         name: "Output tokens",
-        value: `${fmtTokens(estimate.output.min)}–${fmtTokens(estimate.output.max)}`,
+        value: `${fmtTokens(estimate.output.min)}-${fmtTokens(estimate.output.max)}`,
         inline: true,
       },
       {
         name: "Total cost",
-        value: `${fmtUsd(cost.totalUsd)}\n(${fmtUsd(cost.totalUsdRange.min)}–${fmtUsd(cost.totalUsdRange.max)})`,
+        value: `${fmtUsd(cost.totalUsd)}\n(${fmtUsd(cost.totalUsdRange.min)}-${fmtUsd(cost.totalUsdRange.max)})`,
         inline: true,
       },
       {
@@ -67,7 +67,7 @@ export function buildCheckEmbed(r: CheckResult): EmbedBuilder {
         inline: false,
       },
     )
-    .setFooter({ text: "ctok — all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
 
   if (suggestions.length > 0) {
     const tips = suggestions
@@ -95,7 +95,7 @@ export function buildRefineEmbed(r: RefineOutput): EmbedBuilder {
     : r.refined;
 
   return new EmbedBuilder()
-    .setTitle("✂️ ctok — Refined Prompt")
+    .setTitle("✂️ ctok - Refined Prompt")
     .setColor(Colors.Green)
     .addFields(
       {
@@ -109,17 +109,17 @@ export function buildRefineEmbed(r: RefineOutput): EmbedBuilder {
         inline: false,
       },
     )
-    .setFooter({ text: "ctok — all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
 }
 
 export function buildScanEmbed(r: ScanResult, directory: string): EmbedBuilder {
   const topFiles = r.topHeavyFiles
     .slice(0, 8)
-    .map((f) => `\`${f.path}\` — ${fmtTokens(f.tokens)} tok`)
+    .map((f) => `\`${f.path}\` - ${fmtTokens(f.tokens)} tok`)
     .join("\n") || "_No files found_";
 
   return new EmbedBuilder()
-    .setTitle("🔍 ctok — Project Scan")
+    .setTitle("🔍 ctok - Project Scan")
     .setColor(Colors.Blue)
     .addFields(
       { name: "Directory", value: `\`${directory}\``, inline: true },
@@ -128,7 +128,7 @@ export function buildScanEmbed(r: ScanResult, directory: string): EmbedBuilder {
       { name: "Total tokens", value: fmtTokens(r.estimatedTokens), inline: true },
       { name: "Heaviest files", value: topFiles, inline: false },
     )
-    .setFooter({ text: "ctok — all analysis runs locally · ctok.dev" });
+    .setFooter({ text: "ctok - all analysis runs locally · ctok.dev" });
 }
 
 export function buildErrorEmbed(message: string): EmbedBuilder {
@@ -140,26 +140,26 @@ export function buildErrorEmbed(message: string): EmbedBuilder {
 
 export function buildHelpEmbed(): EmbedBuilder {
   return new EmbedBuilder()
-    .setTitle("⚡ ctok — Claude Token Estimator")
+    .setTitle("⚡ ctok - Claude Token Estimator")
     .setColor(Colors.Blurple)
     .setDescription("Estimate Claude token usage, cost, and quota impact without leaving Discord.")
     .addFields(
       {
         name: "Commands",
         value: [
-          "`/ctok check prompt:<text>` — Token estimate + cost + model recommendation",
-          "`/ctok refine prompt:<text>` — Run the 7-pass prompt refiner",
-          "`/ctok scan directory:<path>` — Scan a project and report token footprint",
-          "`/ctok help` — Show this message",
+          "`/ctok check prompt:<text>` - Token estimate + cost + model recommendation",
+          "`/ctok refine prompt:<text>` - Run the 7-pass prompt refiner",
+          "`/ctok scan directory:<path>` - Scan a project and report token footprint",
+          "`/ctok help` - Show this message",
         ].join("\n"),
         inline: false,
       },
       {
         name: "Optional parameters (for /ctok check)",
         value: [
-          "`model` — Override model (`haiku-4-5`, `sonnet-4-6`, `opus-4-7`)",
-          "`plan` — Override plan (`free`, `pro`, `max5x`, `max20x`)",
-          "`task_type` — Task hint (`bug-fix`, `feature`, `refactor`, `review`, …)",
+          "`model` - Override model (`haiku-4-5`, `sonnet-4-6`, `opus-4-7`)",
+          "`plan` - Override plan (`free`, `pro`, `max5x`, `max20x`)",
+          "`task_type` - Task hint (`bug-fix`, `feature`, `refactor`, `review`, …)",
         ].join("\n"),
         inline: false,
       },

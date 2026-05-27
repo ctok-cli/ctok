@@ -1,7 +1,7 @@
 /**
  * Claude plan limits table.
  *
- * Anthropic does not publish exact token quotas — they publish *message* limits
+ * Anthropic does not publish exact token quotas - they publish *message* limits
  * that reset on a rolling 5-hour window. Numbers below are best-effort estimates
  * derived from Anthropic's public documentation and community reports as of 2025.
  * All calculations in this package carry an "estimated" disclaimer.
@@ -96,7 +96,7 @@ export const PLANS: Record<PlanId, Plan> = {
     monthlyUsd: null,
     window5h: { haiku: null, sonnet: null, opus: null },
     limitsAreEstimated: false,
-    limitNote: "Enterprise quotas are negotiated — no fixed message cap.",
+    limitNote: "Enterprise quotas are negotiated - no fixed message cap.",
   },
   api: {
     id: "api",

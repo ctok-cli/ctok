@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
 // We test the telemetry module in isolation by controlling the env var and
-// mocking readCtokConfig — no actual HTTP calls are made.
+// mocking readCtokConfig - no actual HTTP calls are made.
 
 vi.mock("@ctok/quota", () => ({
   readCtokConfig: vi.fn(() => undefined),
@@ -76,7 +76,7 @@ describe("trackEvent", () => {
 
   it("does not throw when opt-ed in (even if network unavailable)", () => {
     process.env["CTOK_TELEMETRY"] = "1";
-    // Network will fail in test environment — should be swallowed silently
+    // Network will fail in test environment - should be swallowed silently
     expect(() => trackEvent("check", { json: false })).not.toThrow();
   });
 

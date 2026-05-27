@@ -12,7 +12,7 @@ const DETECTORS: Array<{
   test: (root: string) => boolean;
   result: Detection;
 }> = [
-  // Flutter — check before Node because Flutter projects can also have package.json
+  // Flutter - check before Node because Flutter projects can also have package.json
   {
     test: (r) => exists(r, "pubspec.yaml"),
     result: {
@@ -38,7 +38,7 @@ const DETECTORS: Array<{
       excludes: [".build/**", ".swiftpm/**"],
     },
   },
-  // Android — check before JVM
+  // Android - check before JVM
   {
     test: (r) =>
       existsGlob(r, ["build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts"]) &&
@@ -132,7 +132,7 @@ const DETECTORS: Array<{
       excludes: ["_build/**", "deps/**"],
     },
   },
-  // Node — last so language-specific projects aren't mis-detected
+  // Node - last so language-specific projects aren't mis-detected
   {
     test: (r) => exists(r, "package.json"),
     result: {
@@ -159,7 +159,7 @@ export function detectProjectType(root: string): Detection {
     try {
       if (d.test(root)) return d.result;
     } catch {
-      // readdirSync can fail for permission errors — skip
+      // readdirSync can fail for permission errors - skip
     }
   }
   return { type: "unknown", excludes: [] };

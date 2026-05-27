@@ -36,7 +36,7 @@ class CheckTokensAction : AnAction() {
         }
 
         if (text.isBlank()) {
-            notify(project, "Nothing to analyse — file or selection is empty.")
+            notify(project, "Nothing to analyse - file or selection is empty.")
             return
         }
 

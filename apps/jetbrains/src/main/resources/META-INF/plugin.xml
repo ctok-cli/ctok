@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>dev.ctok.jetbrains</id>
-    <name>ctok — Claude Token Estimator</name>
+    <name>ctok - Claude Token Estimator</name>
     <version>0.1.0</version>
     <vendor url="https://ctok.dev">ctok-cli</vendor>
 
@@ -18,7 +18,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
-        <b>0.1.0</b> — Initial release.
+        <b>0.1.0</b> - Initial release.
     ]]></change-notes>
 
     <idea-version since-build="243"/>

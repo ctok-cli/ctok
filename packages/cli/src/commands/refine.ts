@@ -79,7 +79,7 @@ export async function runRefine(promptArg: string | undefined, opts: RefineOptio
 
   // --diff: side-by-side viral hook
   if (opts.diff) {
-    process.stdout.write(header("Prompt refiner — diff view") + "\n\n");
+    process.stdout.write(header("Prompt refiner - diff view") + "\n\n");
     process.stdout.write(renderSideBySide(result.original, result.refined) + "\n\n");
     process.stdout.write(renderScoreDelta(beforeScore, afterScore, result.savedTokens, result.savedPct) + "\n\n");
     process.stdout.write(header("Inline diff") + "\n");
@@ -121,7 +121,7 @@ export async function runRefine(promptArg: string | undefined, opts: RefineOptio
     }
     process.stdout.write("\n");
   } else {
-    process.stdout.write(`  ${c.ok("✓")} No changes needed — prompt is already well-formed.\n\n`);
+    process.stdout.write(`  ${c.ok("✓")} No changes needed - prompt is already well-formed.\n\n`);
   }
 
   // Warnings

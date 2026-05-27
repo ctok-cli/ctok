@@ -1,5 +1,5 @@
 export interface SiteConfig {
-  /** CSS selectors tried in order — first match wins. */
+  /** CSS selectors tried in order - first match wins. */
   selectors: string[];
   /** How to extract text from a matched element. */
   readText: (el: Element) => string;

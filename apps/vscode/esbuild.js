@@ -8,7 +8,7 @@ const options = {
   entryPoints: ["src/extension.ts"],
   bundle: true,
   outfile: "dist/extension.js",
-  // vscode is injected by the host — never bundle it
+  // vscode is injected by the host - never bundle it
   external: ["vscode"],
   format: "cjs",
   platform: "node",

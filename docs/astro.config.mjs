@@ -93,6 +93,14 @@ export default defineConfig({
       ],
       head: [
         {
+          tag: "link",
+          attrs: { rel: "icon", type: "image/svg+xml", href: `${base}/favicon.svg` },
+        },
+        {
+          tag: "link",
+          attrs: { rel: "apple-touch-icon", href: `${base}/favicon.svg` },
+        },
+        {
           tag: "meta",
           attrs: { property: "og:image", content: "https://ctok.dev/og.png" },
         },
