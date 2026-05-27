@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ctok-cli.github.io/ctok/sitemap-index.xml
