@@ -40,16 +40,16 @@ jobs:
           pnpm --filter @ctok/quota build
 
       - name: Typecheck
-        run: pnpm --filter ctok typecheck
+        run: pnpm --filter "./apps/vscode" typecheck
 
       - name: Test
-        run: pnpm --filter ctok test
+        run: pnpm --filter "./apps/vscode" test
 
       - name: Build extension
-        run: pnpm --filter ctok build
+        run: pnpm --filter "./apps/vscode" build
 
       - name: Package .vsix
-        run: pnpm --filter ctok package
+        run: pnpm --filter "./apps/vscode" package
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
@@ -87,10 +87,10 @@ jobs:
           pnpm --filter @ctok/quota build
 
       - name: Build extension
-        run: pnpm --filter ctok build
+        run: pnpm --filter "./apps/vscode" build
 
       - name: Publish to Marketplace
-        run: pnpm --filter ctok publish
+        run: pnpm --filter "./apps/vscode" publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 

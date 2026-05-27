@@ -31,6 +31,13 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Build engine packages
+        run: |
+          pnpm --filter @ctok/core build
+          pnpm --filter @ctok/scanner build
+          pnpm --filter @ctok/refiner build
+          pnpm --filter @ctok/quota build
+
       - name: Build docs
         run: pnpm --filter @ctok/docs build
 

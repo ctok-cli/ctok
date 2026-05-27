@@ -27,6 +27,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        working-directory: apps/jetbrains
+
       - name: Build plugin
         run: ./gradlew buildPlugin --no-daemon
         working-directory: apps/jetbrains
@@ -64,6 +68,10 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        working-directory: apps/jetbrains
 
       - name: Publish plugin
         run: ./gradlew publishPlugin --no-daemon
