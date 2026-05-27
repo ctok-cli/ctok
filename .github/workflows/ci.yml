@@ -53,11 +53,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # macos-13 (x64 Intel) is deprecated and its runner queue is often
+        # heavily congested - jobs sit "queued" indefinitely on free public
+        # repos. macos-14 (arm64) covers the macOS surface; if we ever ship
+        # x64-specific code we'll add it back as a manual job.
         os:
           - ubuntu-latest
           - windows-latest
-          - macos-13      # x64 Intel
-          - macos-14      # arm64 M1
+          - macos-14
         node: [20, 22, 24]
 
     steps:
