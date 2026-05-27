@@ -15,10 +15,26 @@
   },
   "keywords": [
     "claude",
-    "prompt",
+    "anthropic",
+    "tokens",
+    "token-estimator",
+    "token-counter",
+    "claude-api",
+    "claude-tokens",
+    "claude-pricing",
+    "claude-cost",
+    "anthropic-tokens",
+    "anthropic-pricing",
+    "prompt-engineering",
+    "llm",
+    "ai",
+    "ctok",
     "refiner",
     "ai-sdk",
-    "vercel-ai-gateway"
+    "vercel-ai-gateway",
+    "claude-haiku",
+    "claude-sonnet",
+    "claude-opus"
   ],
   "publishConfig": {
     "access": "public"

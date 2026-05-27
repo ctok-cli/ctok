@@ -15,11 +15,26 @@
   },
   "keywords": [
     "claude",
-    "tokens",
     "anthropic",
-    "estimator",
+    "tokens",
+    "token-estimator",
+    "token-counter",
+    "claude-api",
+    "claude-tokens",
+    "claude-pricing",
+    "claude-cost",
+    "anthropic-tokens",
+    "anthropic-pricing",
+    "prompt-engineering",
     "llm",
-    "pricing"
+    "ai",
+    "ctok",
+    "estimator",
+    "pricing",
+    "cost-calculator",
+    "model-recommender",
+    "reduction-suggestions",
+    "bpe"
   ],
   "publishConfig": {
     "access": "public"

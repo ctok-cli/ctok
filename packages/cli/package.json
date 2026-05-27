@@ -15,11 +15,26 @@
   },
   "keywords": [
     "claude",
-    "tokens",
-    "cli",
     "anthropic",
+    "tokens",
+    "token-estimator",
+    "token-counter",
+    "claude-api",
+    "claude-tokens",
+    "claude-pricing",
+    "claude-cost",
+    "anthropic-tokens",
+    "anthropic-pricing",
+    "prompt-engineering",
+    "llm",
+    "ai",
     "ctok",
-    "prompt-engineering"
+    "cli",
+    "command-line",
+    "claude-cli",
+    "claude-code",
+    "developer-tools",
+    "terminal"
   ],
   "publishConfig": {
     "access": "public"

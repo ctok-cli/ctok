@@ -14,9 +14,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "ctok",
-      tagline: "Lighthouse for Claude prompts",
+      tagline: "Claude token estimator, cost calculator, and prompt refiner",
       description:
-        "Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost.",
+        "Free Claude token estimator and prompt refiner. Calculate Claude API cost, count tokens for Haiku, Sonnet, and Opus, pick the right model, and tighten prompts before you send. CLI, MCP server, web playground, VS Code, JetBrains, Slack, Discord.",
       logo: {
         light: "./src/assets/logo-light.svg",
         dark: "./src/assets/logo-dark.svg",
@@ -102,7 +102,65 @@ export default defineConfig({
         },
         {
           tag: "meta",
+          attrs: {
+            name: "keywords",
+            content:
+              "claude token estimator, claude api cost calculator, claude prompt cost, claude token counter, anthropic token calculator, claude api pricing, claude prompt refiner, claude code cli, mcp server, model context protocol, claude haiku cost, claude sonnet cost, claude opus cost, claude max plan quota, prompt engineering tool, llm cost calculator",
+          },
+        },
+        {
+          tag: "meta",
           attrs: { property: "og:image", content: "https://ctok-cli.github.io/ctok/og.png" },
+        },
+        {
+          tag: "meta",
+          attrs: { property: "og:type", content: "website" },
+        },
+        {
+          tag: "meta",
+          attrs: { name: "twitter:card", content: "summary_large_image" },
+        },
+        {
+          tag: "meta",
+          attrs: { name: "twitter:creator", content: "@ctok_cli" },
+        },
+        {
+          tag: "meta",
+          attrs: { name: "author", content: "ctok-cli" },
+        },
+        {
+          tag: "link",
+          attrs: { rel: "canonical", href: `${site}${base}/` },
+        },
+        // JSON-LD: tell Google "this is a free developer SoftwareApplication"
+        // so the result can render with a rich-card treatment and rank for
+        // intent queries like "claude token estimator".
+        {
+          tag: "script",
+          attrs: { type: "application/ld+json" },
+          content: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "ctok",
+            alternateName: "Claude Token Checker",
+            description:
+              "Estimate Claude API token usage and cost, recommend the right model (Haiku, Sonnet, Opus) and effort level, and refine prompts to reduce cost. Free and open source.",
+            applicationCategory: "DeveloperApplication",
+            applicationSubCategory: "CommandLineApplication",
+            operatingSystem: "Windows, macOS, Linux",
+            url: `${site}${base}/`,
+            downloadUrl: "https://www.npmjs.com/package/@ctok/cli",
+            softwareVersion: "0.1.0",
+            license: "https://opensource.org/licenses/MIT",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            author: {
+              "@type": "Organization",
+              name: "ctok-cli",
+              url: "https://github.com/ctok-cli",
+            },
+            keywords:
+              "claude, anthropic, tokens, cost calculator, prompt engineering, llm, cli, mcp, model context protocol, vscode extension, jetbrains plugin",
+          }),
         },
       ],
     }),

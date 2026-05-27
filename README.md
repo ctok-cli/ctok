@@ -1,6 +1,6 @@
-# ctok - Lighthouse for Claude prompts
+# ctok - Claude Token Estimator, Cost Calculator & Prompt Refiner
 
-**Estimate tokens, cut costs, and pick the right model before you send a single message.**
+**Free, open-source Claude token estimator and prompt refiner.** Count tokens for Claude Haiku 4.5, Sonnet 4.6, and Opus 4.7. Calculate Anthropic API cost and 5-hour quota impact. Pick the right model. Refine prompts to cut tokens, before you send a single message.
 
 [![npm](https://img.shields.io/npm/v/@ctok/cli)](https://npmjs.com/package/@ctok/cli)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

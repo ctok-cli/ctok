@@ -15,10 +15,25 @@
   },
   "keywords": [
     "claude",
+    "anthropic",
     "tokens",
+    "token-estimator",
+    "token-counter",
+    "claude-api",
+    "claude-tokens",
+    "claude-pricing",
+    "claude-cost",
+    "anthropic-tokens",
+    "anthropic-pricing",
+    "prompt-engineering",
+    "llm",
+    "ai",
+    "ctok",
     "scanner",
+    "project-scanner",
     "monorepo",
-    "project-detection"
+    "project-detection",
+    "ignore"
   ],
   "publishConfig": {
     "access": "public"

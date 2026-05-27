@@ -1,9 +1,14 @@
 ---
-title: ctok - Lighthouse for Claude prompts
-description: Estimate Claude API token usage, get the optimal model and effort recommendation, and refine prompts to reduce cost.
+title: "ctok - Claude Token Estimator, Cost Calculator & Prompt Refiner"
+description: "Free Claude token estimator and prompt refiner. Calculate Claude API cost for Haiku, Sonnet, and Opus. Count tokens, pick the right model, and tighten prompts before you send. CLI, MCP, web playground, VS Code, JetBrains, Slack, Discord."
 template: splash
+head:
+  - tag: meta
+    attrs:
+      name: keywords
+      content: claude token estimator, claude api cost calculator, claude token counter, anthropic token calculator, claude prompt cost, claude prompt refiner, mcp server claude, claude code cli, claude haiku cost, claude sonnet cost, claude opus cost, claude max quota, llm cost calculator, prompt engineering tool
 hero:
-  tagline: Know your token cost before you send. Pick the right model. Refine prompts in one command.
+  tagline: "Free Claude token estimator and prompt refiner. Know your cost before you send. Pick the right model. Tighten prompts in one command."
   actions:
     - text: Install CLI
       link: /docs/installation/
@@ -16,6 +21,20 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## A free Claude token estimator and prompt refiner
+
+**ctok** is an open-source toolkit for everyone who builds on the Claude API.
+It counts tokens accurately for **Claude Haiku 4.5**, **Sonnet 4.6**, and
+**Opus 4.7**, calculates the dollar cost of your prompt at current Anthropic
+list pricing, recommends the right model and effort level for the task, and
+refines your prompt with a 7-pass heuristic pipeline that strips filler,
+catches repeats, and adds structure.
+
+It runs everywhere a developer already works: a CLI on the terminal, an MCP
+server inside Claude Code / Cursor / Zed, a web playground in the browser,
+plus extensions for VS Code, JetBrains, Slack, Discord, and a GitHub Action
+that gates pull requests on token budgets.
 
 ## What ctok does
 

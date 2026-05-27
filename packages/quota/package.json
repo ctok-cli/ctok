@@ -15,10 +15,28 @@
   },
   "keywords": [
     "claude",
-    "quota",
     "anthropic",
+    "tokens",
+    "token-estimator",
+    "token-counter",
+    "claude-api",
+    "claude-tokens",
+    "claude-pricing",
+    "claude-cost",
+    "anthropic-tokens",
+    "anthropic-pricing",
+    "prompt-engineering",
+    "llm",
+    "ai",
+    "ctok",
+    "quota",
+    "rate-limit",
     "plan-limits",
-    "rate-limit"
+    "claude-pro",
+    "claude-max",
+    "claude-team",
+    "claude-enterprise",
+    "5-hour-window"
   ],
   "publishConfig": {
     "access": "public"
