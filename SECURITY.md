@@ -10,11 +10,16 @@
 
 Please **do not** file a public GitHub issue for security vulnerabilities.
 
-Report vulnerabilities by emailing **security@ctok-cli.github.io/ctok** with:
-- Description of the issue
-- Steps to reproduce
-- Potential impact
-- Any suggested mitigations
+Report vulnerabilities using GitHub's private security advisories:
+
+1. Go to https://github.com/ctok-cli/ctok/security/advisories/new
+2. Fill in:
+   - Description of the issue
+   - Steps to reproduce
+   - Potential impact
+   - Any suggested mitigations
+
+If you cannot use GitHub advisories, email **kp587372@gmail.com** with the same details and `[ctok security]` in the subject.
 
 You will receive an acknowledgement within 48 hours. We aim to release a fix within 14 days for high-severity issues.
 

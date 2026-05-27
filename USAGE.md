@@ -350,7 +350,7 @@ Install from the JetBrains Marketplace ("ctok"). Tool Window → ctok → paste 
 
 ## Slack bot
 
-Add to your workspace: `https://ctok-cli.github.io/ctok/slack/install`.
+Self-host: see [the Slack bot integration docs](https://ctok-cli.github.io/ctok/integrations/slack/) or `apps/slack/` in the repo. A managed install URL will land once the bot is hosted publicly.
 
 Slash commands:
 
@@ -368,7 +368,7 @@ Self-host: `apps/slack/` has the bot code. `pnpm -F @ctok/slack start` after set
 
 ## Discord bot
 
-Invite link: `https://ctok-cli.github.io/ctok/discord/invite`.
+Self-host: see [the Discord bot integration docs](https://ctok-cli.github.io/ctok/integrations/discord/) or `apps/discord/` in the repo (Dockerfile included). A managed invite link will land once the bot is hosted publicly.
 
 Commands:
 

@@ -15,10 +15,10 @@ export function runServe(opts: ServeOptions): void {
   const webOut = path.join(webDir, "out");
 
   // If this is running from a global npm install, the web package may not be
-  // present. Fall back to opening ctok-cli.github.io/ctok in the default browser.
+  // present. Fall back to the hosted playground in the default browser.
   if (!fs.existsSync(webDir)) {
     process.stdout.write(
-      `  Web package not found locally. Open https://ctok-cli.github.io/ctok in your browser.\n`,
+      `  Web package not found locally. Open https://ctok-cli.github.io/ctok/playground/ in your browser.\n`,
     );
     return;
   }

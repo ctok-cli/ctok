@@ -151,7 +151,7 @@ ctok serve                  # serves on http://localhost:31337
 ctok serve -p 8080          # custom port
 ```
 
-Requires the `@ctok/web` static build (`packages/web/out/`) to be present. In a global npm install, if the web package is not bundled, the command opens ctok-cli.github.io/ctok instead.
+Requires the `@ctok/web` static build (`packages/web/out/`) to be present. In a global npm install, if the web package is not bundled, the command opens [the hosted playground](https://ctok-cli.github.io/ctok/playground/) instead.
 
 ---
 

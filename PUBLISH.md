@@ -234,11 +234,13 @@ vercel --prod
 ```
 
 Then in Vercel dashboard:
-- Settings → Domains → add `ctok-cli.github.io/ctok`.
+- Settings → Domains → add your real custom domain (e.g. `ctok.dev` once registered).
 - Configure DNS at registrar: CNAME `cname.vercel-dns.com`.
 - Settings → Environment Variables → leave empty (no server runtime).
 
-Also redirect `www.ctok-cli.github.io/ctok` → `ctok-cli.github.io/ctok`.
+Also redirect `www.<domain>` → `<domain>`. Until a custom domain is wired,
+the playground is served alongside the docs at
+`https://ctok-cli.github.io/ctok/playground/`.
 
 ---
 

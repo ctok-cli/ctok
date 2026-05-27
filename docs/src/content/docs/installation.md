@@ -69,7 +69,7 @@ ctok doctor       # checks environment, config, plan detection
 
 ## Web playground
 
-No install needed - open [ctok-cli.github.io/ctok](https://ctok-cli.github.io/ctok) in any browser.
+No install needed - open [ctok-cli.github.io/ctok/playground/](https://ctok-cli.github.io/ctok/playground/) in any browser.
 
 ---
 
