@@ -49,7 +49,12 @@ export function structureScaffold(prompt: string): PassResult {
   }
 
   const sentenceCount = countSentences(prompt);
-  if (sentenceCount < 3) {
+  // Two triggers: a normal multi-sentence ramble OR a single sentence with
+  // multiple " and "/" or "/" then " joins that exceeds 80 chars (the user's
+  // "check this README and run the project and start..." case).
+  const conjunctionJoins = (prompt.match(/\b(?:and|or|then|plus)\b/gi) ?? []).length;
+  const isRunOn = sentenceCount <= 1 && conjunctionJoins >= 3 && prompt.length > 80;
+  if (sentenceCount < 3 && !isRunOn) {
     // Short prompts don't benefit from structure
     return {
       pass: "structureScaffold",

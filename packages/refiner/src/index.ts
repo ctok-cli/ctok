@@ -6,6 +6,8 @@ export { dedup, applyDedup } from "./passes/dedup";
 export { fileRefCompression, applyFileRefCompression } from "./passes/fileRefCompression";
 export { outputFormatHint, applyOutputFormatHint } from "./passes/outputFormatHint";
 export { negativeCollapse, applyNegativeCollapse } from "./passes/negativeCollapse";
+export { phraseRepeat, applyPhraseRepeat } from "./passes/phraseRepeat";
+export { typoFix, applyTypoFix } from "./passes/typoFix";
 export { specificityScore, scoreBreakdown } from "./specificityScore";
 export type { ScoreBreakdown } from "./specificityScore";
 export type { RefineInput, PassResult, PassSuggestion, RefineResult } from "./types";

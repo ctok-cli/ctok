@@ -5,11 +5,18 @@ import type { PassResult, PassSuggestion } from "../types";
  * Each entry: [verbRegex, candidates[], reason]
  * Candidates are ordered: most-common domain meaning first.
  * The pass reports the top 2-3 so the user can choose.
+ *
+ * `autoApply` flips the rule from "suggest only" to "rewrite in place".
+ * Default is false - we now leave the choice to the user for any verb
+ * whose meaning depends on context (e.g. "check" could be "review",
+ * "validate", "inspect", or "test" depending on what they're checking).
+ * Only wordy phrases with a single sensible compaction get autoApply=true.
  */
 const VAGUE_VERB_RULES: Array<{
   pattern: RegExp;
   candidates: string[];
   reason: string;
+  autoApply?: boolean;
 }> = [
   {
     pattern: /\bhandle\b/gi,
@@ -58,7 +65,7 @@ const VAGUE_VERB_RULES: Array<{
   },
   {
     pattern: /\bcheck\b/gi,
-    candidates: ["validate", "assert", "verify", "inspect"],
+    candidates: ["review", "validate", "verify", "inspect", "test"],
     reason: "'check' is vague - name what property is being tested",
   },
   {
@@ -75,6 +82,7 @@ const VAGUE_VERB_RULES: Array<{
     pattern: /\badd support for\b/gi,
     candidates: ["implement", "integrate", "expose"],
     reason: "'add support for' is wordy - use a direct verb",
+    autoApply: true, // always shorter, "implement" is a safe default
   },
   {
     pattern: /\bintegrate\b/gi,
@@ -120,11 +128,18 @@ export function vagueVerbReplace(prompt: string): PassResult {
   };
 }
 
-/** Apply the pass: replace each vague verb with the first (best) candidate. */
+/**
+ * Apply the pass. Only rewrites verbs flagged `autoApply: true` - everything
+ * else is reported as a suggestion in the pass result so the user picks the
+ * intended candidate. This avoids the "check this README" -> "validate this
+ * README" mistake where the picker had to guess from a 4-way menu.
+ */
 export function applyVagueVerbReplace(prompt: string): string {
   let working = prompt;
-  for (const { pattern, candidates } of VAGUE_VERB_RULES) {
-    working = working.replace(pattern, candidates[0]);
+  for (const { pattern, candidates, autoApply } of VAGUE_VERB_RULES) {
+    if (autoApply) {
+      working = working.replace(pattern, candidates[0]);
+    }
   }
   return working;
 }

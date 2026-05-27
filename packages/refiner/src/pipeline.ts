@@ -3,9 +3,11 @@ import { fillerStrip, applyFillerStrip } from "./passes/fillerStrip";
 import { vagueVerbReplace, applyVagueVerbReplace } from "./passes/vagueVerbReplace";
 import { structureScaffold, applyStructureScaffold } from "./passes/structureScaffold";
 import { dedup, applyDedup } from "./passes/dedup";
+import { phraseRepeat, applyPhraseRepeat } from "./passes/phraseRepeat";
 import { fileRefCompression, applyFileRefCompression } from "./passes/fileRefCompression";
 import { outputFormatHint, applyOutputFormatHint } from "./passes/outputFormatHint";
 import { negativeCollapse, applyNegativeCollapse } from "./passes/negativeCollapse";
+import { typoFix, applyTypoFix } from "./passes/typoFix";
 import { specificityScore } from "./specificityScore";
 
 const CHARS_PER_TOKEN = 4;
@@ -32,19 +34,25 @@ export function refine(input: RefineInput): RefineResult {
 
   // analysis passes - run against original
   const passResults: PassResult[] = [
+    typoFix(prompt),
     fillerStrip(prompt),
     vagueVerbReplace(prompt),
     structureScaffold(prompt),
     dedup(prompt),
+    phraseRepeat(prompt),
     fileRefCompression(prompt),
     outputFormatHint(prompt),
     negativeCollapse(prompt),
   ];
 
-  // apply passes sequentially
+  // apply passes sequentially. Order matters: fix typos first so later
+  // regex-based passes see the corrected words; then strip filler; then
+  // tighten phrasing; then collapse repeats; then structure.
   let refined = prompt;
+  refined = applyTypoFix(refined);
   refined = applyFillerStrip(refined);
   refined = applyVagueVerbReplace(refined);
+  refined = applyPhraseRepeat(refined);
   refined = applyStructureScaffold(refined);
   refined = applyDedup(refined);
   refined = applyFileRefCompression(refined);

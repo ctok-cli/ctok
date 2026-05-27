@@ -34,10 +34,12 @@ describe("refine - output shape", () => {
     expect(result.specificityScore).toBeLessThanOrEqual(100);
   });
 
-  it("returns 7 passes", () => {
+  it("returns 9 passes", () => {
     const result = refine({ prompt: "Please improve my code and handle the errors." });
-    expect(result.passes.length).toBe(7);
+    expect(result.passes.length).toBe(9);
     const ids = result.passes.map((p) => p.pass);
+    expect(ids).toContain("typoFix");
+    expect(ids).toContain("phraseRepeat");
     expect(ids).toContain("fillerStrip");
     expect(ids).toContain("vagueVerbReplace");
     expect(ids).toContain("structureScaffold");

@@ -71,7 +71,7 @@ describe("runRefine", () => {
     expect(result.specificityScore).toBeGreaterThanOrEqual(0);
     expect(result.specificityScore).toBeLessThanOrEqual(100);
     expect(Array.isArray(result.passes)).toBe(true);
-    expect(result.passes.length).toBe(7);
+    expect(result.passes.length).toBe(9);
   });
 
   it("saves tokens on a filler-heavy prompt", () => {

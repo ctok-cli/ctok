@@ -13,11 +13,11 @@
 
 /** +20: prompt starts with or contains an imperative action verb. */
 const GOAL_VERB_RE =
-  /\b(?:implement|add|remove|fix|refactor|rename|move|extract|inline|migrate|write|generate|create|build|optimize|debug|resolve|convert|replace|extend|update|delete|expose|wire|integrate|deploy|configure|scaffold)\b/i;
+  /\b(?:implement|add|remove|fix|refactor|rename|move|extract|inline|migrate|write|generate|create|build|optimize|debug|resolve|convert|replace|extend|update|delete|expose|wire|integrate|deploy|configure|scaffold|check|run|start|stop|restart|verify|test|validate|setup|install|uninstall|lint|format|document|review|audit|analyze|parse|render|serve|scan|port|polish|publish|release|enable|disable|toggle|cleanup|clean|prepare|ship|patch|merge|rebase|tag|bump|upgrade|downgrade|investigate|profile|measure|benchmark|stub|mock|prototype|harden|simplify|expand|trim|prune|export|import|attach|detach|connect|disconnect|mount|unmount|register|deregister|subscribe|unsubscribe|encode|decode|encrypt|decrypt|sign|hash|seed|backfill|reindex|drop|truncate|restore|snapshot|fork|clone|provision|teardown|annotate|describe|explain|summarise|summarize|translate|localise|localize)\b/i;
 
 /** +15: names concrete identifiers - file paths, function/class names, field names. */
 const CONCRETE_ENTITY_RE =
-  /(?:`[^`]+`|src\/[\w/.]+|lib\/[\w/.]+|app\/[\w/.]+|\w+\.(?:ts|tsx|js|jsx|py|dart|kt|java|rs|go|swift|rb|php|cs)\b|\b[A-Z][a-zA-Z]+(?:Service|Controller|Handler|Manager|Repository|Store|Hook|Context|Provider|Component|Model|Schema|Enum|Type|Interface|Dto|Entity|Util|Helper)\b)/;
+  /(?:`[^`]+`|src\/[\w/.]+|lib\/[\w/.]+|app\/[\w/.]+|\w+\.(?:ts|tsx|js|jsx|mjs|cjs|py|dart|kt|java|rs|go|swift|rb|php|cs|md|mdx|json|jsonc|yml|yaml|toml|html|htm|xml|css|scss|sass|less|env|sql|prisma|graphql|gql|proto|lock|mod|cfg|ini|gradle|sh|ps1|bat|cmd|tf|hcl|nix|svelte|vue|astro|c|cpp|h|hpp|m|mm|r|lua|ex|exs|erl|hs|ml|fs|fsx|clj|cljs|nim|zig|d|pas|f90|asm)\b|\b[A-Z][a-zA-Z]+(?:Service|Controller|Handler|Manager|Repository|Store|Hook|Context|Provider|Component|Model|Schema|Enum|Type|Interface|Dto|Entity|Util|Helper|Factory|Builder|Adapter|Decorator|Validator|Parser|Renderer|Reducer|Selector|Action|Middleware|Guard|Resolver|Mutation|Query|Subscription|Pipe|Filter|Directive|Plugin|Extension|Module|Page|Layout|Route|Endpoint|Worker|Job|Task|Queue|Event|Listener|Emitter|Observer)\b)/;
 
 /** +15: measurable success criterion - "should", "must", "returns X", "passes X test". */
 const SUCCESS_CRITERION_RE =
