@@ -1,35 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="ctok demo placeholder">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="ctok demo">
   <style>
-    .bg { fill: #0b0f14; }
+    .bg     { fill: #0b0f14; }
     .border { fill: none; stroke: #1f2a37; stroke-width: 2; rx: 12; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; }
+    text    { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; fill: #e2e8f0; }
     .prompt { fill: #7dd3fc; }
-    .dim { fill: #94a3b8; }
-    .ok { fill: #4ade80; }
-    .warn { fill: #facc15; }
-    .err { fill: #f87171; }
-    .brand { fill: #22d3ee; font-weight: 700; }
-    .title { fill: #e5e7eb; font-weight: 700; }
+    .dim    { fill: #94a3b8; }
+    .ok     { fill: #4ade80; }
+    .warn   { fill: #facc15; }
+    .err    { fill: #f87171; }
+    .brand  { fill: #22d3ee; font-weight: 700; }
+    .title  { fill: #f8fafc; font-weight: 700; }
   </style>
+
   <rect class="bg" width="720" height="360" rx="12" />
   <rect x="1" y="1" width="718" height="358" class="border" rx="12" />
   <circle cx="20" cy="20" r="6" fill="#ef4444" />
   <circle cx="40" cy="20" r="6" fill="#f59e0b" />
   <circle cx="60" cy="20" r="6" fill="#22c55e" />
-  <text x="360" y="24" text-anchor="middle" class="mono title">ctok — Lighthouse for Claude prompts</text>
+  <text x="360" y="24" text-anchor="middle" class="title">ctok - Lighthouse for Claude prompts</text>
 
-  <text x="24" y="68"  class="mono"><tspan class="prompt">$</tspan> <tspan class="dim">npm install -g @ctok/cli</tspan></text>
-  <text x="24" y="96"  class="mono"><tspan class="prompt">$</tspan> ctok check <tspan class="dim">"Refactor the auth module to use JWT"</tspan></text>
-  <text x="24" y="118" class="mono"><tspan class="brand">●</tspan> <tspan class="title">Token estimate</tspan></text>
-  <text x="24" y="140" class="mono"><tspan class="dim">  Input</tspan>   <tspan class="ok">1.2k–1.5k</tspan> tokens</text>
-  <text x="24" y="158" class="mono"><tspan class="dim">  Cost</tspan>    <tspan class="ok">$0.015–0.022</tspan> (Sonnet 4.6)</text>
-  <text x="24" y="176" class="mono"><tspan class="dim">  Quota</tspan>   <tspan class="warn">~4%</tspan> of 5-hour window (Pro)</text>
+  <text x="24" y="68"><tspan class="prompt">$</tspan> npm install -g @ctok/cli</text>
+  <text x="24" y="96"><tspan class="prompt">$</tspan> ctok check <tspan class="ok">"Refactor the auth module to use JWT"</tspan></text>
+  <text x="24" y="118"><tspan class="brand">●</tspan> <tspan class="title">Token estimate</tspan></text>
+  <text x="24" y="140">  Input   <tspan class="ok">1.2k-1.5k</tspan> tokens</text>
+  <text x="24" y="158">  Cost    <tspan class="ok">$0.015-0.022</tspan> <tspan class="dim">(Sonnet 4.6)</tspan></text>
+  <text x="24" y="176">  Quota   <tspan class="warn">~4%</tspan> <tspan class="dim">of 5-hour window (Pro)</tspan></text>
 
-  <text x="24" y="216" class="mono"><tspan class="prompt">$</tspan> ctok refine --diff <tspan class="dim">"please can you kindly help me handle auth"</tspan></text>
-  <text x="24" y="238" class="mono"><tspan class="brand">●</tspan> <tspan class="title">Prompt refiner — diff view</tspan></text>
-  <text x="24" y="262" class="mono"><tspan class="err">please can you kindly help me</tspan>  <tspan class="dim">│</tspan>  <tspan class="ok">Refactor the auth flow</tspan></text>
-  <text x="24" y="280" class="mono"><tspan class="err">handle auth</tspan>                   <tspan class="dim">│</tspan>  <tspan class="ok">to use JWT validation</tspan></text>
-  <text x="24" y="306" class="mono"><tspan class="title">Specificity</tspan> 22/100 → <tspan class="ok">78/100</tspan>  <tspan class="ok">▲ +56</tspan>  •  <tspan class="ok">saved ~9 tokens (38%)</tspan></text>
+  <text x="24" y="216"><tspan class="prompt">$</tspan> ctok refine --diff <tspan class="ok">"please can you kindly help me handle auth"</tspan></text>
+  <text x="24" y="238"><tspan class="brand">●</tspan> <tspan class="title">Prompt refiner - diff view</tspan></text>
+  <text x="24" y="262"><tspan class="err">please can you kindly help me</tspan>  <tspan class="dim">│</tspan>  <tspan class="ok">Refactor the auth flow</tspan></text>
+  <text x="24" y="280"><tspan class="err">handle auth</tspan>                   <tspan class="dim">│</tspan>  <tspan class="ok">to use JWT validation</tspan></text>
+  <text x="24" y="306"><tspan class="title">Specificity</tspan> <tspan class="dim">22/100</tspan> <tspan class="brand">→</tspan> <tspan class="ok">78/100</tspan>  <tspan class="ok">▲ +56</tspan>  <tspan class="dim">•</tspan>  <tspan class="ok">saved ~9 tokens (38%)</tspan></text>
 
-  <text x="24" y="340" class="mono"><tspan class="dim">github.com/ctok-cli/ctok</tspan>  •  <tspan class="brand">ctok.dev</tspan>  •  <tspan class="dim">MIT</tspan></text>
+  <text x="24" y="340"><tspan class="dim">github.com/ctok-cli/ctok</tspan>  <tspan class="dim">•</tspan>  <tspan class="brand">ctok.dev</tspan>  <tspan class="dim">•</tspan>  <tspan class="dim">MIT</tspan></text>
 </svg>
