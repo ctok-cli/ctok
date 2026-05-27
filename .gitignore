@@ -95,3 +95,4 @@ tmp/
 scratch/
 *.local
 .npmrc
+.claude/
