@@ -9,9 +9,12 @@ on:
       - "packages/core/**"
       - "packages/refiner/**"
       - "packages/quota/**"
+      - ".github/workflows/action-ci.yml"
   pull_request:
     paths:
       - "apps/action/**"
+      - ".github/workflows/action-ci.yml"
+  workflow_dispatch:
 
 jobs:
   build-test:

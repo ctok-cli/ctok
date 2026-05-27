@@ -5,11 +5,14 @@ on:
     branches: [main]
     paths:
       - "apps/jetbrains/**"
+      - ".github/workflows/jetbrains.yml"
   pull_request:
     paths:
       - "apps/jetbrains/**"
+      - ".github/workflows/jetbrains.yml"
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   build-test:

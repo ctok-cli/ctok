@@ -10,9 +10,12 @@ on:
       - "packages/refiner/**"
       - "packages/scanner/**"
       - "packages/quota/**"
+      - ".github/workflows/vscode.yml"
   pull_request:
     paths:
       - "apps/vscode/**"
+      - ".github/workflows/vscode.yml"
+  workflow_dispatch:
 
 jobs:
   build:

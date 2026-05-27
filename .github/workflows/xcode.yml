@@ -5,9 +5,12 @@ on:
     branches: [main]
     paths:
       - "apps/xcode/**"
+      - ".github/workflows/xcode.yml"
   pull_request:
     paths:
       - "apps/xcode/**"
+      - ".github/workflows/xcode.yml"
+  workflow_dispatch:
 
 jobs:
   build-test:
