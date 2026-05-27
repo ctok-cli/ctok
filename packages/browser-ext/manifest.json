@@ -23,13 +23,13 @@
         "https://chat.deepseek.com/*",
         "https://gemini.google.com/*"
       ],
-      "js": ["content.js"],
+      "js": ["dist/content.js"],
       "run_at": "document_idle",
       "all_frames": false
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "dist/background.js"
   },
   "action": {
     "default_popup": "popup.html",
