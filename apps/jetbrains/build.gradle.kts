@@ -19,6 +19,7 @@ dependencies {
         intellijIdeaCommunity("2024.3")
         bundledPlugin("com.intellij.java")
         instrumentationTools()
+        pluginVerifier()
     }
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
@@ -28,6 +29,12 @@ dependencies {
 }
 
 intellijPlatform {
+    pluginVerification {
+        ides {
+            recommended()
+        }
+    }
+
     pluginConfiguration {
         name = "ctok - Claude Token Estimator"
         version = "0.1.0"
