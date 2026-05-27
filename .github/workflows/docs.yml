@@ -31,8 +31,18 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: Build docs
         run: pnpm --filter @ctok/docs build
+
+      - name: Build web playground
+        env:
+          BASE_PATH: /ctok/playground
+        run: pnpm --filter @ctok/web build
+
+      - name: Stitch playground into docs site
+        run: |
+          mkdir -p docs/dist/playground
+          cp -r packages/web/out/. docs/dist/playground/
 
       - name: Upload artifact
         if: vars.PAGES_ENABLED == 'true' && github.ref == 'refs/heads/main'
