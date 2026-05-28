@@ -18,6 +18,10 @@ import { estimate as runEstimate } from "@ctok/core";
 import { recommend as runRecommend } from "@ctok/core";
 import { buildSuggestions } from "@ctok/core";
 import { priceFor } from "@ctok/core";
+import { refine } from "@ctok/refiner";
+import type { RefineResult } from "@ctok/refiner";
+import { getQuotaImpact } from "./quota";
+import type { PlanId, QuotaImpact } from "./quota";
 import { uid } from "./utils";
 
 interface ComputedOutputs {
@@ -35,14 +39,18 @@ interface AppState {
   taskType: TaskType;
   selectedModelOverride: ModelId | null;
   history: SessionEntry[];
+  planId: PlanId;
   // derived
   outputs: ComputedOutputs | null;
+  refinerResult: RefineResult | null;
+  quotaImpact: QuotaImpact | null;
 
   setPrompt: (s: string) => void;
   setPastedCode: (s: string) => void;
   setProjectContext: (s: string) => void;
   setTaskType: (t: TaskType) => void;
   setSelectedModelOverride: (m: ModelId | null) => void;
+  setPlanId: (p: PlanId) => void;
   addFiles: (files: ContextFile[]) => void;
   removeFile: (id: string) => void;
   clearFiles: () => void;
@@ -76,6 +84,14 @@ function computeOutputs(
   return { estimate, recommendation, suggestions, cost };
 }
 
+// Debounce timer — module-level so it persists across store calls
+let recomputeTimer: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleRecompute(recomputeFn: () => void, delay = 150) {
+  if (recomputeTimer) clearTimeout(recomputeTimer);
+  recomputeTimer = setTimeout(recomputeFn, delay);
+}
+
 export const useApp = create<AppState>()(
   persist(
     (set, get) => ({
@@ -86,19 +102,22 @@ export const useApp = create<AppState>()(
       taskType: "general",
       selectedModelOverride: null,
       history: [],
+      planId: "pro",
       outputs: null,
+      refinerResult: null,
+      quotaImpact: null,
 
       setPrompt: (s) => {
         set({ prompt: s });
-        get().recompute();
+        scheduleRecompute(() => get().recompute());
       },
       setPastedCode: (s) => {
         set({ pastedCode: s });
-        get().recompute();
+        scheduleRecompute(() => get().recompute());
       },
       setProjectContext: (s) => {
         set({ projectContext: s });
-        get().recompute();
+        scheduleRecompute(() => get().recompute());
       },
       setTaskType: (t) => {
         set({ taskType: t });
@@ -106,6 +125,10 @@ export const useApp = create<AppState>()(
       },
       setSelectedModelOverride: (m) => {
         set({ selectedModelOverride: m });
+        get().recompute();
+      },
+      setPlanId: (p) => {
+        set({ planId: p });
         get().recompute();
       },
       addFiles: (files) => {
@@ -128,7 +151,7 @@ export const useApp = create<AppState>()(
           !s.projectContext.trim() &&
           s.files.length === 0
         ) {
-          set({ outputs: null });
+          set({ outputs: null, refinerResult: null, quotaImpact: null });
           return;
         }
         const input: EstimatorInput = {
@@ -138,7 +161,14 @@ export const useApp = create<AppState>()(
           files: s.files,
           taskType: s.taskType,
         };
-        set({ outputs: computeOutputs(input, s.selectedModelOverride) });
+        const outputs = computeOutputs(input, s.selectedModelOverride);
+        const refinerResult = s.prompt.trim() ? refine({ prompt: s.prompt }) : null;
+        const quotaImpact = getQuotaImpact({
+          estimatedTokens: outputs.estimate.input.expected + outputs.estimate.output.expected,
+          model: outputs.cost.model,
+          plan: s.planId,
+        });
+        set({ outputs, refinerResult, quotaImpact });
       },
       saveToHistory: () => {
         const s = get();
@@ -177,6 +207,8 @@ export const useApp = create<AppState>()(
           taskType: "general",
           selectedModelOverride: null,
           outputs: null,
+          refinerResult: null,
+          quotaImpact: null,
         }),
       loadFromHash: (p, c, x, t) => {
         const valid: TaskType[] = [
@@ -194,7 +226,7 @@ export const useApp = create<AppState>()(
     {
       name: "ctok-v1",
       storage: createJSONStorage(() => localStorage),
-      partialize: (s) => ({ history: s.history }),
+      partialize: (s) => ({ history: s.history, planId: s.planId }),
     },
   ),
 );

@@ -36,6 +36,11 @@ program
   .description('Estimate tokens for a prompt. Use "-" to read from stdin.')
   .option("-f, --file <path>", "Read prompt from file")
   .option("-m, --model <id>", "Override model for cost calculation")
+  .option(
+    "-t, --task-type <type>",
+    "Task type: bug-fix | feature | refactor | debugging | review | documentation | architecture | general",
+    "general",
+  )
   .option("--json", "Output JSON")
   .option("-q, --quiet", "Minimal output")
   .option("--no-save", "Do not save to history")

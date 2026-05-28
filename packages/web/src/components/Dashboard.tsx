@@ -12,6 +12,9 @@ import { EffortRecommendation } from "./EffortRecommendation";
 import { ReductionSuggestions } from "./ReductionSuggestions";
 import { SessionHistory } from "./SessionHistory";
 import { DragDropZone } from "./DragDropZone";
+import { FilePicker } from "./FilePicker";
+import { RefinerPanel } from "./RefinerPanel";
+import { QuotaIndicator } from "./QuotaIndicator";
 
 export function Dashboard() {
   return (
@@ -24,6 +27,7 @@ export function Dashboard() {
           {/* Left column - inputs */}
           <div className="space-y-6 lg:col-span-3">
             <DragDropZone />
+            <FilePicker />
             <div id="prompt-input">
               <PromptInput />
             </div>
@@ -35,9 +39,11 @@ export function Dashboard() {
           <div className="space-y-6 lg:col-span-2">
             <TokenMeter />
             <CostIndicator />
+            <QuotaIndicator />
             <ModelRecommendation />
             <EffortRecommendation />
             <ReductionSuggestions />
+            <RefinerPanel />
           </div>
         </div>
 

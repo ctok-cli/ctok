@@ -16,9 +16,14 @@ async function readStdin(): Promise<string> {
   return lines.join("\n");
 }
 
+const VALID_TASK_TYPES: string[] = [
+  "bug-fix", "feature", "refactor", "debugging", "review", "documentation", "architecture", "general",
+];
+
 export interface CheckOptions {
   file?: string;
   model?: string;
+  taskType?: string;
   json?: boolean;
   quiet?: boolean;
   save?: boolean;
@@ -47,8 +52,20 @@ export async function runCheck(promptArg: string | undefined, opts: CheckOptions
     throw new CtokError("E_EMPTY_PROMPT", "Prompt is empty.");
   }
 
+  if (opts.taskType && !VALID_TASK_TYPES.includes(opts.taskType)) {
+    throw new CtokError(
+      "E_INVALID_TASK_TYPE",
+      `Unknown task type: "${opts.taskType}".`,
+      `Valid types: ${VALID_TASK_TYPES.join(" | ")}`,
+    );
+  }
+
   const spinner = ora({ text: "Estimating…", color: "cyan" }).start();
-  const input: EstimatorInput = { prompt: promptText, files: [], taskType: "general" };
+  const input: EstimatorInput = {
+    prompt: promptText,
+    files: [],
+    taskType: (opts.taskType as import("@ctok/core").TaskType) ?? "general",
+  };
   let result: ReturnType<typeof analyze>;
   try {
     result = analyze(input, opts.model as any);
