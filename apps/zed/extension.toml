@@ -4,7 +4,7 @@ description = "Claude token estimator - estimate tokens, costs, and refine promp
 version = "0.1.0"
 schema_version = 1
 authors = ["ctok contributors"]
-repository = "https://github.com/yourusername/ctok"
+repository = "https://github.com/ctok-cli/ctok-zed"
 
 [slash_commands]
 
