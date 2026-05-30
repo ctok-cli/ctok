@@ -2,7 +2,8 @@
 
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/Button";
-import { Save, RotateCcw, Zap } from "lucide-react";
+import { Save, RotateCcw } from "lucide-react";
+import { CtokIcon } from "@/components/CtokIcon";
 
 export function Header() {
   const { outputs, saveToHistory, reset } = useApp();
@@ -12,7 +13,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3">
           <div className="grid h-9 w-9 place-items-center rounded-md bg-accent/15 text-accent">
-            <Zap className="h-5 w-5" />
+            <CtokIcon className="h-5 w-5" />
           </div>
           <div>
             <h1 className="text-base font-semibold tracking-tight text-text">

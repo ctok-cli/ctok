@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useApp } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import type { TaskType } from "@/lib/types";
-import { Terminal, Zap } from "lucide-react";
+import { Terminal } from "lucide-react";
+import { CtokIcon } from "@/components/CtokIcon";
 
 const INSTALL_TABS = [
   {
@@ -97,7 +98,7 @@ export function Hero() {
           <div>
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent/15 text-accent">
-                <Zap className="h-6 w-6" />
+                <CtokIcon className="h-6 w-6" />
               </div>
               <h2 className="text-2xl font-bold tracking-tight text-text">
                 ctok playground

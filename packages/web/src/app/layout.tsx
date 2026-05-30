@@ -12,11 +12,13 @@ export const metadata: Metadata = {
     url: "https://ctok-cli.github.io/ctok",
     siteName: "ctok",
     type: "website",
+    images: [{ url: "https://ctok-cli.github.io/ctok/og.png", width: 1280, height: 640, alt: "ctok - Lighthouse for Claude prompts" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "ctok - Lighthouse for Claude prompts",
     description: "Estimate tokens, pick the right model, and refine prompts before you send to Claude.",
+    images: ["https://ctok-cli.github.io/ctok/og.png"],
   },
 };
 
